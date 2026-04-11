@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>낙상 연구 - 발표 모드</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <style>
         :root {
             --bg: #f6f7fa;
@@ -39,10 +41,15 @@
 
         /* ─── base ───────────────────────────────── */
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
             background: var(--bg);
             color: var(--text-1);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            word-break: keep-all;
+            line-break: strict;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* ─── top bar ────────────────────────────── */
@@ -555,7 +562,20 @@
         @media (max-width: 768px) {
             .top-bar { padding: 0 16px; }
             .container { padding: 24px 16px 60px; }
-            .pres-h { font-size: 24px; }
+            .pres-h {
+                font-size: 24px;
+                letter-spacing: -0.015em;
+                /* mobile: disable gradient text to avoid jagged rendering */
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: var(--text-1);
+            }
+            .pres-sub { font-size: 13px; }
+            .gap-title { font-size: 14px; letter-spacing: 0; }
+            .card-summary-line,
+            .detail-rows,
+            .research-desc { font-size: 12.5px; line-height: 1.7; }
+            .gait-word { font-size: 18px; letter-spacing: 0; }
 
             .dementia-grid { grid-template-columns: 1fr; }
             .gait-grid { grid-template-columns: 1fr 1fr; }
