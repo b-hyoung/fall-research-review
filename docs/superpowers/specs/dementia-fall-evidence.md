@@ -54,12 +54,16 @@
 | 보폭 | 상관계수 0.405 (키와 양의 상관) | 속도 × 주기 |
 | 다리/몸통 속도 | 실시간 측정 | percentile method |
 
-### 침상 움직임 측정 (Gowri 2025 근거)
-| 파라미터 | mmWave 측정 정확도 |
-|---|---|
-| 수면 상태 분류 | 97% |
-| 호흡/심박 | MAE 1.9bpm / <2회/분 |
-| 기립/낙상 감지 | 93% |
+### mmWave 낙상 탐지 정확도 (Yu et al. 2025 근거)
+| 지표 | HOG-LSTM-Attention 성능 | 비고 |
+|---|---|---|
+| 정확도 | 95.3% | 4종 LSTM 아키텍처 중 최고 |
+| 민감도 (Recall) | 98.2% | 실제 낙상의 98.2% 포착 |
+| 정밀도 | 92.9% | 오탐 최소화 |
+| F1-Score | 95.5% | 균형 잡힌 성능 |
+
+> ※ 원래 이 섹션에 있던 "Gowri 2025" 출처는 실존하지 않는 논문으로 확인되어 Yu et al. 2025 (Applied Sciences)로 교체됨.
+> Yu 2025는 낙상 탐지만 다루므로, 침상 움직임/수면/생체신호 근거가 추가로 필요할 경우 별도 논문(Zhang 2025 서베이 등) 확보 필요.
 
 ## 4. 우리 연구와의 연결
 
@@ -88,7 +92,7 @@
 - 유아현 (2025). 보행 분석을 활용한 인지기능 장애 노인의 낙상 위험도 평가. 한양대학교.
 - Zeng et al. (2022). Walking Step Monitoring with a mmWave Radar. Sensors, 22(24).
 - Wang et al. (2016). Gait Recognition Using WiFi Signals. UbiComp '16.
-- Gowri et al. (2025). Human Activity Monitoring using mmWave Sensors. ICOIICS-2025.
+- Yu, Y.S.; Wie, S.; Lee, H.; Lee, J.; Kim, N.H. (2025). Long Short-Term Memory-Based Fall Detection by FMCW Millimeter-Wave Radar Sensor for Seniors Living Alone. Applied Sciences, 15(15), 8381. https://doi.org/10.3390/app15158381
 - 최준화 (2022). 기계학습에 기반한 급성기 뇌졸중 입원환자의 낙상위험 예측. 경북대학교.
 - Taylor et al. (2019). Gait parameters associated with falls in dementia. Int Psychogeriatr, 31(8).
 - Allan et al. (2009). Risk factors for falls in dementia. Dement Geriatr Cogn Disord, 27(5).
