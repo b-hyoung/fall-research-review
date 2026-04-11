@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>낙상 연구 - 발표 모드</title>
+    <style>
+        :root {
+            --bg: #f6f7fa;
+            --surface: #ffffff;
+            --surface-hover: #f9fafb;
+            --border: #e4e7ed;
+            --border-light: #eef0f4;
+            --text-1: #16181d;
+            --text-2: #4e5562;
+            --text-3: #8a8f9d;
+            --accent: #3563e9;
+            --accent-soft: #edf1fd;
+            --orange: #d97706;
+            --orange-soft: #fef9ee;
+            --blue: #2572cc;
+            --blue-soft: #eef5fc;
+            --green: #15803d;
+            --green-soft: #eef7f1;
+            --rose: #be123c;
+            --rose-soft: #fdf1f4;
+            --purple: #7c3aed;
+            --purple-soft: #f3efff;
+            --r-sm: 8px;
+            --r-md: 12px;
+            --r-lg: 16px;
+            --sh-sm: 0 1px 2px rgba(22,24,29,0.04);
+            --sh-md: 0 4px 12px rgba(22,24,29,0.06);
+            --ease: cubic-bezier(0.25,0.1,0.25,1);
+        }
+
+        /* ─── reset ─────────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ─── base ───────────────────────────────── */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text-1);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── top bar ────────────────────────────── */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(246,247,250,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+        }
+        .top-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+            gap: 16px;
+        }
+        .top-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-1);
+            letter-spacing: -0.01em;
+        }
+        .back-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 7px 18px;
+            border-radius: 6px;
+            background: var(--accent-soft);
+            transition: all 180ms var(--ease);
+        }
+        .back-link:hover { background: var(--accent); color: #fff; }
+
+        /* ─── layout ─────────────────────────────── */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 48px 32px 80px;
+        }
+
+        /* ─── section / headings ─────────────────── */
+        .pres-section { margin-bottom: 64px; }
+        .pres-section:last-child { margin-bottom: 0; }
+
+        .pres-step {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .pres-h {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            line-height: 1.15;
+            background: linear-gradient(135deg, var(--text-1) 60%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .pres-sub {
+            color: var(--text-3);
+            font-size: 14px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* ─── gap cards (Step 1) ─────────────────── */
+        .gaps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .gap-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 24px;
+            transition: box-shadow 200ms var(--ease), transform 200ms var(--ease);
+        }
+        .gap-card:hover { box-shadow: var(--sh-md); transform: translateY(-1px); }
+
+        .gap-icon {
+            min-width: 36px;
+            height: 32px;
+            padding: 0 8px;
+            border-radius: var(--r-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            white-space: nowrap;
+        }
+        .gap-title {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .gap-problem {
+            font-size: 13px;
+            color: var(--text-3);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .gap-solve {
+            font-size: 13px;
+            color: var(--green);
+            font-weight: 600;
+            line-height: 1.5;
+            padding: 10px 14px;
+            background: var(--green-soft);
+            border-radius: var(--r-sm);
+        }
+        .gap-papers {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .gap-papers .gp {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: var(--border-light);
+            color: var(--text-3);
+            font-weight: 600;
+        }
+
+        /* ─── Step 2: dementia cards ─────────────── */
+        .dementia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        /* card title row */
+        .card-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        /* inline ref link (inside title row) */
+        .ref-inline {
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
+        /* detail rows (원인/결과 등) */
+        .detail-rows {
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--text-2);
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        /* pill links */
+        .pill-group {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .pill {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .pill-rose   { background: var(--rose-soft);   color: var(--rose);   }
+        .pill-orange { background: var(--orange-soft); color: var(--orange); }
+        .pill-blue   { background: var(--blue-soft);   color: var(--blue);   }
+        .pill-purple { background: var(--purple-soft); color: var(--purple); }
+        .pill-green  { background: var(--green-soft);  color: var(--green);  }
+
+        /* color helpers */
+        .c-rose   { color: var(--rose);   }
+        .c-orange { color: var(--orange); }
+        .c-blue   { color: var(--blue);   }
+        .c-purple { color: var(--purple); }
+        .c-green  { color: var(--green);  }
+        .c-t2     { color: var(--text-2); }
+        .c-t3     { color: var(--text-3); }
+        .c-accent { color: var(--accent); }
+        .c-dark-rose { color: #7f1d1d; }
+
+        /* ─── details / summary (접기) ──────────── */
+        .card-summary-line {
+            font-size: 13px;
+            color: var(--text-3);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        details.card-details { margin-top: 8px; }
+        details.card-details summary {
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 0;
+            user-select: none;
+        }
+        details.card-details summary::-webkit-details-marker { display: none; }
+        details.card-details summary::before {
+            content: '▶';
+            font-size: 8px;
+            transition: transform 180ms var(--ease);
+            display: inline-block;
+        }
+        details.card-details[open] summary::before { transform: rotate(90deg); }
+        details.card-details .details-body {
+            margin-top: 10px;
+            animation: fadeIn 200ms var(--ease);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── info panels (보행특성, 비접촉, 참고문헌) ─ */
+        .info-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 24px;
+        }
+        .info-panel + .info-panel { margin-top: 16px; }
+
+        .panel-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+        .panel-label-sm {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+
+        /* gait 4-col grid */
+        .gait-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            text-align: center;
+        }
+        .gait-tile {
+            border-radius: var(--r-sm);
+            padding: 16px;
+        }
+        .gait-word {
+            font-size: 22px;
+            font-weight: 800;
+        }
+        .gait-desc {
+            font-size: 11px;
+            color: var(--text-3);
+            margin-top: 4px;
+        }
+
+        /* sensor rows */
+        .sensor-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sensor-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+        .sensor-badge {
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* references */
+        .ref-list {
+            font-size: 12px;
+            color: var(--text-2);
+            line-height: 2.2;
+        }
+        .ref-tag {
+            font-weight: 700;
+        }
+
+        /* ─── Step 3 ─────────────────────────────── */
+        .section-step3 {
+            margin-top: 80px;
+            padding-top: 48px;
+            border-top: 2px solid var(--border);
+        }
+
+        .research-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        .panel-heading {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+        .panel-heading-lg {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+
+        .research-title {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        .research-desc {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.7;
+        }
+
+        /* flow */
+        .flow-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            line-height: 2.2;
+        }
+        .flow-node {
+            background: var(--surface-hover);
+            padding: 8px 16px;
+            border-radius: var(--r-sm);
+            font-weight: 600;
+        }
+        .flow-node-green {
+            background: var(--green-soft);
+            color: var(--green);
+            padding: 8px 16px;
+            border-radius: var(--r-sm);
+            font-weight: 700;
+        }
+        .flow-node-blue {
+            background: var(--blue-soft);
+            color: var(--blue);
+            padding: 8px 16px;
+            border-radius: var(--r-sm);
+            font-weight: 700;
+        }
+        .flow-node-rose {
+            background: var(--rose-soft);
+            color: var(--rose);
+            padding: 8px 16px;
+            border-radius: var(--r-sm);
+            font-weight: 700;
+        }
+        .flow-sub {
+            font-size: 10px;
+            color: var(--text-3);
+            font-weight: 400;
+        }
+        .flow-sub-rose {
+            font-size: 10px;
+            color: var(--rose);
+            font-weight: 400;
+        }
+        .flow-sep { color: var(--text-3); }
+
+        /* diff table */
+        .diff-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 13px;
+        }
+        .diff-row {
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+        }
+        .diff-label {
+            flex-shrink: 0;
+            width: 100px;
+            color: var(--text-3);
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .diff-old {
+            flex: 1;
+            color: var(--text-3);
+            text-decoration: line-through;
+        }
+        .diff-new {
+            flex: 1;
+            color: var(--text-1);
+            font-weight: 700;
+        }
+
+        /* evidence rows */
+        .evidence-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .evidence-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        /* discussion panel */
+        .discussion-panel {
+            background: var(--surface);
+            border: 2px dashed var(--rose);
+            border-radius: var(--r-lg);
+            padding: 32px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .discussion-badge {
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            background: var(--rose);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 100px;
+        }
+        .discussion-heading {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--rose);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+        .discussion-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 13px;
+            color: var(--text-3);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ─── footer ─────────────────────────────── */
+        .foot {
+            text-align: center;
+            color: var(--text-3);
+            font-size: 12px;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ─── responsive ─────────────────────────── */
+        @media (max-width: 768px) {
+            .top-bar { padding: 0 16px; }
+            .container { padding: 24px 16px 60px; }
+            .pres-h { font-size: 24px; }
+
+            .dementia-grid { grid-template-columns: 1fr; }
+            .gait-grid { grid-template-columns: 1fr 1fr; }
+
+            .diff-row { flex-wrap: wrap; }
+            .diff-label { width: auto; min-width: 80px; }
+            .flow-wrap { gap: 6px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-bar">
+    <div class="top-inner">
+        <div class="top-title">낙상 연구 분석 — 발표 모드</div>
+        <a href="table-visual.html" class="back-link">← 카드 뷰로 돌아가기</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Step 1: Gap Analysis -->
+    <div class="pres-section">
+        <div class="pres-step">Step 1</div>
+        <h2 class="pres-h">기존 연구의 한계 (Gap Analysis)</h2>
+        <p class="pres-sub">9편 논문의 한계점을 4가지 카테고리로 분류하고, 우리 연구가 해결할 수 있는 영역을 표시했습니다.</p>
+        <div class="gaps" id="gapGrid"></div>
+    </div>
+
+    <!-- Step 2: Why Dementia -->
+    <div class="pres-section">
+        <div class="pres-step">Step 2</div>
+        <h2 class="pres-h">왜 치매 환자인가</h2>
+        <p class="pres-sub">치매 환자는 일반 노인 대비 낙상률 2배, 본인이 위험을 인식하지 못해 시스템의 사전 예측이 가장 절실한 대상입니다.</p>
+
+        <div class="dementia-grid">
+            <!-- 카드 1: 80% -->
+            <div class="gap-card">
+                <div class="gap-icon" style="background:var(--rose-soft)">80%</div>
+                <div class="card-title-row gap-title">
+                    치매 환자 연간 80% 낙상
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2677107/" target="_blank" class="ref-inline c-rose">Allan 2009 →</a>
+                </div>
+                <p class="card-summary-line">매년 노인의 26.5%가 낙상을 경험하지만, 치매 환자는 약 80%가 낙상을 경험</p>
+                <details class="card-details" open>
+                    <summary>더 보기</summary>
+                    <div class="details-body">
+                        <div class="detail-rows">
+                            <div class="detail-row">
+                                <span><strong class="c-rose">원인</strong> — 장애물 극복 능력↓, 균형 감각↓(이중과제 시 악화), 공간 지각↓, 운동 기능 장애↑</span>
+                                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2677107/" target="_blank" class="ref-inline c-rose">Allan 2009 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-dark-rose">결과</strong> — 신체 부상·사망, 독립성 상실, 요양시설 입소, 막대한 경제적 부담</span>
+                                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11081206/" target="_blank" class="ref-inline c-rose">PMC 2024 →</a>
+                            </div>
+                        </div>
+                        <div class="pill-group">
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2677107/" target="_blank" class="pill pill-rose">Allan et al. 2009 — 치매 환자 낙상 발생률 일반 노인의 8배 (PLOS ONE)</a>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11081206/" target="_blank" class="pill pill-rose">PMC 2024 — AD vs MCI 연간 낙상률 메타분석</a>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 카드 2: 100만 -->
+            <div class="gap-card">
+                <div class="gap-icon" style="background:var(--orange-soft)">100만</div>
+                <div class="gap-title">2026년 100만 명 돌파</div>
+                <p class="card-summary-line">한국 치매 환자 수 2026년 100만 명 예상, 낙상으로 인한 의료·사회적 비용 급증</p>
+                <details class="card-details" open>
+                    <summary>더 보기</summary>
+                    <div class="details-body">
+                        <div class="detail-rows">
+                            <div class="detail-row">
+                                <span><strong class="c-orange">유병률 9.17%</strong> — 65세 이상 노인 10명 중 1명이 치매</span>
+                                <a href="https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1484959" target="_blank" class="ref-inline c-orange">보건복지부 2024 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-orange">낙상 의료비</strong> — 연간 약 1조 6천억 원, 노인 의료비 주요 원인</span>
+                                <a href="https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1484959" target="_blank" class="ref-inline c-orange">보건복지부 2024 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-orange">요양시설 입소 촉진</strong> — 낙상 후 독립성 상실 → 시설 입소 → 비용 증가 악순환</span>
+                                <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="ref-inline c-orange">홍선영 2017 →</a>
+                            </div>
+                        </div>
+                        <div class="pill-group">
+                            <a href="https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1484959" target="_blank" class="pill pill-orange">보건복지부 2024 — 2023 치매역학조사 결과</a>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 카드 3: STV -->
+            <div class="gap-card">
+                <div class="gap-icon" style="background:var(--blue-soft)">STV</div>
+                <div class="gap-title">보행 변동성 = 핵심 지표</div>
+                <p class="card-summary-line">치매 환자는 보행 평균값뿐 아니라 변동성(variability)이 크게 증가하며, 이 변동성이 낙상 예측에 더 민감</p>
+                <details class="card-details" open>
+                    <summary>더 보기</summary>
+                    <div class="details-body">
+                        <div class="detail-rows">
+                            <div class="detail-row">
+                                <span><strong class="c-blue">보행속도 감소</strong> — MCI: MD -0.12, 치매: MD -0.21 (정상 대비 유의미)</span>
+                                <a href="#" class="ref-inline c-blue">유아현 2025 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-blue">스텝시간 변동성(STV)↑</strong> — 파킨슨·알츠하이머 초기 징후, 낙상 예측에 보행속도보다 민감</span>
+                                <a href="https://doi.org/10.3390/s22249901" target="_blank" class="ref-inline c-blue">Zeng 2022 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-blue">보행 장애(r=-.24)</strong> — 치매노인 낙상위험요인 중 신체적 요인 상위</span>
+                                <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="ref-inline c-blue">홍선영 2017 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-blue">균형 장애(r=-.20)</strong> — 이중과제 보행 시 정상 노인은 보폭 조절하나 치매 환자는 불가</span>
+                                <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="ref-inline c-blue">홍선영 2017 →</a>
+                            </div>
+                        </div>
+                        <div class="pill-group">
+                            <a href="https://doi.org/10.3390/s22249901" target="_blank" class="pill pill-blue">Zeng 2022 — mmWave 스텝시간 96% 정확도 (STV 측정 근거)</a>
+                            <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="pill pill-blue">홍선영 2017 — 보행(r=-.24)·균형(r=-.20) 효과크기</a>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 카드 4: ! -->
+            <div class="gap-card">
+                <div class="gap-icon" style="background:var(--purple-soft)">!</div>
+                <div class="gap-title">본인이 위험을 모름</div>
+                <p class="card-summary-line">치매노인은 판단력·시공간 개념이 저하되어 위험 대처 능력이 부족하며, 질병 자체가 낙상위험요인</p>
+                <details class="card-details" open>
+                    <summary>더 보기</summary>
+                    <div class="details-body">
+                        <div class="detail-rows">
+                            <div class="detail-row">
+                                <span><strong class="c-purple">보행 중 낙상 54.9%</strong> — 균형 상실(56.7%)이 주 원인, 불안정 걸음걸이 OR 11.68</span>
+                                <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank" class="ref-inline c-purple">임정옥 2016 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-purple">침대 이탈 낙상 15.4%</strong> — 침대 사용 시 OR 14.48, 야간(22-07시) 18.1% 발생</span>
+                                <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank" class="ref-inline c-purple">임정옥 2016 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-purple">신경정신증상(r=.19)</strong> — 환각·망상·초조로 인한 돌발 행동, 향정신약물(r=.27) 부작용 동반</span>
+                                <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="ref-inline c-purple">홍선영 2017 →</a>
+                            </div>
+                            <div class="detail-row">
+                                <span><strong class="c-purple">반복 낙상 40.5%</strong> — 3회 이상 반복, 우울(r=.31)이 핵심 악화 요인</span>
+                                <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank" class="ref-inline c-purple">임정옥 2016 + 홍선영 2017 →</a>
+                            </div>
+                        </div>
+                        <div class="pill-group">
+                            <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank" class="pill pill-purple">임정옥·구미옥 2016 — 요양병원 치매 환자 낙상실태 (252명, OR 분석)</a>
+                            <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="pill pill-purple">홍선영·박희옥 2017 — 치매노인 낙상위험요인 메타분석 (20편 종합)</a>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- 보행 특성 4칸 -->
+        <div class="info-panel" style="margin-bottom:16px">
+            <div class="panel-label">치매 환자는 이렇게 걷는다 (유아현 2025 메타분석)</div>
+            <div class="gait-grid">
+                <div class="gait-tile" style="background:var(--blue-soft)">
+                    <div class="gait-word c-blue">느려짐</div>
+                    <div class="gait-desc">걷는 속도가 정상보다 유의미하게 감소</div>
+                </div>
+                <div class="gait-tile" style="background:var(--orange-soft)">
+                    <div class="gait-word c-orange">불규칙</div>
+                    <div class="gait-desc">걸음 리듬(분당 걸음수)이 흐트러짐</div>
+                </div>
+                <div class="gait-tile" style="background:var(--green-soft)">
+                    <div class="gait-word c-green">짧아짐</div>
+                    <div class="gait-desc">한 걸음의 보폭이 점점 줄어듦</div>
+                </div>
+                <div class="gait-tile" style="background:var(--rose-soft)">
+                    <div class="gait-word c-rose">들쭉날쭉</div>
+                    <div class="gait-desc">걸음 간격이 매번 달라짐 (낙상 핵심 징후)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 비접촉 센서 측정 가능 -->
+        <div class="info-panel">
+            <div class="panel-label">이 지표들을 비접촉 센서로 측정 가능한가?</div>
+            <div class="sensor-rows">
+                <div class="sensor-row">
+                    <span class="sensor-badge" style="background:var(--green)">mmWave</span>
+                    <span>걸음 간격 96% 정확도로 측정, 웨어러블 센서 수준 신뢰도 <span class="c-t3">(Zeng 2022)</span></span>
+                </div>
+                <div class="sensor-row">
+                    <span class="sensor-badge" style="background:var(--blue)">CSI</span>
+                    <span>걷는 속도·리듬·보폭을 WiFi만으로 측정, 오차 11.9ms <span class="c-t3">(Wang 2016)</span></span>
+                </div>
+                <div class="sensor-row">
+                    <span class="sensor-badge" style="background:var(--purple)">융합</span>
+                    <span>mmWave+CSI 교차검증으로 화장실 등 수분환경 오탐 해결 + 벽 너머 커버리지 확장</span>
+                </div>
+            </div>
+            <div class="pill-group">
+                <a href="https://doi.org/10.3390/s22249901" target="_blank" class="pill pill-green">Zeng 2022 — mmWave 보행 스텝 모니터링 (96% 정확도)</a>
+                <a href="https://doi.org/10.1145/2971648.2971670" target="_blank" class="pill pill-blue">Wang 2016 — WiFi CSI 보행 인식 (50명, 인용 491회)</a>
+            </div>
+        </div>
+
+        <!-- 참고문헌 -->
+        <div class="info-panel" style="margin-top:16px">
+            <div class="panel-label-sm">이 섹션에서 인용한 참고문헌</div>
+            <div class="ref-list">
+                <div><strong class="ref-tag c-rose">[낙상률]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2677107/" target="_blank" class="c-accent">Allan et al. (2009) — Incidence and Prediction of Falls in Dementia</a>. PLOS ONE. — 치매 환자 낙상 발생률 일반 노인의 8배</div>
+                <div><strong class="ref-tag c-rose">[낙상률]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11081206/" target="_blank" class="c-accent">PMC 2024 — AD vs MCI 연간 낙상률 메타분석</a> — 알츠하이머 43.6%, MCI 35.3%</div>
+                <div><strong class="ref-tag c-orange">[치매 현황]</strong> <a href="https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1484959" target="_blank" class="c-accent">보건복지부 (2024) — 2023 치매역학조사 결과</a> — 2026년 100만 명, 유병률 9.17%</div>
+                <div><strong class="ref-tag c-blue">[보행 특성]</strong> 유아현 (2025). 보행 분석을 활용한 인지기능 장애 노인의 낙상 위험도 평가. 한양대학교. — 걷는 속도·리듬·보폭 감소 수치</div>
+                <div><strong class="ref-tag c-blue">[STV]</strong> <a href="https://doi.org/10.3390/s22249901" target="_blank" class="c-accent">Zeng et al. (2022) — mmWave 보행 스텝 모니터링</a>. Sensors, 22(24). — 걸음 간격 변동성이 낙상 핵심 징후, 96% 정확도 측정</div>
+                <div><strong class="ref-tag c-purple">[낙상 실태]</strong> <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank" class="c-accent">임정옥·구미옥 (2016) — 요양병원 치매 환자 낙상실태</a> — 보행 중 54.9%, 침대 이탈 15.4%, 불안정 걸음걸이 OR 11.68</div>
+                <div><strong class="ref-tag c-purple">[위험요인]</strong> <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank" class="c-accent">홍선영·박희옥 (2017) — 치매노인 낙상위험요인 메타분석 (20편)</a> — 보행 장애 r=-.24, 균형 r=-.20, 우울 r=.31</div>
+                <div><strong class="ref-tag c-green">[mmWave]</strong> <a href="https://doi.org/10.3390/s22249901" target="_blank" class="c-accent">Zeng et al. (2022)</a> — mmWave로 비접촉 걸음 간격 측정 가능 증명</div>
+                <div><strong class="ref-tag c-blue">[CSI]</strong> <a href="https://doi.org/10.1145/2971648.2971670" target="_blank" class="c-accent">Wang et al. (2016) — WiFi CSI 보행 인식</a>. UbiComp '16. — 걷는 속도·리듬·보폭 비접촉 측정 (인용 491회)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3: Our Research -->
+    <div class="pres-section section-step3">
+        <div class="pres-step">Step 3</div>
+        <h2 class="pres-h">우리 연구 제안</h2>
+        <p class="pres-sub">위의 문제와 근거를 바탕으로 도출한 연구 방향입니다.</p>
+
+        <div class="research-panel">
+            <div class="panel-heading">연구 제목 (안)</div>
+            <h3 class="research-title">mmWave-CSI 듀얼 센서 융합 기반<br>인지장애 노인의 낙상 사전 예측 시스템</h3>
+            <p class="research-desc">병실 내 WiFi CSI와 mmWave 레이더를 동시 활용하여, 치매 환자의 보행 패턴 변화와 침상 움직임을 비접촉으로 연속 측정하고, 시계열 분석을 통해 낙상을 사전에 예측하는 시스템을 제안한다.</p>
+        </div>
+
+        <div class="research-panel">
+            <div class="panel-heading-lg">시스템 흐름</div>
+            <div class="flow-wrap">
+                <div class="flow-node-green">mmWave 레이더</div>
+                <span class="flow-sep">+</span>
+                <div class="flow-node-blue">WiFi CSI</div>
+                <span class="flow-sep">→</span>
+                <div class="flow-node">보행 패턴 추출<div class="flow-sub">속도, 리듬, 보폭, 변동성</div></div>
+                <span class="flow-sep">+</span>
+                <div class="flow-node">침상 움직임 분석<div class="flow-sub">뒤척임, 기립 시도, 야간 배회</div></div>
+                <span class="flow-sep">→</span>
+                <div class="flow-node">교차검증<div class="flow-sub">두 센서 동의 시 확정, 오탐 제거</div></div>
+                <span class="flow-sep">→</span>
+                <div class="flow-node">시계열 예측 모델<div class="flow-sub">딥러닝 vs 전통ML 비교</div></div>
+                <span class="flow-sep">→</span>
+                <div class="flow-node-rose">낙상 위험도 출력<div class="flow-sub-rose">즉각(초) / 단기(시간) / 추세(일)</div></div>
+            </div>
+        </div>
+
+        <div class="research-panel">
+            <div class="panel-heading-lg">기존 연구 대비 차별점</div>
+            <div class="diff-rows">
+                <div class="diff-row">
+                    <div class="diff-label">시점</div>
+                    <div class="diff-old">기존: 넘어진 후 감지 (탐지)</div>
+                    <div class="diff-new">우리: 넘어지기 전 예측 (사전 예측)</div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-label">센서</div>
+                    <div class="diff-old">기존: 단일 센서 (오탐 문제)</div>
+                    <div class="diff-new">우리: mmWave + CSI 교차검증 (수분환경 오탐 해결)</div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-label">대상</div>
+                    <div class="diff-old">기존: 일반 노인 / 건강 성인</div>
+                    <div class="diff-new">우리: 인지장애 노인 특화 (MCI~치매)</div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-label">분석</div>
+                    <div class="diff-old">기존: 순간 이벤트 판단</div>
+                    <div class="diff-new">우리: 시계열 패턴 변화 추적 (보행 변동성, STV)</div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-label">프라이버시</div>
+                    <div class="diff-old">기존: 카메라 촬영 필요</div>
+                    <div class="diff-new">우리: RF 신호만 사용, 영상 없음</div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-label">알고리즘</div>
+                    <div class="diff-old">기존: 단일 모델</div>
+                    <div class="diff-new">우리: 딥러닝 vs 전통ML 비교 (멀티모달 입력)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="research-panel">
+            <div class="panel-heading-lg">이게 가능한 근거</div>
+            <div class="evidence-rows">
+                <div class="evidence-row">
+                    <span><strong>mmWave로 걸음 간격 측정</strong> — 96% 정확도, 웨어러블 수준 신뢰도</span>
+                    <a href="https://doi.org/10.3390/s22249901" target="_blank" class="ref-inline c-accent">Zeng 2022 →</a>
+                </div>
+                <div class="evidence-row">
+                    <span><strong>CSI로 걷는 속도·리듬·보폭 측정</strong> — 50명 검증, 오차 11.9ms</span>
+                    <a href="https://doi.org/10.1145/2971648.2971670" target="_blank" class="ref-inline c-accent">Wang 2016 →</a>
+                </div>
+                <div class="evidence-row">
+                    <span><strong>mmWave로 낙상·수면·생체 감지</strong> — 낙상 93%, 수면 97% 정확도</span>
+                    <a href="#" class="ref-inline c-accent">Gowri 2025 →</a>
+                </div>
+                <div class="evidence-row">
+                    <span><strong>치매 환자 보행 변화 수치</strong> — 속도↓, 리듬 불규칙, 보폭 짧아짐, 변동성↑</span>
+                    <a href="#" class="ref-inline c-accent">유아현 2025 →</a>
+                </div>
+                <div class="evidence-row">
+                    <span><strong>치매 환자 낙상의 54.9%가 보행 중</strong> — 불안정 걸음걸이 OR 11.68</span>
+                    <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank" class="ref-inline c-accent">임정옥 2016 →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="discussion-panel">
+            <div class="discussion-badge">논의 필요</div>
+            <div class="discussion-heading">검증 계획 (미정)</div>
+            <div class="discussion-rows">
+                <div><strong class="c-t2" style="font-style:normal">실험 환경</strong> — 실험실? 실제 병실? 요양시설 협력 가능 여부에 따라 달라짐</div>
+                <div><strong class="c-t2" style="font-style:normal">시나리오 설계</strong> — 임상 논문 기반 시뮬레이션 vs 실제 환자 데이터 수집 → 추후 결정</div>
+                <div><strong class="c-t2" style="font-style:normal">비교 실험</strong> — 딥러닝(LSTM/Transformer 등) vs 전통ML(XGBoost/RF 등) 성능 비교</div>
+                <div><strong class="c-t2" style="font-style:normal">평가 지표</strong> — AUROC, F1-score, 오탐률, 예측 선행 시간 등</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="foot">← <a href="table-visual.html" class="c-accent" style="text-decoration:none;font-weight:600">카드 뷰로 돌아가기</a></p>
+</div>
+
+<script>
+const GAPS = [
+    {icon:'🔒', title:'프라이버시', bg:'var(--purple-soft)', problem:'카메라 기반 연구(전서연, 정호석)는 영상 촬영으로 사생활 침해 우려', solve:'RF 센서(CSI/mmWave)는 영상 없이 전파 신호만으로 탐지 — 프라이버시 완벽 보호', papers:['전서연 외','정호석 외']},
+    {icon:'🖐️', title:'착용 부담', bg:'var(--orange-soft)', problem:'IMU/sEMG 기반 연구(최희성, 박성식, 전원영)는 센서를 몸에 부착해야 사용 가능', solve:'비접촉 인프라 기반으로 별도 기기 착용이나 휴대 불필요', papers:['최희성 외','박성식 외','전원영 외']},
+    {icon:'⚡', title:'실시간성', bg:'var(--blue-soft)', problem:'EMR/설문/청구데이터 기반 연구(최준화, 허규남, 손진현)는 사후 분석만 가능', solve:'센서 실시간 스트리밍으로 낙상 즉시 탐지 및 알림 가능', papers:['최준화','허규남','손진현 외']},
+    {icon:'🌍', title:'환경 일반화', bg:'var(--green-soft)', problem:'대부분 단일 기관·실험실·특정 데이터셋으로만 검증, 실제 환경 적용 미확인', solve:'다중 환경(병실, 요양시설, 가정) 적용 및 검증 목표', papers:['최준화','박성식 외','전원영 외']}
+];
+
+document.getElementById('gapGrid').innerHTML = GAPS.map(g=>`
+    <div class="gap-card">
+        <div class="gap-icon" style="background:${g.bg}">${g.icon}</div>
+        <div class="gap-title">${g.title}</div>
+        <div class="gap-problem">${g.problem}</div>
+        <div class="gap-solve">${g.solve}</div>
+        <div class="gap-papers">${g.papers.map(p=>`<span class="gp">${p}</span>`).join('')}</div>
+    </div>`).join('');
+</script>
+
+</body>
+</html>
