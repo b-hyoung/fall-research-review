@@ -64,6 +64,25 @@
         .header .subtitle { font-size: 15px; color: var(--text-2); font-weight: 500; }
         .header .badge-line { margin-top: 14px; font-size: 13px; color: var(--text-3); }
         .header .badge-line strong { color: var(--text-2); }
+
+        .env-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; margin-bottom: 36px; box-shadow: var(--sh-sm); }
+        .env-panel h2 { margin-top: 0; }
+        .env-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
+        .env-cell { background: var(--surface-hover); border-radius: var(--r-md); padding: 16px; }
+        .env-cell-head { font-size: 13px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+        .env-cell-body { font-size: 14px; color: var(--text-2); line-height: 1.55; }
+        .env-cell-body strong { color: var(--text-1); }
+
+        .badge-legend { margin-top: 24px; padding-top: 20px; border-top: 1px dashed var(--border-light); display: flex; flex-wrap: wrap; gap: 14px; }
+        .legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-2); }
+        .b-pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+        .b-verified { background: var(--green-soft); color: var(--green); }
+        .b-paper { background: #eef0f4; color: var(--text-2); }
+        .b-goal { background: var(--orange-soft); color: var(--orange); }
+
+        @media (max-width: 640px) {
+            .env-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -75,6 +94,34 @@
         <strong>표기 철학:</strong> 어떤 <em>시스템(파이프라인)</em>으로 뽑는가 → 예시값 → 근거 순서로 전개
     </div>
 </header>
+
+<section class="env-panel">
+    <h2>환경 브리핑</h2>
+    <p>이 플로우의 전제가 되는 공간·센서 배치. Yu 2025(독거노인 FMCW 낙상 탐지) 연구 환경과 정합.</p>
+    <div class="env-grid">
+        <div class="env-cell">
+            <div class="env-cell-head">공간</div>
+            <div class="env-cell-body"><strong>1인 독실</strong> (요양시설 또는 자택). 타 환자 간섭 최소, 센서 간섭 적음.</div>
+        </div>
+        <div class="env-cell">
+            <div class="env-cell-head">센서 배치</div>
+            <div class="env-cell-body">WiFi AP 1대 · mmWave FMCW 레이더 1대 · 간호 스테이션 대시보드</div>
+        </div>
+        <div class="env-cell">
+            <div class="env-cell-head">CSI 역할</div>
+            <div class="env-cell-body"><strong>연속 생체·재실·보행 리듬</strong> (방 전체 커버, 저해상도 지속 측정)</div>
+        </div>
+        <div class="env-cell">
+            <div class="env-cell-head">mmWave 역할</div>
+            <div class="env-cell-body"><strong>정밀 동작·속도·자세·낙상 궤적</strong> (4m 이내 고해상도)</div>
+        </div>
+    </div>
+    <div class="badge-legend">
+        <div class="legend-item"><span class="b-pill b-verified">✅ 검증됨</span> 로컬 PDF / 공식 표준에서 직접 확인</div>
+        <div class="legend-item"><span class="b-pill b-paper">📖 논문 범위</span> 인용 논문의 값 (우리 환경 적용 여부 미지수)</div>
+        <div class="legend-item"><span class="b-pill b-goal">🎯 설계 목표</span> 달성하고자 하는 목표치</div>
+    </div>
+</section>
 
 </div>
 </body>
