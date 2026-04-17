@@ -137,7 +137,7 @@
         .crossval-head { font-size: 13px; font-weight: 800; color: var(--rose); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em; }
         .crossval-table { width: 100%; font-size: 13px; }
         .crossval-table td { padding: 4px 0; vertical-align: top; }
-        .crossval-table .cv-label { font-weight: 700; color: var(--text-1); width: 30%; }
+        .crossval-table .cv-label { font-weight: 700; color: var(--text-1); width: 30%; text-align: left; }
         .crossval-result { margin-top: 10px; padding: 8px 12px; background: var(--surface); border-radius: var(--r-sm); font-size: 13px; color: var(--text-1); font-weight: 600; }
 
         /* === Responsive === */
@@ -335,8 +335,8 @@
                 <div class="crossval-box">
                     <div class="crossval-head"><span aria-hidden="true">🔀</span> 교차검증 AND</div>
                     <table class="crossval-table">
-                        <tr><td class="cv-label">CSI 판정</td><td>생체·보행 리듬 "이상" 신뢰도 ≥ 0.8 <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></td></tr>
-                        <tr><td class="cv-label">mmWave 판정</td><td>자세·속도·STV "이상" 신뢰도 ≥ 0.8 <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></td></tr>
+                        <tr><th class="cv-label" scope="row">CSI 판정</th><td>생체·보행 리듬 "이상" 신뢰도 ≥ 0.8 <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></td></tr>
+                        <tr><th class="cv-label" scope="row">mmWave 판정</th><td>자세·속도·STV "이상" 신뢰도 ≥ 0.8 <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></td></tr>
                     </table>
                     <div class="crossval-result">AND 충족 → <strong>확정 알림</strong> / 한쪽만 이상 → "관찰 레벨"로 격하</div>
                 </div>
