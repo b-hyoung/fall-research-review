@@ -140,12 +140,22 @@
         .crossval-table .cv-label { font-weight: 700; color: var(--text-1); width: 30%; text-align: left; }
         .crossval-result { margin-top: 10px; padding: 8px 12px; background: var(--surface); border-radius: var(--r-sm); font-size: 13px; color: var(--text-1); font-weight: 600; }
 
+        .synthesis { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; margin-top: 12px; margin-bottom: 36px; box-shadow: var(--sh-sm); }
+        .syn-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; margin-top: 16px; }
+        .syn-box { background: var(--surface-hover); border-radius: var(--r-md); padding: 18px; }
+        .syn-box h3 { font-size: 15px; margin-bottom: 10px; }
+        .syn-list { list-style: none; padding: 0; }
+        .syn-list li { padding: 8px 0; font-size: 13.5px; color: var(--text-2); line-height: 1.55; border-bottom: 1px dashed var(--border-light); }
+        .syn-list li:last-child { border-bottom: none; }
+        .syn-list li strong { color: var(--text-1); }
+
         /* === Responsive === */
         @media (max-width: 760px) {
             .scene-grid { grid-template-columns: 1fr; }
             .scene-cell.right { border-left: none; border-top: 1px solid var(--border-light); }
             .sensor-table .col-item { width: 35%; }
             .sensor-table { min-width: 520px; }
+            .syn-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -345,6 +355,31 @@
     </div>
 </section>
 <div class="scene-transition">3시점 데이터가 시계열 모델로 합쳐져 위험도 산출</div>
+
+<section class="synthesis">
+    <h2>종합 — 3시점 데이터가 예측 모델로 합쳐지는 흐름</h2>
+    <p>각 시점에서 뽑힌 CSI·mmWave 지표가 시계열 feature로 누적되고, 모델이 향후 낙상 위험도를 산출한다.</p>
+    <div class="syn-grid">
+        <div class="syn-box">
+            <h3><span aria-hidden="true">🧠</span> 예측 모델 설계</h3>
+            <ul class="syn-list">
+                <li><strong>입력</strong>: CSI 생체·리듬 (연속) + mmWave 속도·STV·자세 (이벤트성) + 7–30일 추세</li>
+                <li><strong>비교 후보</strong>: LSTM / Transformer (시계열 딥러닝) vs XGBoost / Random Forest (전통 ML)</li>
+                <li><strong>판정 시점</strong>: 즉각(초) / 단기(시간) / 장기(일) 3단계 동시 출력</li>
+                <li><strong>교차검증</strong>: AND 조건으로 단일 센서 오탐 배제 (새벽 시나리오 참조)</li>
+            </ul>
+        </div>
+        <div class="syn-box">
+            <h3><span aria-hidden="true">📊</span> 평가 지표 &amp; 설계 목표</h3>
+            <ul class="syn-list">
+                <li><strong>AUROC</strong>: 예측 성능 — 모델 선택 기준</li>
+                <li><strong>F1-score</strong>: 탐지 balance — 목표 <strong>&gt; 0.90</strong> <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></li>
+                <li><strong>알림 선행 시간</strong>: 낙상 발생 대비 사전 경고 확보 시간 — 목표 <strong>≥ 30초</strong> <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></li>
+                <li><strong>오탐률</strong>: 일상 활동 오판 빈도 — 목표 <strong>일 1건 이하</strong> <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 </div>
 </body>
