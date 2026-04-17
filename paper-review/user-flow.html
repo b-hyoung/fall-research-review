@@ -116,6 +116,7 @@
         .alert-1 { background: var(--amber-soft); color: var(--amber); }
         .alert-2 { background: var(--rose-soft); color: var(--rose); }
 
+        .sensor-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .sensor-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 13.5px; }
         .sensor-table th { text-align: left; font-weight: 700; color: var(--text-3); font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--border-light); }
         .sensor-table td { padding: 10px 8px 10px 0; vertical-align: top; border-bottom: 1px solid var(--border-light); color: var(--text-2); line-height: 1.5; }
@@ -132,11 +133,12 @@
         .scene-transition { text-align: center; font-size: 13px; color: var(--text-3); margin: -8px 0 24px; padding: 8px 0; position: relative; }
         .scene-transition::before { content: '↓'; display: block; font-size: 18px; margin-bottom: 4px; color: var(--text-3); }
 
+        /* === Responsive === */
         @media (max-width: 760px) {
             .scene-grid { grid-template-columns: 1fr; }
             .scene-cell.right { border-left: none; border-top: 1px solid var(--border-light); }
             .sensor-table .col-item { width: 35%; }
-            .sensor-table .col-value { display: none; }
+            .sensor-table { min-width: 520px; }
         }
     </style>
 </head>
@@ -200,26 +202,26 @@
         </div>
         <div class="scene-cell top-row right">
             <div class="cell-head tag-csi"><span class="cell-icon" aria-hidden="true">📡</span> CSI <span class="cell-tag">WiFi 채널정보</span></div>
-            <table class="sensor-table">
-                <thead><tr><th class="col-item">감지</th><th class="col-system">시스템 (파이프라인)</th><th class="col-value">예시값</th><th class="col-source">근거</th></tr></thead>
+            <div class="sensor-table-wrap"><table class="sensor-table">
+                <thead><tr><th class="col-item" scope="col">감지</th><th class="col-system" scope="col">시스템 (파이프라인)</th><th class="col-value" scope="col">예시값</th><th class="col-source" scope="col">근거</th></tr></thead>
                 <tbody>
                     <tr><td class="col-item">호흡</td><td>Amplitude → Hampel 필터 → 서브캐리어 PCA → Band-pass 0.2–0.4Hz → FFT 피크</td><td>0.25Hz<span class="illustrative">(15회/분)</span></td><td>의학 표준 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
                     <tr><td class="col-item">심박</td><td>Phase → 고주파 Band-pass 0.8–2Hz → HRV 추정 (정지 자세)</td><td>1.1Hz<span class="illustrative">(66bpm)</span></td><td>의학 표준 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
                     <tr><td class="col-item">재실·기상</td><td>Amplitude variance 임계값 이벤트</td><td>energy ↑</td><td>일반 CSI 문헌 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
                     <tr><td class="col-item">보행 cadence</td><td>Amplitude 시계열 주기 검출 → step count / time</td><td>0.85Hz<span class="illustrative">(51스텝/분)</span></td><td>Wang 2016 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
                 </tbody>
-            </table>
+            </table></div>
         </div>
         <div class="scene-cell">
             <div class="cell-head tag-mmwave"><span class="cell-icon" aria-hidden="true">📡</span> mmWave <span class="cell-tag">FMCW 60–64GHz</span></div>
-            <table class="sensor-table">
-                <thead><tr><th class="col-item">감지</th><th class="col-system">시스템 (파이프라인)</th><th class="col-value">예시값</th><th class="col-source">근거</th></tr></thead>
+            <div class="sensor-table-wrap"><table class="sensor-table">
+                <thead><tr><th class="col-item" scope="col">감지</th><th class="col-system" scope="col">시스템 (파이프라인)</th><th class="col-value" scope="col">예시값</th><th class="col-source" scope="col">근거</th></tr></thead>
                 <tbody>
                     <tr><td class="col-item">기립 시퀀스</td><td>Point Cloud 수직 분포 클러스터링 → 자세 변화 추적</td><td>상체 분리 → 직립</td><td>Yu 2025 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
                     <tr><td class="col-item">보행 속도 <em>(메인)</em></td><td>Point Cloud → torso centroid 추적 → 시간 미분 + Doppler 평균</td><td>0.78 m/s</td><td>Zeng 2022 96% <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
                     <tr><td class="col-item">보폭</td><td>Foot cluster 검출 → heel-strike 타이밍</td><td>0.48m</td><td>Zeng 2022 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
                 </tbody>
-            </table>
+            </table></div>
         </div>
         <div class="scene-cell right">
             <div class="cell-head"><span class="cell-icon" aria-hidden="true">🖥️</span> 간호 스테이션</div>
