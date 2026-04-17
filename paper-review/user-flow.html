@@ -83,6 +83,12 @@
         @media (max-width: 640px) {
             .env-grid { grid-template-columns: 1fr; }
         }
+
+        .timeline-nav { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--sh-sm); }
+        .tl-link { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: var(--r-md); text-decoration: none; font-size: 14px; font-weight: 600; color: var(--text-2); background: var(--surface-hover); transition: all 0.2s var(--ease); }
+        .tl-link:hover { background: var(--accent-soft); color: var(--accent); }
+        .tl-link .tl-icon { font-size: 18px; }
+        .tl-sep { color: var(--text-3); align-self: center; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -122,6 +128,14 @@
         <div class="legend-item"><span class="b-pill b-goal"><span aria-hidden="true">🎯</span> 설계 목표</span> 달성하고자 하는 목표치</div>
     </div>
 </section>
+
+<nav class="timeline-nav" aria-label="하루 시나리오 타임라인">
+    <a href="#scene-morning" class="tl-link"><span class="tl-icon" aria-hidden="true">🌅</span> 07:15 기상</a>
+    <span class="tl-sep" aria-hidden="true">→</span>
+    <a href="#scene-afternoon" class="tl-link"><span class="tl-icon" aria-hidden="true">☕</span> 14:30 오후</a>
+    <span class="tl-sep" aria-hidden="true">→</span>
+    <a href="#scene-dawn" class="tl-link"><span class="tl-icon" aria-hidden="true">🌙</span> 03:42 새벽</a>
+</nav>
 
 </div>
 </body>
