@@ -186,6 +186,52 @@
     <a href="#scene-dawn" class="tl-link"><span class="tl-icon" aria-hidden="true">🌙</span> 03:42 새벽</a>
 </nav>
 
+<section id="scene-morning" class="scene scene-morning">
+    <div class="scene-head">
+        <div class="scene-title"><span aria-hidden="true">🌅</span> 07:15 · 기상 baseline 측정</div>
+        <div class="scene-summary">매일 반복되는 정상 루틴 — 생체·보행 지표 누적, 7일 추세 업데이트</div>
+    </div>
+    <div class="scene-grid">
+        <div class="scene-cell top-row">
+            <div class="cell-head"><span class="cell-icon" aria-hidden="true">👤</span> 환자 관점</div>
+            <div class="patient-story">
+                수면 중이던 할머니가 천천히 몸을 일으켜 침대 가장자리에 앉음 → 기립 → 화장실 방향 이동.
+            </div>
+        </div>
+        <div class="scene-cell top-row right">
+            <div class="cell-head tag-csi"><span class="cell-icon" aria-hidden="true">📡</span> CSI <span class="cell-tag">WiFi 채널정보</span></div>
+            <table class="sensor-table">
+                <thead><tr><th class="col-item">감지</th><th class="col-system">시스템 (파이프라인)</th><th class="col-value">예시값</th><th class="col-source">근거</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-item">호흡</td><td>Amplitude → Hampel 필터 → 서브캐리어 PCA → Band-pass 0.2–0.4Hz → FFT 피크</td><td>0.25Hz<span class="illustrative">(15회/분)</span></td><td>의학 표준 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                    <tr><td class="col-item">심박</td><td>Phase → 고주파 Band-pass 0.8–2Hz → HRV 추정 (정지 자세)</td><td>1.1Hz<span class="illustrative">(66bpm)</span></td><td>의학 표준 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                    <tr><td class="col-item">재실·기상</td><td>Amplitude variance 임계값 이벤트</td><td>energy ↑</td><td>일반 CSI 문헌 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                    <tr><td class="col-item">보행 cadence</td><td>Amplitude 시계열 주기 검출 → step count / time</td><td>0.85Hz<span class="illustrative">(51스텝/분)</span></td><td>Wang 2016 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="scene-cell">
+            <div class="cell-head tag-mmwave"><span class="cell-icon" aria-hidden="true">📡</span> mmWave <span class="cell-tag">FMCW 60–64GHz</span></div>
+            <table class="sensor-table">
+                <thead><tr><th class="col-item">감지</th><th class="col-system">시스템 (파이프라인)</th><th class="col-value">예시값</th><th class="col-source">근거</th></tr></thead>
+                <tbody>
+                    <tr><td class="col-item">기립 시퀀스</td><td>Point Cloud 수직 분포 클러스터링 → 자세 변화 추적</td><td>상체 분리 → 직립</td><td>Yu 2025 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                    <tr><td class="col-item">보행 속도 <em>(메인)</em></td><td>Point Cloud → torso centroid 추적 → 시간 미분 + Doppler 평균</td><td>0.78 m/s</td><td>Zeng 2022 96% <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                    <tr><td class="col-item">보폭</td><td>Foot cluster 검출 → heel-strike 타이밍</td><td>0.48m</td><td>Zeng 2022 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="scene-cell right">
+            <div class="cell-head"><span class="cell-icon" aria-hidden="true">🖥️</span> 간호 스테이션</div>
+            <div class="operator-body">
+                <span class="alert-level alert-0">알림 레벨 0</span>
+                <p>일일 카드: <strong>오늘 보행 속도 0.78m/s, 7일 평균 대비 −4%</strong> (관찰 대상). 영상 없음, 수치·추세만.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="scene-transition">오늘 baseline 확보 완료</div>
+
 </div>
 </body>
 </html>
