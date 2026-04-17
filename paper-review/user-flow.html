@@ -133,6 +133,13 @@
         .scene-transition { text-align: center; font-size: 13px; color: var(--text-3); margin: -8px 0 24px; padding: 8px 0; position: relative; }
         .scene-transition::before { content: '↓'; display: block; font-size: 18px; margin-bottom: 4px; color: var(--text-3); }
 
+        .crossval-box { background: var(--rose-soft); border: 1px solid var(--rose); border-radius: var(--r-md); padding: 14px 16px; margin-top: 16px; }
+        .crossval-head { font-size: 13px; font-weight: 800; color: var(--rose); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em; }
+        .crossval-table { width: 100%; font-size: 13px; }
+        .crossval-table td { padding: 4px 0; vertical-align: top; }
+        .crossval-table .cv-label { font-weight: 700; color: var(--text-1); width: 30%; }
+        .crossval-result { margin-top: 10px; padding: 8px 12px; background: var(--surface); border-radius: var(--r-sm); font-size: 13px; color: var(--text-1); font-weight: 600; }
+
         /* === Responsive === */
         @media (max-width: 760px) {
             .scene-grid { grid-template-columns: 1fr; }
@@ -281,6 +288,63 @@
     </div>
 </section>
 <div class="scene-transition">정상 활동 기록 계속 누적</div>
+
+<section id="scene-dawn" class="scene scene-dawn">
+    <div class="scene-head">
+        <div class="scene-title"><span aria-hidden="true">🌙</span> 03:42 · 새벽 (사전 예측 트리거) — 핵심 시나리오</div>
+        <div class="scene-summary">수일간 누적된 보행 악화 + 지금 이 순간 생체·자세 이상 → 낙상 발생 <strong>전</strong> 알림</div>
+    </div>
+    <div class="scene-grid">
+        <div class="scene-cell top-row">
+            <div class="cell-head"><span class="cell-icon" aria-hidden="true">👤</span> 환자 관점</div>
+            <div class="patient-story">
+                침대 가장자리에서 2분간 뒤척임 → 불안정 기립 시도 (졸음 + 방향 혼란, 이중과제 상황).
+            </div>
+        </div>
+        <div class="scene-cell top-row right">
+            <div class="cell-head tag-csi"><span class="cell-icon" aria-hidden="true">📡</span> CSI</div>
+            <div class="sensor-table-wrap">
+                <table class="sensor-table">
+                    <thead><tr><th class="col-item" scope="col">감지</th><th class="col-system" scope="col">시스템</th><th class="col-value" scope="col">예시값</th><th class="col-source" scope="col">근거</th></tr></thead>
+                    <tbody>
+                        <tr><td class="col-item">호흡 불규칙</td><td>Band-pass 0.2–0.4Hz 출력의 시간창 분산·변동계수 계산</td><td>0.18–0.32Hz<span class="illustrative">(CV 32%)</span></td><td>의학 표준 + 자체 임계 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                        <tr><td class="col-item">심박 상승</td><td>HRV 추정 + 평상시 baseline 대비 편차</td><td>1.5Hz<span class="illustrative">(90bpm ↑)</span></td><td>의학 표준 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                        <tr><td class="col-item">미세 움직임 이상</td><td>Amplitude energy 이상 패턴 지속 시간 검출</td><td>30초 지속</td><td>자체 임계 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="scene-cell">
+            <div class="cell-head tag-mmwave"><span class="cell-icon" aria-hidden="true">📡</span> mmWave <span class="cell-tag">메인 예측 축</span></div>
+            <div class="sensor-table-wrap">
+                <table class="sensor-table">
+                    <thead><tr><th class="col-item" scope="col">감지</th><th class="col-system" scope="col">시스템</th><th class="col-value" scope="col">예시값</th><th class="col-source" scope="col">근거</th></tr></thead>
+                    <tbody>
+                        <tr><td class="col-item">부분 기립 시도</td><td>Point Cloud 상·하체 분리 클러스터링 → 움직임 불일치</td><td>상체 움직임 / 하체 침상</td><td>Yu 2025 구조 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                        <tr><td class="col-item">미세 속도</td><td>Doppler 저속 벡터 추출</td><td>0.08 m/s</td><td>Zeng 2022 기반 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                        <tr><td class="col-item"><strong>STV 장기 추세</strong></td><td>72시간 누적 cadence 시계열 → stride time 변동성 계산</td><td>변동성 상승 추세</td><td>유아현 2025 메타분석 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="scene-cell right">
+            <div class="cell-head"><span class="cell-icon" aria-hidden="true">🖥️</span> 간호 스테이션</div>
+            <div class="operator-body">
+                <span class="alert-level alert-2">알림 레벨 2 — 낙상 위험</span>
+                <p>병실·시각·근거 표시 (영상 없이 수치·추세). "<strong>지난 3일 보행 속도 −8%, 지금 호흡 변동 ↑</strong>" 설명.</p>
+                <div class="crossval-box">
+                    <div class="crossval-head"><span aria-hidden="true">🔀</span> 교차검증 AND</div>
+                    <table class="crossval-table">
+                        <tr><td class="cv-label">CSI 판정</td><td>생체·보행 리듬 "이상" 신뢰도 ≥ 0.8 <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></td></tr>
+                        <tr><td class="cv-label">mmWave 판정</td><td>자세·속도·STV "이상" 신뢰도 ≥ 0.8 <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></td></tr>
+                    </table>
+                    <div class="crossval-result">AND 충족 → <strong>확정 알림</strong> / 한쪽만 이상 → "관찰 레벨"로 격하</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="scene-transition">3시점 데이터가 시계열 모델로 합쳐져 위험도 산출</div>
 
 </div>
 </body>
