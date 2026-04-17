@@ -149,6 +149,16 @@
         .syn-list li:last-child { border-bottom: none; }
         .syn-list li strong { color: var(--text-1); }
 
+        .refs { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; margin-bottom: 32px; box-shadow: var(--sh-sm); }
+        .refs h2 { margin-top: 0; font-size: 18px; }
+        .refs-list { list-style: none; padding: 0; font-size: 13.5px; line-height: 1.7; color: var(--text-2); }
+        .refs-list li { padding: 8px 0; border-bottom: 1px dashed var(--border-light); }
+        .refs-list li:last-child { border-bottom: none; }
+        .refs-list a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .refs-list a:hover { text-decoration: underline; }
+        .refs-note { margin-top: 14px; padding: 12px 14px; background: var(--orange-soft); border-left: 3px solid var(--orange); border-radius: var(--r-sm); font-size: 13px; color: var(--text-2); }
+        .refs-note strong { color: var(--orange); }
+
         /* === Responsive === */
         @media (max-width: 760px) {
             .scene-grid { grid-template-columns: 1fr; }
@@ -378,6 +388,21 @@
                 <li><strong>오탐률</strong>: 일상 활동 오판 빈도 — 목표 <strong>일 1건 이하</strong> <span class="b-pill b-goal"><span aria-hidden="true">🎯</span></span></li>
             </ul>
         </div>
+    </div>
+</section>
+
+<section class="refs">
+    <h2>참고문헌</h2>
+    <ul class="refs-list">
+        <li><strong>Yu et al. (2025)</strong> — LSTM-based Fall Detection by FMCW Millimeter-Wave Radar Sensor for Seniors Living Alone. <em>Applied Sciences 15, 8381.</em> <a href="https://doi.org/10.3390/app15158381" target="_blank" rel="noopener">DOI</a></li>
+        <li><strong>Zeng et al. (2022)</strong> — mmWave 보행 간격 측정 96% 정확도. <a href="https://doi.org/10.3390/s22249901" target="_blank" rel="noopener">DOI</a></li>
+        <li><strong>Wang et al. (2016)</strong> — CSI 기반 보행 속도·리듬 측정, 50명 검증, 오차 11.9ms. <a href="https://doi.org/10.1145/2971648.2971670" target="_blank" rel="noopener">DOI</a></li>
+        <li><strong>유아현 외 (2025)</strong> — 인지장애 노인 보행 분석·낙상 위험 메타분석 (MD 0.12 / 0.21). <a href="../pdf/유아현2025_보행분석_인지장애노인_낙상위험_메타분석.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li><strong>Minta et al. (2023)</strong> — Differences in fall-related characteristics across cognitive disorders. <em>Front Aging Neurosci.</em> <a href="https://doi.org/10.3389/fnagi.2023.1171306" target="_blank" rel="noopener">DOI</a></li>
+        <li><strong>임정옥 (2016)</strong> — 요양병원 치매 환자 낙상 특성 (54.9% 보행 중, OR 11.68). <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&amp;number=368" target="_blank" rel="noopener">링크</a></li>
+    </ul>
+    <div class="refs-note">
+        <strong><span aria-hidden="true">⚠</span> 보류:</strong> 의학 표준 호흡 0.2–0.4Hz / 심박 0.8–2Hz 범위의 임상 가이드라인 인용 논문(AHA, NEJM 등) 미확정. 구현 최종 단계에서 확정 후 추가 예정.
     </div>
 </section>
 
