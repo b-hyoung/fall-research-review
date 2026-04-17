@@ -234,6 +234,54 @@
 </section>
 <div class="scene-transition">오늘 baseline 확보 완료</div>
 
+<section id="scene-afternoon" class="scene scene-afternoon">
+    <div class="scene-head">
+        <div class="scene-title"><span aria-hidden="true">☕</span> 14:30 · 오후 (오탐 회피)</div>
+        <div class="scene-summary">일상 활동 — 시스템이 "정상"으로 판정, 알림 없음. 단일 센서 오탐 문제 해결 시연</div>
+    </div>
+    <div class="scene-grid">
+        <div class="scene-cell top-row">
+            <div class="cell-head"><span class="cell-icon" aria-hidden="true">👤</span> 환자 관점</div>
+            <div class="patient-story">
+                물을 마시러 일어나 거실로 이동, 화장실 다녀와 다시 앉음.
+            </div>
+        </div>
+        <div class="scene-cell top-row right">
+            <div class="cell-head tag-csi"><span class="cell-icon" aria-hidden="true">📡</span> CSI</div>
+            <div class="sensor-table-wrap">
+                <table class="sensor-table">
+                    <thead><tr><th class="col-item" scope="col">감지</th><th class="col-system" scope="col">시스템</th><th class="col-value" scope="col">예시값</th><th class="col-source" scope="col">근거</th></tr></thead>
+                    <tbody>
+                        <tr><td class="col-item">호흡·심박</td><td>동일 파이프라인 상시 가동</td><td>0.28Hz / 1.2Hz<span class="illustrative">(72bpm)</span></td><td>의학 표준 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                        <tr><td class="col-item">보행 리듬 일관성</td><td>Amplitude 주기 시계열 → 변동계수(CV) 계산</td><td>CV 약 6%</td><td>Wang 2016 기반 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="scene-cell">
+            <div class="cell-head tag-mmwave"><span class="cell-icon" aria-hidden="true">📡</span> mmWave</div>
+            <div class="sensor-table-wrap">
+                <table class="sensor-table">
+                    <thead><tr><th class="col-item" scope="col">감지</th><th class="col-system" scope="col">시스템</th><th class="col-value" scope="col">예시값</th><th class="col-source" scope="col">근거</th></tr></thead>
+                    <tbody>
+                        <tr><td class="col-item">자세 유지</td><td>Point Cloud 수직 분포 → 직립 상태 지속</td><td>직립 100%</td><td>Yu 2025 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                        <tr><td class="col-item">걸음 간격</td><td>Heel-strike 타이밍 분산 측정</td><td>일정 (정상 범위)</td><td>Zeng 2022 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span></td></tr>
+                        <tr><td class="col-item">낙상 signature</td><td>Point Cloud 급변 + Micro-Doppler pattern</td><td>없음</td><td>Yu 2025 <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="scene-cell right">
+            <div class="cell-head"><span class="cell-icon" aria-hidden="true">🖥️</span> 간호 스테이션</div>
+            <div class="operator-body">
+                <span class="alert-level alert-0">알림 없음</span>
+                <p>활동 로그만 기록, <strong>정상 활동 패턴으로 분류</strong>. → <em>False Positive 회피 증명</em> (단일 센서 연구의 오탐 문제 해결).</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="scene-transition">정상 활동 기록 계속 누적</div>
+
 </div>
 </body>
 </html>
