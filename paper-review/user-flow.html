@@ -77,7 +77,7 @@
         .legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-2); }
         .b-pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
         .b-verified { background: var(--green-soft); color: var(--green); }
-        .b-paper { background: #eef0f4; color: var(--text-2); }
+        .b-paper { background: var(--border-light); color: var(--text-2); }
         .b-goal { background: var(--orange-soft); color: var(--orange); }
 
         @media (max-width: 640px) {
@@ -117,9 +117,9 @@
         </div>
     </div>
     <div class="badge-legend">
-        <div class="legend-item"><span class="b-pill b-verified">✅ 검증됨</span> 로컬 PDF / 공식 표준에서 직접 확인</div>
-        <div class="legend-item"><span class="b-pill b-paper">📖 논문 범위</span> 인용 논문의 값 (우리 환경 적용 여부 미지수)</div>
-        <div class="legend-item"><span class="b-pill b-goal">🎯 설계 목표</span> 달성하고자 하는 목표치</div>
+        <div class="legend-item"><span class="b-pill b-verified"><span aria-hidden="true">✅</span> 검증됨</span> 로컬 PDF / 공식 표준에서 직접 확인</div>
+        <div class="legend-item"><span class="b-pill b-paper"><span aria-hidden="true">📖</span> 논문 범위</span> 인용 논문의 값 (우리 환경 적용 여부 미지수)</div>
+        <div class="legend-item"><span class="b-pill b-goal"><span aria-hidden="true">🎯</span> 설계 목표</span> 달성하고자 하는 목표치</div>
     </div>
 </section>
 
