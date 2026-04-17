@@ -89,6 +89,55 @@
         .tl-link:hover { background: var(--accent-soft); color: var(--accent); }
         .tl-link .tl-icon { font-size: 18px; }
         .tl-sep { color: var(--text-3); align-self: center; font-size: 14px; }
+
+        .scene { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 0; margin-bottom: 24px; box-shadow: var(--sh-sm); overflow: hidden; }
+        .scene-head { padding: 20px 24px; border-bottom: 1px solid var(--border-light); }
+        .scene-title { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 6px; }
+        .scene-summary { font-size: 14px; color: var(--text-2); }
+
+        .scene-morning .scene-head { background: linear-gradient(180deg, var(--amber-soft), transparent); border-left: 4px solid var(--amber); }
+        .scene-afternoon .scene-head { background: linear-gradient(180deg, var(--green-soft), transparent); border-left: 4px solid var(--green); }
+        .scene-dawn .scene-head { background: linear-gradient(180deg, var(--purple-soft), transparent); border-left: 4px solid var(--purple); }
+
+        .scene-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 0; }
+        .scene-cell { padding: 18px 24px; border-top: 1px solid var(--border-light); }
+        .scene-cell.top-row { border-top: none; }
+        .scene-cell.right { border-left: 1px solid var(--border-light); }
+
+        .cell-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+        .cell-icon { font-size: 16px; }
+        .cell-tag { font-size: 11px; font-weight: 600; color: var(--text-3); background: var(--surface-hover); padding: 2px 6px; border-radius: 4px; }
+
+        .patient-story { font-size: 14.5px; line-height: 1.65; color: var(--text-1); }
+        .operator-body { font-size: 14px; color: var(--text-2); line-height: 1.55; }
+        .operator-body strong { color: var(--text-1); }
+        .alert-level { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+        .alert-0 { background: var(--green-soft); color: var(--green); }
+        .alert-1 { background: var(--amber-soft); color: var(--amber); }
+        .alert-2 { background: var(--rose-soft); color: var(--rose); }
+
+        .sensor-table { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 13.5px; }
+        .sensor-table th { text-align: left; font-weight: 700; color: var(--text-3); font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--border-light); }
+        .sensor-table td { padding: 10px 8px 10px 0; vertical-align: top; border-bottom: 1px solid var(--border-light); color: var(--text-2); line-height: 1.5; }
+        .sensor-table tr:last-child td { border-bottom: none; }
+        .sensor-table .col-item { font-weight: 600; color: var(--text-1); width: 22%; }
+        .sensor-table .col-system { width: 43%; }
+        .sensor-table .col-value { width: 20%; font-family: 'SF Mono', Consolas, monospace; font-size: 12.5px; color: var(--text-2); }
+        .sensor-table .col-source { width: 15%; font-size: 12px; }
+        .illustrative { font-size: 10px; color: var(--text-3); margin-left: 4px; }
+
+        .tag-csi { color: var(--blue); }
+        .tag-mmwave { color: var(--green); }
+
+        .scene-transition { text-align: center; font-size: 13px; color: var(--text-3); margin: -8px 0 24px; padding: 8px 0; position: relative; }
+        .scene-transition::before { content: '↓'; display: block; font-size: 18px; margin-bottom: 4px; color: var(--text-3); }
+
+        @media (max-width: 760px) {
+            .scene-grid { grid-template-columns: 1fr; }
+            .scene-cell.right { border-left: none; border-top: 1px solid var(--border-light); }
+            .sensor-table .col-item { width: 35%; }
+            .sensor-table .col-value { display: none; }
+        }
     </style>
 </head>
 <body>
