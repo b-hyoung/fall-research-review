@@ -30,6 +30,11 @@
             --purple-soft: #f3efff;
             --amber: #b45309;
             --amber-soft: #fef6e7;
+            --rose-glow: rgba(190, 18, 60, 0.12);
+            --amber-glow: rgba(180, 83, 9, 0.12);
+            --blue-glow: rgba(37, 114, 204, 0.12);
+            --rose-border: rgba(190, 18, 60, 0.18);
+            --green-border: rgba(21, 128, 61, 0.22);
             --r-sm: 8px;
             --r-md: 12px;
             --r-lg: 16px;
@@ -159,6 +164,57 @@
         .refs-note { margin-top: 14px; padding: 12px 14px; background: var(--orange-soft); border-left: 3px solid var(--orange); border-radius: var(--r-sm); font-size: 13px; color: var(--text-2); }
         .refs-note strong { color: var(--amber); }
 
+        /* === Risk panel === */
+        .risk-panel { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--rose); border-radius: var(--r-lg); padding: 28px; margin-top: 12px; margin-bottom: 36px; box-shadow: var(--sh-sm); }
+        .risk-panel h2 { margin-top: 0; }
+        .risk-sub { font-size: 14px; color: var(--text-2); margin-bottom: 20px; line-height: 1.6; }
+
+        .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+        .risk-card { background: var(--surface-hover); border-radius: var(--r-md); padding: 18px; border-top: 3px solid var(--border); }
+        .risk-card-csi { border-top-color: var(--blue); }
+        .risk-card-mmwave { border-top-color: var(--green); }
+        .risk-card h3 { font-size: 15px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .sensor-label { font-size: 11px; font-weight: 600; color: var(--text-3); background: var(--surface); padding: 2px 8px; border-radius: 999px; }
+
+        .risk-list { list-style: none; padding: 0; margin: 0; }
+        .risk-item { padding: 14px 0; border-bottom: 1px dashed var(--border-light); }
+        .risk-item:last-child { border-bottom: none; padding-bottom: 4px; }
+        .risk-item-head { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+        .risk-sev { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .risk-sev-critical { background: var(--rose); box-shadow: 0 0 0 3px var(--rose-glow); }
+        .risk-sev-warn { background: var(--amber); box-shadow: 0 0 0 3px var(--amber-glow); }
+        .risk-sev-info { background: var(--blue); box-shadow: 0 0 0 3px var(--blue-glow); }
+        .risk-item-body { font-size: 13px; color: var(--text-2); line-height: 1.55; margin-bottom: 6px; }
+        .risk-item-impact { font-size: 12.5px; color: var(--text-2); padding: 6px 10px; background: var(--surface); border-left: 2px solid var(--border); border-radius: var(--r-sm); margin-bottom: 6px; line-height: 1.5; }
+        .risk-item-impact strong { color: var(--text-1); }
+        .risk-item-source { font-size: 12px; color: var(--text-3); }
+        .risk-item-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .risk-item-source a:hover { text-decoration: underline; }
+
+        .risk-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; padding: 10px 14px; background: var(--surface-hover); border-radius: var(--r-sm); font-size: 12px; color: var(--text-2); }
+        .risk-legend .lg-item { display: inline-flex; align-items: center; gap: 6px; }
+
+        .cross-fail { margin-top: 24px; background: var(--rose-soft); border: 1px solid var(--rose); border-radius: var(--r-md); padding: 18px; }
+        .cross-fail h3 { font-size: 13px; color: var(--rose); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 8px; }
+        .cross-fail-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .cross-fail-table { width: 100%; font-size: 13px; border-collapse: collapse; }
+        .cross-fail-table th { text-align: left; font-weight: 700; color: var(--rose); padding: 8px 12px 8px 0; border-bottom: 1px solid var(--rose); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+        .cross-fail-table td { padding: 10px 12px 10px 0; vertical-align: top; color: var(--text-2); border-bottom: 1px solid var(--rose-border); line-height: 1.5; }
+        .cross-fail-table tr:last-child td { border-bottom: none; }
+        .cross-fail-table .cf-scenario { font-weight: 700; color: var(--text-1); width: 30%; }
+        .cross-fail-note { margin-top: 12px; font-size: 12.5px; color: var(--rose); line-height: 1.55; }
+        .cross-fail-note strong { color: var(--rose); }
+
+        .mitigation { margin-top: 20px; background: var(--green-soft); border: 1px solid var(--green); border-radius: var(--r-md); padding: 18px; }
+        .mitigation h3 { font-size: 13px; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 8px; }
+        .mitigation-list { list-style: none; padding: 0; margin: 0; }
+        .mitigation-list li { padding: 10px 0; font-size: 13px; color: var(--text-2); line-height: 1.6; border-bottom: 1px dashed var(--green-border); display: flex; gap: 10px; align-items: flex-start; }
+        .mitigation-list li:last-child { border-bottom: none; }
+        .mitigation-list li strong { color: var(--text-1); }
+        .mitigation-list .arrow { color: var(--green); font-weight: 700; flex-shrink: 0; line-height: 1.6; }
+        .mitigation-list a { color: var(--green); text-decoration: none; font-weight: 500; }
+        .mitigation-list a:hover { text-decoration: underline; }
+
         /* === Responsive === */
         @media (max-width: 760px) {
             .scene-grid { grid-template-columns: 1fr; }
@@ -166,6 +222,8 @@
             .sensor-table .col-item { width: 35%; }
             .sensor-table { min-width: 520px; }
             .syn-grid { grid-template-columns: 1fr; }
+            .risk-grid { grid-template-columns: 1fr; }
+            .cross-fail-table { min-width: 520px; }
         }
 
         @media (max-width: 480px) {
@@ -174,6 +232,7 @@
             .sensor-table { font-size: 12.5px; }
             .env-panel { padding: 18px; }
             .synthesis { padding: 20px; }
+            .risk-panel { padding: 20px; }
         }
     </style>
 </head>
@@ -399,6 +458,131 @@
     </div>
 </section>
 
+<section class="risk-panel">
+    <h2><span aria-hidden="true">⚠</span> 기술적 제약 &amp; 리스크</h2>
+    <p class="risk-sub">실제 센서·펌웨어 한계와 이 프로젝트가 감수해야 할 문제들. 교차검증 AND 로직이 붕괴될 수 있는 시나리오와 이를 감수 가능한 리스크로 낮추는 전략을 정의한다.</p>
+
+    <div class="risk-grid">
+        <div class="risk-card risk-card-mmwave">
+            <h3><span aria-hidden="true">📡</span> mmWave FMCW 한계 <span class="sensor-label">Yu 2025 라인</span></h3>
+            <ul class="risk-list">
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-critical" aria-hidden="true"></span>Slow collapse 미검출</div>
+                    <div class="risk-item-body">치매 노인의 느린 기력 소진형 낙상은 Range-Doppler Map에서 "배경 노이즈"로 필터링됨. 이동 속도가 낮으면 Doppler 에너지 임계 미달.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> <span aria-hidden="true">🌙</span> 새벽 시나리오의 주저앉기 낙상이 미검출될 위험.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/html/2403.05634v1" target="_blank" rel="noopener">arXiv:2403.05634</a> — "Stationary targets cannot be effectively distinguished from background noise in the Range-Doppler Map"</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-critical" aria-hidden="true"></span>인지장애 노인 데이터셋 전무</div>
+                    <div class="risk-item-body">공개 mmWave 낙상 데이터셋이 건강한 젊은이 scripted falls 기준. 치매 배회·이중과제 패턴 데이터 없음. 실낙상(real falls)은 희소 이벤트로 수집 자체가 어려움.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 사전학습 불가 → 자체 수집 데이터에 전적 의존, 소규모로 시작.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/html/2601.11938v1" target="_blank" rel="noopener">arXiv:2601.11938</a> — "Developers rely on scripted falls from young volunteers… real-world falls are rare"</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-warn" aria-hidden="true"></span>금속 침대 → 고스트 포인트</div>
+                    <div class="risk-item-body">Point Cloud가 LiDAR 대비 <strong>100× 희소</strong> <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span> 하고 mmWave는 금속에서 specular 반사. 침대 프레임·휠체어·보행기가 false cluster 생성.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> LSTM 학습 시 보행 변동성 추세가 고스트 데이터로 오염.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/html/2309.15374" target="_blank" rel="noopener">arXiv:2309.15374 (DREAM-PCD)</a> — "Radar point clouds are approximately 100× sparser than LiDAR"</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-warn" aria-hidden="true"></span>방별 재보정 필수</div>
+                    <div class="risk-item-body">48개 실방 cross-location 실험에서 "existing baselines perform poorly" — 가구 배치·금속 반사체·벽 구조마다 기준선 왜곡.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 요양실마다 개별 보정 프로토콜 필요, 배포 비용·시간 ↑.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/html/2412.17517" target="_blank" rel="noopener">arXiv:2412.17517</a> — 48-room cross-location FMCW dataset, baseline 성능 저하 실측</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-info" aria-hidden="true"></span>미세 생체신호는 CSI 대비 불리</div>
+                    <div class="risk-item-body">호흡 고조파가 심박 대역을 오염, 흉부 변위가 파장보다 작을 때 phase wrapping. 심박 흉부변위는 고작 0.2–0.5mm 수준.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 역할 분담 명확화 — mmWave는 거시 운동, 호흡·심박은 CSI 담당.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/html/2405.12659v1" target="_blank" rel="noopener">arXiv:2405.12659</a> — "Heartbeat-related chest displacements are 0.2–0.5 mm"</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="risk-card risk-card-csi">
+            <h3><span aria-hidden="true">📡</span> CSI (ESP32) 한계 <span class="sensor-label">Wang 2016 라인</span></h3>
+            <ul class="risk-list">
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-critical" aria-hidden="true"></span>움직임 중 심박 추출 실패</div>
+                    <div class="risk-item-body">안정 자세 호흡 <strong>98.8%</strong> → 비안정 자세 <strong>61.5%</strong> (37.3%p 하락) <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span>. 낙상 직전의 불안정 보행·체중 이동 중이 가장 신호가 불안정한 순간.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> <span aria-hidden="true">🌙</span> 새벽 사전 예측 타이밍에 CSI 생체 보조 신호 붕괴.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9375645/" target="_blank" rel="noopener">PMC9375645</a> — "Movements and daily activities have a larger impact on CSI than breathing/heart rate"</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-critical" aria-hidden="true"></span>단일 안테나 → 위상 보정 불가</div>
+                    <div class="risk-item-body">ESP32는 RX 안테나 1개라 CSI ratio 기법 적용 불가. 위상 데이터는 time-variant 노이즈로 그대로 사용 불가, amplitude만으로 제한.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 호흡·심박 추출의 핵심 정보 소스(phase)를 포기해야 함.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/abs/2601.02177" target="_blank" rel="noopener">arXiv:2601.02177</a> — "ESP32 currently supports only a single antenna, techniques like CSI ratio are not feasible"</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-critical" aria-hidden="true"></span>24/7 무인 silent failure</div>
+                    <div class="risk-item-body">메모리 단편화 누적 + watchdog timer·soft reboot routine 없으면 밤 사이 조용히 멈춤. 요양실 원격 점검 제한적.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 밤 사이 데이터 공백 가능 → <span aria-hidden="true">🌙</span> 새벽 시나리오 전체를 놓칠 위험.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📝</span> <a href="https://earezki.com/ai-news/2026-03-30-what-actually-happens-when-you-leave-an-esp32-running24-7/" target="_blank" rel="noopener">ESP32 24/7 Long-Term Stability Analysis</a> <span style="font-size:11px;color:var(--text-3);">(field report, 非 peer-review)</span> — "Watchdog timers and periodic soft reboots" 필수</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-warn" aria-hidden="true"></span>서브캐리어 52개 ceiling</div>
+                    <div class="risk-item-body">ESP32 <strong>52</strong> vs Intel 5300(90) vs Atheros(114) vs Nexmon BCM43455(<strong>234</strong>) <span class="b-pill b-verified"><span aria-hidden="true">✅</span></span>. ESP32 gait 분류 정확도가 방법론 무관하게 <strong>39–56%</strong> <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span> 에서 정체.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 낙상 전조인 stride asymmetry 미세 패턴 포착 불충분.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://arxiv.org/abs/2601.02177" target="_blank" rel="noopener">arXiv:2601.02177</a> — "Why Commodity WiFi Sensors Fail at Multi-Person Gait Identification"</div>
+                </li>
+                <li class="risk-item">
+                    <div class="risk-item-head"><span class="risk-sev risk-sev-warn" aria-hidden="true"></span>100Hz 수집 시 구조적 패킷 손실</div>
+                    <div class="risk-item-body">ASCII 출력 230400 baud에서 실측 <strong>45pps</strong> (이론 225pps의 20% 수준). Binary 모드도 <strong>85pps</strong> 한계 <span class="b-pill b-paper"><span aria-hidden="true">📖</span></span> — UART I/O 병목.</div>
+                    <div class="risk-item-impact"><strong>영향:</strong> 심박(0.8–2Hz)·cadence 추출에 필요한 고샘플링 불안정.</div>
+                    <div class="risk-item-source"><span aria-hidden="true">📄</span> <a href="https://github.com/espressif/esp-csi/issues/249" target="_blank" rel="noopener">Espressif esp-csi Issue #249</a> — Binary Data Output for CSI, 패킷 손실 실측</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="risk-legend">
+        <div class="lg-item"><span class="risk-sev risk-sev-critical" aria-hidden="true"></span> <strong>심각</strong> — 프로젝트 blocker 가능성</div>
+        <div class="lg-item"><span class="risk-sev risk-sev-warn" aria-hidden="true"></span> <strong>주의</strong> — 완화 가능한 제약</div>
+        <div class="lg-item"><span class="risk-sev risk-sev-info" aria-hidden="true"></span> <strong>정보</strong> — 설계 맥락 참고</div>
+    </div>
+
+    <div class="cross-fail">
+        <h3><span aria-hidden="true">🔀</span> 교차검증 AND가 동시에 붕괴하는 시나리오</h3>
+        <div class="cross-fail-wrap">
+            <table class="cross-fail-table">
+                <thead>
+                    <tr><th scope="col">시나리오</th><th scope="col">mmWave 실패 모드</th><th scope="col">CSI 실패 모드</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cf-scenario"><span aria-hidden="true">🌙</span> 새벽 slow collapse</td>
+                        <td>Doppler 저속 → 배경 처리</td>
+                        <td>움직임 중 심박 추출 불가</td>
+                    </tr>
+                    <tr>
+                        <td class="cf-scenario">침대 옆 주저앉기</td>
+                        <td>금속 프레임 고스트 반사</td>
+                        <td>침대 occlusion multipath 왜곡</td>
+                    </tr>
+                    <tr>
+                        <td class="cf-scenario">가구 재배치 직후</td>
+                        <td>기준선 왜곡 (재보정 전)</td>
+                        <td>Multipath drift</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="cross-fail-note"><strong><span aria-hidden="true">⚠</span> 우리 핵심 시나리오(<span aria-hidden="true">🌙</span> 03:42)가 가장 취약.</strong> 교차검증 로직을 단순 AND 대신 <em>센서별 신뢰도 가중치 + 조건부 OR</em>로 강화하고, slow-collapse 전용 물리 모델(중력 가속도 기반)을 보조 판정으로 병행해야 함.</p>
+    </div>
+
+    <div class="mitigation">
+        <h3><span aria-hidden="true">✅</span> 대응 전략 — 감수 가능한 리스크로 낮추기</h3>
+        <ul class="mitigation-list">
+            <li><span class="arrow" aria-hidden="true">→</span><div><strong>CSI 플랫폼 업그레이드 검토</strong> — ESP32 대신 <a href="https://github.com/seemoo-lab/nexmon_csi" target="_blank" rel="noopener">Nexmon (RPi 4B + BCM43455, 234 서브캐리어)</a> 또는 Intel AX210 + Linux CSI tool (802.11ax). 현재 spec이 "WiFi 802.11n/ac/ax"로 일반화돼 있어 플랫폼 교체 여지 있음.</div></li>
+            <li><span class="arrow" aria-hidden="true">→</span><div><strong>센서 역할 재분배</strong> — CSI는 호흡·재실·long-term gait rhythm만, 심박은 optional PPG wristband 또는 mmWave 보조. 현재 <span aria-hidden="true">🌙</span> 카드의 CSI 심박 의존도 낮춤.</div></li>
+            <li><span class="arrow" aria-hidden="true">→</span><div><strong>방별 개인화 프로토콜</strong> — 입주 초 3–7일 baseline 자동 학습 + 주 1회 empty-room 재보정 routine. 가구 재배치 이벤트 감지 시 자동 재보정 트리거.</div></li>
+            <li><span class="arrow" aria-hidden="true">→</span><div><strong>Digital Twin 합성 데이터</strong> — 인지장애 공개 데이터셋 없음 → <a href="https://arxiv.org/html/2601.11938v1" target="_blank" rel="noopener">arXiv:2601.11938</a> 방법론으로 Unity/Blender 기반 시뮬레이션 보강 후 실데이터 온라인 파인튜닝.</div></li>
+            <li><span class="arrow" aria-hidden="true">→</span><div><strong>ESP32 장기 안정성</strong> — Watchdog timer + 주기적 soft reboot + Wi-Fi TCP 스트리밍(UART 병목 우회) 필수 구현. ESP32-S3(더 빠른 CPU)로 하드웨어 업그레이드 검토.</div></li>
+        </ul>
+    </div>
+</section>
+
 <section class="refs">
     <h2>참고문헌</h2>
     <ul class="refs-list">
@@ -409,6 +593,21 @@
         <li><strong>Minta et al. (2023)</strong> — Differences in fall-related characteristics across cognitive disorders. <em>Front Aging Neurosci.</em> <a href="https://doi.org/10.3389/fnagi.2023.1171306" target="_blank" rel="noopener">DOI</a></li>
         <li><strong>임정옥 (2016)</strong> — 요양병원 치매 환자 낙상 특성 (54.9% 보행 중, OR 11.68). <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&amp;number=368" target="_blank" rel="noopener">링크</a></li>
     </ul>
+
+    <h3 style="margin-top:22px;margin-bottom:8px;font-size:14px;color:var(--text-2);text-transform:uppercase;letter-spacing:0.04em;">기술적 제약 근거 (Risk Panel 출처)</h3>
+    <ul class="refs-list">
+        <li><strong>DREAM-PCD (Sun et al., 2023)</strong> — "Deep Reconstruction and Enhancement of mmWave Radar Point Cloud": Point Cloud 희소성·멀티패스 실측. <a href="https://arxiv.org/html/2309.15374" target="_blank" rel="noopener">arXiv:2309.15374</a></li>
+        <li><strong>Advanced mmWave Fall Detection (Chen et al., 2024)</strong> — Range-Doppler 정지 타깃 필터링 문제. <a href="https://arxiv.org/html/2403.05634v1" target="_blank" rel="noopener">arXiv:2403.05634</a></li>
+        <li><strong>Radar Fall Digital Twin (2026)</strong> — "Radar-Based Fall Detection for Assisted Living: Digital-Twin Representation": 노인 실낙상 데이터 부족 정량화. <a href="https://arxiv.org/html/2601.11938v1" target="_blank" rel="noopener">arXiv:2601.11938</a></li>
+        <li><strong>FMCW mmWave 48-Room Dataset (2024)</strong> — Cross-location generalization 실패 평가. <a href="https://arxiv.org/html/2412.17517" target="_blank" rel="noopener">arXiv:2412.17517</a></li>
+        <li><strong>mmWave Vital Sign Dataset (Zheng et al., 2024)</strong> — 호흡·심박 분리 어려움(phase wrapping). <a href="https://arxiv.org/html/2405.12659v1" target="_blank" rel="noopener">arXiv:2405.12659</a></li>
+        <li><strong>Multi-Person Gait with ESP32 (Hernandez et al., 2026)</strong> — "Why Commodity WiFi Sensors Fail": ESP32 서브캐리어·단일 안테나 한계 체계 분석. <a href="https://arxiv.org/abs/2601.02177" target="_blank" rel="noopener">arXiv:2601.02177</a></li>
+        <li><strong>Wi-Fi CSI Vital Signs Survey (2022)</strong> — 움직임 중 생체신호 추출 정확도 하락 실측. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9375645/" target="_blank" rel="noopener">PMC9375645</a></li>
+        <li><strong>Phase Calibration for COTS WiFi (SenSys 2017)</strong> — 단일 안테나 위상 보정 불가 이론적 근거. <a href="https://netstech.org/wp-content/uploads/2018/10/phase_calibration_sensys17.pdf" target="_blank" rel="noopener">SenSys 2017 PDF</a></li>
+        <li><strong>ESP32 esp-csi Issue #249</strong> — UART 병목 · 고샘플링 패킷 손실 실측. <a href="https://github.com/espressif/esp-csi/issues/249" target="_blank" rel="noopener">GitHub</a></li>
+        <li><strong>ESP32 24/7 Long-Term Stability Analysis (2026)</strong> — Memory fragmentation · silent failure 현장 보고 <span style="font-size:11px;color:var(--text-3);">(field report, 非 peer-review)</span>. <a href="https://earezki.com/ai-news/2026-03-30-what-actually-happens-when-you-leave-an-esp32-running24-7/" target="_blank" rel="noopener">Dev Journal</a></li>
+    </ul>
+
     <div class="refs-note">
         <strong><span aria-hidden="true">⚠</span> 보류:</strong> 의학 표준 호흡 0.2–0.4Hz / 심박 0.8–2Hz 범위의 임상 가이드라인 인용 논문(AHA, NEJM 등) 미확정. 구현 최종 단계에서 확정 후 추가 예정.
     </div>
