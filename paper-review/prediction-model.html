@@ -517,8 +517,8 @@
     <div class="stat-grid">
         <div class="card stat-card">
             <div class="stat-number" style="color:var(--rose)">65.7<span class="stat-unit">%</span></div>
-            <div style="font-size:13.5px;color:var(--text-2)">치매 환자 연간 낙상 발생률</div>
-            <div class="stat-desc">일반 노인 대비 <strong>약 8배</strong>. 대퇴골 골절 시 1년 내 사망률 20~30%.</div>
+            <div style="font-size:13.5px;color:var(--text-2)">치매 환자 12개월 내 낙상 경험 비율</div>
+            <div class="stat-desc">낙상 발생 밀도 기준 일반 노인 대비 <strong>약 8배</strong> (발생밀도비 7.58).</div>
             <div class="stat-ref"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2677107/" target="_blank">Allan et al. (2009)</a></div>
         </div>
         <div class="card stat-card">
@@ -528,22 +528,22 @@
             <div class="stat-ref"><a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank">임정옥·구미옥 (2016)</a></div>
         </div>
         <div class="card stat-card">
-            <div class="stat-number" style="color:var(--purple)">60<span class="stat-unit">%+</span></div>
-            <div style="font-size:13.5px;color:var(--text-2)">야간 낙상 비율</div>
-            <div class="stat-desc">Sundowning + 수면제 + 방향감각 상실. <strong>간호 인력 최소 시간대</strong>.</div>
-            <div class="stat-ref"><a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank">홍선영·박희옥 (2017)</a></div>
+            <div class="stat-number" style="color:var(--purple)">64.6<span class="stat-unit">%</span></div>
+            <div style="font-size:13.5px;color:var(--text-2)">치매 시설 개인 방 야간 낙상 비율</div>
+            <div class="stat-desc">치매 전용 시설 개인 방 낙상 350건 중 64.6%가 야간(20~08시) 발생. <strong>간호 인력 최소 시간대</strong>에 집중.</div>
+            <div class="stat-ref"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8277400/" target="_blank">Bayen et al. (2021) &mdash; JMIR</a></div>
         </div>
         <div class="card stat-card">
             <div class="stat-number" style="color:var(--accent)">100<span class="stat-unit">만 명</span></div>
             <div style="font-size:13.5px;color:var(--text-2)">2026년 국내 치매 환자 수</div>
-            <div class="stat-desc">65세 이상 유병률 9.17%. 요양병원 최다 질환.</div>
+            <div class="stat-desc">65세 이상 유병률 9.17% (2025년 기준). 요양병원 최다 질환.</div>
             <div class="stat-ref"><a href="https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1484959" target="_blank">보건복지부 (2024)</a></div>
         </div>
     </div>
 
     <div class="insight-box" style="margin-top:24px">
         <div class="insight-label">핵심 인사이트</div>
-        <p>치매 환자는 넘어진 후 도움을 요청할 수 없고, 야간 간호 인력도 부족합니다. <strong>"넘어진 걸 빨리 발견"이 아니라 "넘어지기 전에 위험한 날을 미리 파악"</strong>하는 것이 유일하게 실질적인 해결책입니다.</p>
+        <p>치매 환자는 넘어진 후 도움을 요청할 수 없습니다 &mdash; 인지장애 환자가 낙상 후 1시간 이상 바닥에 누워있을 확률은 일반 노인의 <strong>8.1배</strong>이며, 알람이 있어도 97%가 작동시키지 못합니다 (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2590903/" target="_blank" style="color:var(--accent);font-size:12px">Fleming &amp; Brayne 2008, BMJ</a>). <strong>"넘어진 걸 빨리 발견"이 아니라 "넘어지기 전에 위험한 날을 미리 파악"</strong>하는 것이 유일하게 실질적인 해결책입니다.</p>
     </div>
 </div>
 
@@ -689,7 +689,7 @@
 
     <div class="insight-box">
         <div class="insight-label">왜 이 조합인가</div>
-        <p><strong>mmWave</strong>는 정밀하지만 보폭·STV 등 세밀한 보행 파라미터 추출은 <strong>~3m 이내</strong>에서 최적이고, 호흡/심박 같은 미세 생체신호 추출에 불리합니다. <strong>CSI</strong>는 방 전체를 연속 감시하지만, 움직임 중에는 생체신호 정확도가 급락합니다 (98.8% &rarr; 61.5%). 서로의 약점을 보완하면서 <strong>교차검증으로 오탐을 제거</strong>하는 것이 듀얼 센서의 핵심 가치입니다.</p>
+        <p><strong>mmWave</strong>는 정밀하지만 보폭·STV 등 세밀한 보행 파라미터 추출은 <strong>~3m 이내</strong>에서 최적이고, 호흡/심박 같은 미세 생체신호 추출에 불리합니다. <strong>CSI</strong>는 방 전체를 연속 감시하지만, 센서 위치에 따라 호흡 감지 정확도가 크게 달라집니다 (최적 위치 98.8% vs 비최적 위치 61.5%, PMC9375645). 서로의 약점을 보완하면서 <strong>교차검증으로 오탐을 제거</strong>하는 것이 듀얼 센서의 핵심 가치입니다.</p>
     </div>
 </div>
 
@@ -707,7 +707,7 @@
             <div class="trait-tile" style="border-top:3px solid var(--green)">
                 <div style="font-size:10px;font-weight:700;color:var(--green);margin-bottom:6px">mmWave</div>
                 <div class="trait-name">보행 속도 저하</div>
-                <div class="trait-detail">MD = -0.53 (95% CI)<br>centroid Doppler로 측정</div>
+                <div class="trait-detail">SMD = -1.21 (p&lt;0.0001)<br>centroid Doppler로 측정</div>
             </div>
             <div class="trait-tile" style="border-top:3px solid var(--blue)">
                 <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:6px">CSI</div>
@@ -752,7 +752,7 @@
                         <td>야간 배회<br><span style="font-size:11px;color:var(--text-3)">(Sundowning)</span></td>
                         <td>침대 Zone &rarr; 바닥 Zone 전이, 이동 궤적·속도</td>
                         <td>재실→이동 상태 변화, 호흡률 각성 패턴 전환</td>
-                        <td>낙상의 <strong>60%+</strong>가 야간. 간호 인력 최소 시간대.</td>
+                        <td>개인 방 낙상의 <strong>64.6%</strong>가 야간 (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8277400/" target="_blank" style="color:var(--accent);font-size:11px">Bayen 2021</a>). Sundowning 유병률 2.4~66% (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3246134/" target="_blank" style="color:var(--accent);font-size:11px">Khachiyants 2011</a>).</td>
                     </tr>
                     <tr>
                         <td>비정상 침대 이탈</td>
@@ -761,16 +761,16 @@
                         <td>정상 기상과 <strong>완전히 다른 패턴</strong>.</td>
                     </tr>
                     <tr>
-                        <td>인지 상태 변동<br><span style="font-size:11px;color:var(--text-3)">(좋은 날/나쁜 날)</span></td>
+                        <td>인지 상태 변동<br><span style="font-size:11px;color:var(--text-3)">(cognitive fluctuation)</span></td>
                         <td>보행 속도·보폭·STV·흔들림 일일 변동 추적</td>
                         <td>보행 리듬 규칙성, 야간 호흡 패턴 변동</td>
-                        <td>"나쁜 날"을 <strong>아침에 조기 감지</strong>하면 하루 종일 예방 가능.</td>
+                        <td>시설 치매 환자에서 인지 변동이 과잉 장애(excess disability) 유발 (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10852930/" target="_blank" style="color:var(--accent);font-size:11px">Mainland 2017</a>).</td>
                     </tr>
                     <tr>
                         <td>약물 영향</td>
                         <td>투약 후 보행 속도·흔들림 변화 추적</td>
                         <td>투약 후 호흡률·심박 변화, 수면 깊이 변화</td>
-                        <td>투약 후 <strong>특정 시간대</strong>에 위험 급증.</td>
+                        <td>진정제 새 처방 24시간 내 낙상 <strong>OR 3.79</strong> (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4881828/" target="_blank" style="color:var(--accent);font-size:11px">Berry 2015</a>). 수면제 낙상 위험 OR 1.47 (<a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/485251" target="_blank" style="color:var(--accent);font-size:11px">Woolcott 2009</a>).</td>
                     </tr>
                 </tbody>
             </table>
@@ -782,13 +782,53 @@
 <!-- PART 4 — 핵심 컨셉: 아침 첫 기상 + 보행               -->
 <!-- ══════════════════════════════════════════════════ -->
 <div class="section">
-    <div class="step-label">Part 4 &mdash; Core Concept</div>
+    <div class="step-label">Part 4 &mdash; Core Concept &middot; 본 연구 가설</div>
     <h2 class="section-h">아침 첫 기상 + 첫 보행 = 오늘의 위험도</h2>
-    <p class="section-sub">치매 환자의 "좋은 날"과 "나쁜 날"은 아침 첫 움직임에서 결정됩니다. 06:30에 이미 그날의 낙상 가능성을 알 수 있습니다.</p>
+    <p class="section-sub">기존 연구에서 보행 변동성이 낙상을 예측하고, 허약 노인의 첫 보행이 기능 상태를 반영하며, 연속 센서 모니터링으로 낙상 위험 평가가 가능함이 각각 입증되었습니다. 본 연구는 이 세 가지를 결합하여 <strong>"아침 첫 기상·보행 패턴으로 당일 낙상 위험도를 조기 판단한다"</strong>는 새로운 가설을 제안합니다.</p>
+
+    <!-- 간접 근거 -->
+    <div class="card" style="margin-bottom:24px">
+        <div class="card-label" style="color:var(--accent)">가설의 간접 근거 &mdash; 기존 연구가 입증한 것</div>
+        <div class="score-table-wrap">
+            <table class="score-table">
+                <thead><tr><th style="width:35%">입증된 사실</th><th style="width:40%">논문</th><th style="width:25%">핵심 수치</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>보행 변동성이 높으면 낙상 위험이 높다</strong></td>
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/11473032/" target="_blank" style="color:var(--accent)">Hausdorff et al. (2001)</a> &mdash; Arch Phys Med Rehabil. 1년 전향적 연구.</td>
+                        <td>stride-time CV가 낙상군에서 유의하게 높음</td>
+                    </tr>
+                    <tr>
+                        <td><strong>일상 보행의 질적 변동을 연속 측정하면 낙상을 예측할 수 있다</strong></td>
+                        <td><a href="https://doi.org/10.1093/gerona/glu225" target="_blank" style="color:var(--accent)">van Schooten et al. (2014)</a> &mdash; J Gerontol A. 7일간 가속도계 착용.</td>
+                        <td>일상 보행 양+질 → 6개월 낙상 예측 AUC 0.67</td>
+                    </tr>
+                    <tr>
+                        <td><strong>허약 노인의 첫 보행은 안정 상태 도달까지 더 오래 걸린다</strong></td>
+                        <td><a href="https://doi.org/10.1016/j.gaitpost.2004.05.006" target="_blank" style="color:var(--accent)">Lindemann et al. (2005)</a> &mdash; Gait &amp; Posture.</td>
+                        <td>첫 보행 특성이 기능 저하 지표</td>
+                    </tr>
+                    <tr>
+                        <td><strong>기립(sit-to-stand) 수행력이 낙상 위험과 관련된다</strong></td>
+                        <td><a href="https://doi.org/10.1109/TBME.2002.800763" target="_blank" style="color:var(--accent)">Najafi et al. (2002)</a> &mdash; IEEE Trans Biomed Eng.</td>
+                        <td>STS 전환 시간으로 낙상 위험군 구별 가능</td>
+                    </tr>
+                    <tr>
+                        <td><strong>인지 저하가 보행 변동성 증가 → 낙상 위험 증가 경로</strong></td>
+                        <td><a href="https://doi.org/10.1016/j.jamda.2016.10.008" target="_blank" style="color:var(--accent)">Allali et al. (2017)</a> &mdash; JAMDA. GOOD Initiative.</td>
+                        <td>인지 저하 → 보행 변동성 ↑ → 낙상 ↑</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:14px;padding:14px 16px;background:var(--orange-soft);border-left:3px solid var(--orange);border-radius:var(--r-sm);font-size:13px;color:var(--text-2);line-height:1.6">
+            <strong style="color:var(--orange)">본 연구의 새로운 점:</strong> 위 연구들은 각각 보행 변동성, 연속 모니터링, 기립 수행력, 인지-보행 연결을 독립적으로 입증했으나, <strong>이를 결합하여 "매일 아침 첫 기상+보행으로 당일 위험도를 판단한다"는 접근은 기존에 검증된 바 없습니다.</strong> 이것이 본 연구에서 검증하고자 하는 핵심 가설입니다.
+        </div>
+    </div>
 
     <div class="concept-hero">
         <div class="emoji">&#9728;&#65039;</div>
-        <h3>Morning Risk Assessment</h3>
+        <h3>Morning Risk Assessment <span style="font-size:13px;font-weight:600;color:var(--orange);background:var(--orange-soft);padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle">연구 가설</span></h3>
         <p>CSI가 각성 감지 &rarr; mmWave가 기상 동작 분석 &rarr; 첫 보행 듀얼 측정<br>&rarr; 06:30에 "오늘은 위험한 날"로 판단<br>&rarr; <strong>하루 종일 강화 모니터링 + 간호 인력 재배치</strong></p>
     </div>
 
@@ -950,7 +990,7 @@
                         <td><span class="sensor-tag tag-mmwave" style="font-size:10px">mmWave</span></td>
                         <td class="col-w"><strong>0.15</strong></td>
                         <td>Torso centroid Doppler 평균. 96% 정확도.</td>
-                        <td>MD=-0.53 <a href="../pdf/유아현2025_보행분석_인지장애노인_낙상위험_메타분석.pdf" target="_blank" style="color:var(--accent);font-size:11px">유아현 2025</a></td>
+                        <td>SMD=-1.21 <a href="../pdf/유아현2025_보행분석_인지장애노인_낙상위험_메타분석.pdf" target="_blank" style="color:var(--accent);font-size:11px">유아현 2025</a></td>
                     </tr>
                     <tr>
                         <td>STV 증가</td>
@@ -1049,7 +1089,7 @@
 <div class="section">
     <div class="step-label">Part 6</div>
     <h2 class="section-h">"좋은 날" vs "나쁜 날" &mdash; 같은 환자, 다른 위험도</h2>
-    <p class="section-sub">치매 환자는 인지 상태 변동(fluctuation)이 있어 날마다 컨디션이 다릅니다. 두 센서가 아침에 이를 즉시 파악합니다.</p>
+    <p class="section-sub">치매 환자는 인지 상태 변동(cognitive fluctuation)이 있어 날마다 컨디션이 다릅니다 (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10852930/" target="_blank" style="color:var(--accent)">Mainland 2017</a>). 아래는 본 연구 가설에 따라 시스템이 두 상황을 구분하는 <strong>예상 시나리오(illustrative)</strong>입니다.</p>
 
     <div class="scenario-panel">
         <div class="card-label" style="color:var(--purple)">시나리오 비교 &mdash; 301호 김OO (78세, 경도 치매)</div>
@@ -1514,11 +1554,22 @@
             <div><strong class="ref-tag" style="color:var(--rose)">[낙상 특성]</strong> <a href="https://doi.org/10.3389/fnagi.2023.1171306" target="_blank">Minta et al. (2023)</a> &mdash; Differences in fall-related characteristics across cognitive disorders. Front Aging Neurosci.</div>
             <div><strong class="ref-tag" style="color:var(--purple)">[낙상 실태]</strong> <a href="https://www.jkgn.org/journal/view.php?viewtype=pubreader&number=368" target="_blank">임정옥·구미옥 (2016)</a> &mdash; 요양병원 치매 환자 낙상실태. 보행 중 54.9%, OR 11.68</div>
             <div><strong class="ref-tag" style="color:var(--purple)">[위험요인]</strong> <a href="https://synapse.koreamed.org/upload/synapsedata/pdfdata/1094kjan/kjan-29-51.pdf" target="_blank">홍선영·박희옥 (2017)</a> &mdash; 치매노인 낙상위험요인 메타분석 (20편). 보행 장애 r=-0.24</div>
+            <div><strong class="ref-tag" style="color:var(--purple)">[야간 낙상]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8277400/" target="_blank">Bayen et al. (2021)</a> &mdash; 치매 전용 시설 개인 방 낙상의 64.6%가 야간(20~08시) 발생. JMIR, 436건 낙상 분석</div>
+            <div><strong class="ref-tag" style="color:var(--rose)">[낙상 후 체류]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2590903/" target="_blank">Fleming &amp; Brayne (2008)</a> &mdash; 인지장애 시 낙상 후 1시간+ 바닥 체류 OR 8.1. 알람 있어도 97% 미작동. BMJ</div>
+            <div><strong class="ref-tag" style="color:var(--orange)">[약물 낙상]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4881828/" target="_blank">Berry et al. (2015)</a> &mdash; 벤조디아제핀 새 처방 24시간 내 낙상 OR 3.79. J Gerontol A</div>
+            <div><strong class="ref-tag" style="color:var(--orange)">[약물 메타]</strong> <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/485251" target="_blank">Woolcott et al. (2009)</a> &mdash; 진정제/수면제 낙상 OR 1.47, 벤조디아제핀 OR 1.57. Arch Intern Med 메타분석 (79,081명)</div>
+            <div><strong class="ref-tag" style="color:var(--purple)">[Sundowning]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3246134/" target="_blank">Khachiyants et al. (2011)</a> &mdash; Sundowning 유병률 2.4~66%, 배회 다음 2번째 흔한 행동. Psychiatry Investigation</div>
+            <div><strong class="ref-tag" style="color:var(--purple)">[인지 변동]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10852930/" target="_blank">Mainland et al. (2017)</a> &mdash; 시설 치매 환자 인지 변동이 과잉 장애 유발. Am J Alzheimers Dis Other Demen</div>
+            <div><strong class="ref-tag" style="color:var(--accent)">[보행변동-낙상]</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/11473032/" target="_blank">Hausdorff et al. (2001)</a> &mdash; stride-time variability가 낙상 예측. Arch Phys Med Rehabil. 1년 전향적 연구</div>
+            <div><strong class="ref-tag" style="color:var(--accent)">[일상보행모니터링]</strong> <a href="https://doi.org/10.1093/gerona/glu225" target="_blank">van Schooten et al. (2014)</a> &mdash; 일상 보행 양+질로 6개월 낙상 예측 AUC 0.67. J Gerontol A</div>
+            <div><strong class="ref-tag" style="color:var(--accent)">[첫보행특성]</strong> <a href="https://doi.org/10.1016/j.gaitpost.2004.05.006" target="_blank">Lindemann et al. (2005)</a> &mdash; 허약 노인 첫 보행의 안정 도달 시간이 기능 저하 지표. Gait &amp; Posture</div>
+            <div><strong class="ref-tag" style="color:var(--accent)">[기립-낙상]</strong> <a href="https://doi.org/10.1109/TBME.2002.800763" target="_blank">Najafi et al. (2002)</a> &mdash; sit-to-stand 전환 시간으로 낙상 위험군 구별. IEEE Trans Biomed Eng</div>
+            <div><strong class="ref-tag" style="color:var(--accent)">[인지-보행-낙상]</strong> <a href="https://doi.org/10.1016/j.jamda.2016.10.008" target="_blank">Allali et al. (2017)</a> &mdash; 인지 저하 → 보행 변동성 ↑ → 낙상 ↑ 경로. JAMDA, GOOD Initiative</div>
             <div><strong class="ref-tag" style="color:var(--blue)">[보행 분석]</strong> <a href="../pdf/유아현2025_보행분석_인지장애노인_낙상위험_메타분석.pdf" target="_blank">유아현 (2025)</a> &mdash; 보행 분석을 활용한 인지기능 장애 노인의 낙상 위험도 평가. 한양대학교</div>
             <div><strong class="ref-tag" style="color:var(--green)">[mmWave 보행]</strong> <a href="https://doi.org/10.3390/s22249901" target="_blank">Zeng et al. (2022)</a> &mdash; mmWave 비접촉 걸음 간격 측정, 96% 정확도. STV 핵심 징후. Sensors 22(24)</div>
             <div><strong class="ref-tag" style="color:var(--green)">[mmWave 탐지]</strong> <a href="https://doi.org/10.3390/app15158381" target="_blank">Yu et al. (2025)</a> &mdash; LSTM-FMCW 낙상 탐지, 95.3% 정확도. Applied Sciences</div>
             <div><strong class="ref-tag" style="color:var(--blue)">[CSI 보행]</strong> <a href="https://doi.org/10.1145/2971648.2971670" target="_blank">Wang et al. (2016)</a> &mdash; WiFi CSI 보행 인식, 50명, 오차 11.9ms. UbiComp '16 (인용 491회)</div>
-            <div><strong class="ref-tag" style="color:var(--blue)">[CSI 생체]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9375645/" target="_blank">PMC9375645 (2022)</a> &mdash; Wi-Fi CSI Vital Signs Survey. 움직임 중 정확도 하락 실측</div>
+            <div><strong class="ref-tag" style="color:var(--blue)">[CSI 생체]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9375645/" target="_blank">PMC9375645 (2022)</a> &mdash; Wi-Fi CSI Vital Signs Survey. Fresnel zone 위치에 따른 호흡 감지 정확도 차이 (98.8% vs 61.5%)</div>
             <div><strong class="ref-tag" style="color:var(--orange)">[치매 현황]</strong> <a href="https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1484959" target="_blank">보건복지부 (2024)</a> &mdash; 2023 치매역학조사 결과. 2026년 100만 명, 유병률 9.17%</div>
         </div>
     </div>
