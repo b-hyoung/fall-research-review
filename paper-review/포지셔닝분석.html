@@ -188,13 +188,25 @@
 </head>
 <body>
 
+<!-- 네비게이션 -->
+<nav style="position:sticky;top:0;z-index:999;background:rgba(246,247,250,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;">
+  <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:6px;height:44px;overflow-x:auto;">
+    <a href="논문발표.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--text-3);text-decoration:none;">논문발표</a>
+    <a href="논문서베이.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--text-3);text-decoration:none;">논문서베이</a>
+    <a href="통합발표.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--text-3);text-decoration:none;">통합발표</a>
+    <a href="예측모델.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--text-3);text-decoration:none;">예측모델</a>
+    <a href="포지셔닝분석.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:700;color:#fff;background:var(--accent);text-decoration:none;">포지셔닝분석</a>
+    <a href="사용자플로우.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:500;color:var(--text-3);text-decoration:none;">사용자플로우</a>
+  </div>
+</nav>
+
 <!-- Sticky Header -->
 <nav class="top-bar">
     <div class="top-inner">
         <div class="top-title">낙상 연구 분석</div>
         <div class="mode-tabs" id="modeTabs">
             <button class="mode-tab active" data-mode="cards" type="button">카드 뷰</button>
-            <a href="presentation.html" class="mode-tab" style="text-decoration:none">발표 모드 →</a>
+            <a href="논문발표.html" class="mode-tab" style="text-decoration:none">발표 모드 →</a>
         </div>
         <div class="filter-pills" id="filters">
             <span>분류</span>
@@ -282,4 +294,4 @@ fetch('./papers.json')
 
 </body>
 </html>
-<!-- END OF FILE - 발표 모드는 presentation.html 참조 -->
+<!-- END OF FILE - 발표 모드는 논문발표.html 참조 -->
