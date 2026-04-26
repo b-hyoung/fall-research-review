@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>참고문헌 — 통합발표 인용 논문</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <style>
+        :root {
+            --bg: oklch(0.97 0.005 260);
+            --surface: oklch(1 0.003 260);
+            --surface-alt: oklch(0.955 0.005 260);
+            --border: oklch(0.88 0.01 260);
+            --border-light: oklch(0.92 0.008 260);
+            --text-1: oklch(0.18 0.015 260);
+            --text-2: oklch(0.42 0.02 260);
+            --text-3: oklch(0.6 0.015 260);
+            --accent: oklch(0.5 0.18 260);
+            --accent-soft: oklch(0.94 0.04 260);
+            --rose: oklch(0.48 0.17 15);
+            --rose-soft: oklch(0.95 0.03 15);
+            --green: oklch(0.48 0.14 155);
+            --green-soft: oklch(0.94 0.04 155);
+            --blue: oklch(0.52 0.14 250);
+            --blue-soft: oklch(0.94 0.04 250);
+            --purple: oklch(0.5 0.17 300);
+            --purple-soft: oklch(0.94 0.04 300);
+            --r-sm: 8px;
+            --r-md: 12px;
+            --r-lg: 16px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text-1);
+            -webkit-font-smoothing: antialiased;
+            word-break: keep-all;
+            line-break: strict;
+        }
+
+        /* ─── nav ─── */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: oklch(0.97 0.005 260 / 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+        }
+        .global-nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 44px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .global-nav-inner::-webkit-scrollbar { display: none; }
+        .nav-link {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-3);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 150ms var(--ease), background 150ms var(--ease);
+        }
+        .nav-link:hover { color: var(--text-1); }
+        .nav-link[aria-current="page"] {
+            font-weight: 700;
+            color: var(--surface);
+            background: var(--accent);
+        }
+
+        /* ─── page header ─── */
+        .page-header {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 48px 32px 0;
+        }
+        .page-header h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-1);
+        }
+        .page-header p {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.6;
+            margin-top: 6px;
+            max-width: 65ch;
+        }
+
+        /* ─── summary strip ─── */
+        .summary-strip {
+            max-width: 1120px;
+            margin: 24px auto 0;
+            padding: 0 32px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .summary-chip {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.01em;
+        }
+
+        /* ─── filters ─── */
+        .filter-strip {
+            max-width: 1120px;
+            margin: 20px auto 0;
+            padding: 0 32px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .filter-label {
+            font-size: 12px;
+            color: var(--text-3);
+            font-weight: 600;
+        }
+        .filter-btn {
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: var(--surface);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-3);
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color 150ms var(--ease), color 150ms var(--ease), background 150ms var(--ease);
+            min-height: 32px;
+        }
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active { border-color: var(--accent); background: var(--accent); color: var(--surface); }
+
+        /* ─── main content ─── */
+        .content {
+            max-width: 1120px;
+            margin: 24px auto 0;
+            padding: 0 32px 80px;
+        }
+
+        /* ─── ref list ─── */
+        .ref-list { display: flex; flex-direction: column; gap: 12px; }
+
+        .ref-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            align-items: start;
+            gap: 0;
+            transition: box-shadow 200ms var(--ease);
+            overflow: hidden;
+        }
+        .ref-item:hover {
+            box-shadow: 0 2px 12px oklch(0.18 0.015 260 / 0.06);
+        }
+
+        /* number column */
+        .ref-num {
+            grid-row: 1 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-3);
+            background: var(--surface-alt);
+            align-self: stretch;
+            border-right: 1px solid var(--border-light);
+        }
+
+        /* main body */
+        .ref-body {
+            padding: 16px 20px;
+            min-width: 0;
+        }
+        .ref-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+        .ref-author {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-1);
+        }
+        .ref-cat {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 100px;
+        }
+        .ref-title-en {
+            font-size: 12.5px;
+            color: var(--text-3);
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .ref-summary {
+            font-size: 13.5px;
+            color: var(--text-2);
+            line-height: 1.7;
+        }
+        .ref-summary strong {
+            color: var(--text-1);
+            font-weight: 700;
+        }
+
+        /* right column: slides + link */
+        .ref-aside {
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            align-self: start;
+        }
+        .slide-badges {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .slide-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            white-space: nowrap;
+        }
+        .ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: var(--r-sm);
+            background: var(--accent-soft);
+            transition: background 150ms var(--ease);
+            white-space: nowrap;
+            min-height: 32px;
+        }
+        .ref-link:hover { background: oklch(0.9 0.06 260); }
+        .ref-link-muted {
+            color: var(--text-3);
+            background: var(--surface-alt);
+        }
+        .ref-link-muted:hover { background: var(--border-light); }
+
+        /* ─── footer ─── */
+        .page-footer {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 32px;
+            text-align: center;
+            color: var(--text-3);
+            font-size: 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .page-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* ─── responsive ─── */
+        @media (max-width: 768px) {
+            .global-nav { padding: 0 16px; }
+            .page-header { padding: 36px 16px 0; }
+            .page-header h1 { font-size: 1.5rem; }
+            .summary-strip { padding: 0 16px; }
+            .filter-strip { padding: 0 16px; }
+            .content { padding: 0 16px 60px; margin-top: 20px; }
+
+            .ref-item {
+                grid-template-columns: 1fr;
+            }
+            .ref-num {
+                grid-row: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+                padding: 10px 16px;
+                justify-content: flex-start;
+                gap: 8px;
+                flex-direction: row;
+                font-size: 13px;
+            }
+            .ref-num::after {
+                content: attr(data-label);
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--text-3);
+            }
+            .ref-body { padding: 14px 16px; }
+            .ref-aside {
+                padding: 0 16px 14px;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        @media (max-width: 480px) {
+            .nav-link { padding: 6px 10px; font-size: 12px; }
+            .filter-btn { padding: 6px 10px; font-size: 11px; }
+            .ref-author { font-size: 14px; }
+            .ref-summary { font-size: 13px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="global-nav">
+  <div class="global-nav-inner">
+    <a href="논문발표.html" class="nav-link">논문발표</a>
+    <a href="논문서베이.html" class="nav-link">논문서베이</a>
+    <a href="통합발표.html" class="nav-link">통합발표</a>
+    <a href="예측모델.html" class="nav-link">예측모델</a>
+    <a href="포지셔닝분석.html" class="nav-link">포지셔닝분석</a>
+    <a href="사용자플로우.html" class="nav-link">사용자플로우</a>
+    <a href="참고문헌.html" class="nav-link" aria-current="page">참고문헌</a>
+  </div>
+</nav>
+
+<header class="page-header">
+    <h1>참고문헌</h1>
+    <p>통합발표 슬라이드에서 인용된 논문 및 기관 출처 16편. 각 항목의 인용 위치, 요약, 원문 링크를 정리했습니다.</p>
+</header>
+
+<div class="summary-strip">
+    <span class="summary-chip" style="background:var(--accent-soft);color:var(--accent);">16편 인용</span>
+    <span class="summary-chip" style="background:var(--rose-soft);color:var(--rose);">역학 4</span>
+    <span class="summary-chip" style="background:var(--green-soft);color:var(--green);">보행 4</span>
+    <span class="summary-chip" style="background:var(--blue-soft);color:var(--blue);">센서 3</span>
+    <span class="summary-chip" style="background:var(--purple-soft);color:var(--purple);">HRV 3</span>
+    <span class="summary-chip" style="background:var(--surface-alt);color:var(--text-2);border:1px solid var(--border);">기관 2</span>
+</div>
+
+<div class="filter-strip">
+    <span class="filter-label">분류</span>
+    <button class="filter-btn active" data-group="cat" onclick="applyFilter('cat','all',this)" type="button">전체</button>
+    <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','epi',this)" type="button">역학 통계</button>
+    <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','gait',this)" type="button">보행 분석</button>
+    <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','sensor',this)" type="button">센서 기술</button>
+    <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','hrv',this)" type="button">HRV</button>
+    <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','inst',this)" type="button">기관 통계</button>
+</div>
+<div class="filter-strip" style="margin-top:8px;">
+    <span class="filter-label">슬라이드</span>
+    <button class="filter-btn active" data-group="slide" onclick="applyFilter('slide','all',this)" type="button">전체</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','2',this)" type="button">S.2</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','3',this)" type="button">S.3</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','4',this)" type="button">S.4</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','7',this)" type="button">S.7</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','9',this)" type="button">S.9</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','14',this)" type="button">S.14</button>
+</div>
+
+<main class="content">
+<div class="ref-list" id="refList">
+
+    <!-- 1: 보건복지부 -->
+    <article class="ref-item" data-cat="inst" data-slides="2">
+        <div class="ref-num">1</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">보건복지부 (2024)</span>
+                <span class="ref-cat" style="background:var(--surface-alt);color:var(--text-2);">기관</span>
+            </div>
+            <div class="ref-title-en">치매정책 현황 및 유병률 통계</div>
+            <div class="ref-summary">2026년 한국 치매 환자 수 <strong>100만 명</strong> 추정(유병률 9.17%). 치매 환자 규모의 사회적 심각성을 보여주는 기초 통계로 발표 도입부에 활용.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.2</span></div>
+            <span class="ref-link ref-link-muted">정부 통계</span>
+        </div>
+    </article>
+
+    <!-- 2: Simpkins -->
+    <article class="ref-item" data-cat="epi" data-slides="2">
+        <div class="ref-num">2</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Simpkins, Khalili &amp; Yang (2024)</span>
+                <span class="ref-cat" style="background:var(--rose-soft);color:var(--rose);">역학</span>
+            </div>
+            <div class="ref-title-en">Meta-Analysis-Based Comparison of Annual Fall Risk between Older Adults with Alzheimer's Disease and Mild Cognitive Impairment. Adv Geriatr Med Res.</div>
+            <div class="ref-summary">35편 논문, 7,844명 대상 메타분석. 알츠하이머 환자 <strong>연간 낙상률 43.6%</strong>(일반 노인 26.5%), 연간 평균 1.30회 낙상(일반 0.21회). 재낙상률 <strong>42.08%</strong>로 한 번 넘어진 환자의 절반 가까이가 다시 넘어지는 것을 보고.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.2</span></div>
+            <a class="ref-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11081206/" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 3: 질병관리청 -->
+    <article class="ref-item" data-cat="inst" data-slides="3">
+        <div class="ref-num">3</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">질병관리청 (2023)</span>
+                <span class="ref-cat" style="background:var(--surface-alt);color:var(--text-2);">기관</span>
+            </div>
+            <div class="ref-title-en">국가손상종합통계 / 퇴원손상심층조사</div>
+            <div class="ref-summary">전체 손상 진료비 <strong>6.4조 원</strong>, 입원의 51.6%가 낙상. 노인 손상의 65.1%가 낙상이며 입원율은 교통사고의 4.2배. 75세 이상 낙상 후 장애율 83.3%, 치명률 61.3%를 보고.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.3</span></div>
+            <span class="ref-link ref-link-muted">정부 통계</span>
+        </div>
+    </article>
+
+    <!-- 4: 건보심사평가원 -->
+    <article class="ref-item" data-cat="inst" data-slides="3">
+        <div class="ref-num">4</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">건강보험심사평가원 (2021)</span>
+                <span class="ref-cat" style="background:var(--surface-alt);color:var(--text-2);">기관</span>
+            </div>
+            <div class="ref-title-en">노인 고관절 골절 진료 현황</div>
+            <div class="ref-summary">낙상으로 인한 고관절 골절 수술비 <strong>1건당 441만 원</strong>(최대 690만), 평균 입원 22.3일. 노인 고관절 골절의 90% 이상이 낙상에서 기인한다는 의료비 부담 근거.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.3</span></div>
+            <span class="ref-link ref-link-muted">정부 통계</span>
+        </div>
+    </article>
+
+    <!-- 5: Chung -->
+    <article class="ref-item" data-cat="epi" data-slides="3">
+        <div class="ref-num">5</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Chung et al. (2025)</span>
+                <span class="ref-cat" style="background:var(--rose-soft);color:var(--rose);">역학</span>
+            </div>
+            <div class="ref-title-en">Long-term trends of osteoporotic hip fractures in South Korea: analysis of National Health Insurance Data from 2006 to 2022. Osteoporosis International.</div>
+            <div class="ref-summary">한국 NHIS 전수 데이터를 기반으로 2006~2022년 고관절 골절 추이를 분석. 2021년 기준 고관절 골절 <strong>1년 사망률 18.2%</strong>. 저소득층에서 발생률과 사망률이 일관되게 높았으며, 남성 사망률이 여성보다 높은 경향.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.3</span></div>
+            <a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/40764415/" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 6: Bayen -->
+    <article class="ref-item" data-cat="epi" data-slides="4">
+        <div class="ref-num">6</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Bayen et al. (2021)</span>
+                <span class="ref-cat" style="background:var(--rose-soft);color:var(--rose);">역학</span>
+            </div>
+            <div class="ref-title-en">Reduction of fall-related injuries in dementia. JMIR Aging.</div>
+            <div class="ref-summary"><strong>436건 낙상 사례</strong>를 분석하여 발생 장소와 시간을 정량화. 개인 병실 80.3%, 야간 64.6%, 보행 중 54.9%라는 데이터로 센서 설치 위치와 모니터링 시간대 설계의 근거 제공.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.4</span></div>
+            <a class="ref-link" href="https://doi.org/10.2196/26602" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 7: 임정옥 구미옥 -->
+    <article class="ref-item" data-cat="epi" data-slides="4">
+        <div class="ref-num">7</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">임정옥, 구미옥 (2016)</span>
+                <span class="ref-cat" style="background:var(--rose-soft);color:var(--rose);">역학</span>
+            </div>
+            <div class="ref-title-en">노인 보행 중 낙상 관련 연구</div>
+            <div class="ref-summary">보행 중 낙상 비율과 특성을 분석한 국내 연구. 통합발표 슬라이드 4에서 낙상 발생 상황(언제, 어디서) 통계의 보조 근거로 활용.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.4</span></div>
+            <span class="ref-link ref-link-muted">본문 인용</span>
+        </div>
+    </article>
+
+    <!-- 8: Zeng -->
+    <article class="ref-item" data-cat="sensor" data-slides="7">
+        <div class="ref-num">8</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Zeng et al. (2022)</span>
+                <span class="ref-cat" style="background:var(--blue-soft);color:var(--blue);">센서</span>
+            </div>
+            <div class="ref-title-en">Multisensor-based step-counting in mmWave environment. Sensors 22, 9901.</div>
+            <div class="ref-summary">mmWave 레이더를 활용한 보행 간격 및 걸음 수 측정. <strong>96% 정확도</strong>로 보행 속도와 보폭을 비접촉 측정할 수 있음을 실증하여 mmWave를 주요 예측 센서로 채택하는 기술적 근거.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.7</span></div>
+            <a class="ref-link" href="https://doi.org/10.3390/s22249901" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 9: Wang -->
+    <article class="ref-item" data-cat="sensor" data-slides="7">
+        <div class="ref-num">9</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Wang et al. (2016)</span>
+                <span class="ref-cat" style="background:var(--blue-soft);color:var(--blue);">센서</span>
+            </div>
+            <div class="ref-title-en">WiFi-based gait recognition using CSI. ACM UbiComp.</div>
+            <div class="ref-summary">WiFi CSI 신호를 이용한 보행 패턴 인식. 50명 대상 실험에서 보행 리듬 측정 <strong>오차 11.9ms</strong>에 불과함을 검증하여 CSI가 정밀 보행 분석에 충분히 활용 가능하다는 근거 제공.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.7</span></div>
+            <a class="ref-link" href="https://doi.org/10.1145/2971648.2971670" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 10: Sun -->
+    <article class="ref-item" data-cat="sensor" data-slides="7,9">
+        <div class="ref-num">10</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Sun et al. (2024)</span>
+                <span class="ref-cat" style="background:var(--blue-soft);color:var(--blue);">센서</span>
+            </div>
+            <div class="ref-title-en">CSI-based contactless heart rate monitoring.</div>
+            <div class="ref-summary">WiFi CSI만으로 비접촉 심박수 측정이 가능함을 입증. <strong>96.8% 정확도</strong>를 달성하여 CSI 기반 자율신경(HRV) 모니터링이 현실적으로 구현 가능하다는 핵심 기술 근거.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges">
+                <span class="slide-badge">S.7</span>
+                <span class="slide-badge">S.9</span>
+            </div>
+            <span class="ref-link ref-link-muted">본문 인용</span>
+        </div>
+    </article>
+
+    <!-- 11: Hausdorff -->
+    <article class="ref-item" data-cat="gait" data-slides="9">
+        <div class="ref-num">11</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Hausdorff et al. (2001)</span>
+                <span class="ref-cat" style="background:var(--green-soft);color:var(--green);">보행</span>
+            </div>
+            <div class="ref-title-en">Gait variability and fall risk in community-living older adults. Arch Phys Med Rehabil.</div>
+            <div class="ref-summary">1년간 전향적 추적으로 <strong>보행 변동성(STV)</strong>이 낙상 위험을 예측하는 독립적 지표임을 최초 입증. 보행 속도보다 리듬의 불규칙성이 더 민감한 예측 인자라는 핵심 가설의 출발점.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.9</span></div>
+            <a class="ref-link" href="https://doi.org/10.1053/apmr.2001.24893" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 12: van Schooten -->
+    <article class="ref-item" data-cat="gait" data-slides="9">
+        <div class="ref-num">12</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">van Schooten et al. (2014)</span>
+                <span class="ref-cat" style="background:var(--green-soft);color:var(--green);">보행</span>
+            </div>
+            <div class="ref-title-en">Ambulatory fall-risk assessment: daily-life gait predict falls. J Gerontol A Biol Sci Med Sci.</div>
+            <div class="ref-summary">일상 보행 데이터의 양과 질을 동시에 분석하여 낙상을 예측. <strong>실생활 보행 패턴</strong>이 실험실 데이터보다 유효하다는 것을 보여 24시간 연속 모니터링 방식의 타당성을 뒷받침.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.9</span></div>
+            <a class="ref-link" href="https://doi.org/10.1093/gerona/glu225" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 13: Lindemann -->
+    <article class="ref-item" data-cat="gait" data-slides="9">
+        <div class="ref-num">13</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Lindemann et al. (2005)</span>
+                <span class="ref-cat" style="background:var(--green-soft);color:var(--green);">보행</span>
+            </div>
+            <div class="ref-title-en">Evaluation of a fall detector based on accelerometers. Med Biol Eng Comput.</div>
+            <div class="ref-summary"><strong>기상 동작(침대에서 일어나는 패턴)</strong>이 낙상 위험과 상관관계가 있다는 초기 근거를 제공. 아침 첫 기상 패턴을 핵심 예측 지표로 채택하는 데 기여한 파일럿 연구.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.9</span></div>
+            <a class="ref-link" href="https://doi.org/10.1007/BF02345128" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 14: Rubenstein -->
+    <article class="ref-item" data-cat="hrv" data-slides="9,14">
+        <div class="ref-num">14</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Rubenstein (2006)</span>
+                <span class="ref-cat" style="background:var(--purple-soft);color:var(--purple);">HRV</span>
+            </div>
+            <div class="ref-title-en">Falls in older people: epidemiology, risk factors and strategies for prevention. Age Ageing.</div>
+            <div class="ref-summary">노인 낙상의 역학과 위험 요인을 종합 정리한 리뷰. 낙상의 <strong>42%가 자율신경계 이상에서 기인</strong>한다는 통계를 제공하여, 보행 분석만으로는 부족하고 HRV를 함께 봐야 한다는 3센서 접근의 이론적 근거.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges">
+                <span class="slide-badge">S.9</span>
+                <span class="slide-badge">S.14</span>
+            </div>
+            <a class="ref-link" href="https://doi.org/10.1093/ageing/afj018" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 15: Castaldo -->
+    <article class="ref-item" data-cat="hrv" data-slides="9">
+        <div class="ref-num">15</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Castaldo et al. (2017)</span>
+                <span class="ref-cat" style="background:var(--purple-soft);color:var(--purple);">HRV</span>
+            </div>
+            <div class="ref-title-en">Ultra-short term HRV features as surrogates of short term HRV. BMC Med Inform Decis Mak.</div>
+            <div class="ref-summary">5분 이내 초단시간 HRV로 <strong>낙상 예측 정확도 68%, 오즈비 4.2</strong>를 달성. 심박변이도가 자율신경 요인을 포착할 수 있다는 근거로 CSI 기반 비접촉 HRV 모니터링의 배경 제공.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.9</span></div>
+            <a class="ref-link" href="https://doi.org/10.1186/s12911-017-0431-7" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 16: Melillo -->
+    <article class="ref-item" data-cat="hrv" data-slides="9">
+        <div class="ref-num">16</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Melillo et al. (2015)</span>
+                <span class="ref-cat" style="background:var(--purple-soft);color:var(--purple);">HRV</span>
+            </div>
+            <div class="ref-title-en">Automatic prediction of cardiovascular and cerebrovascular events using HRV analysis. PLOS ONE.</div>
+            <div class="ref-summary">HRV 분석을 통한 심혈관/뇌혈관 이벤트 자동 예측 연구. Castaldo 2017과 함께 <strong>HRV가 낙상 위험의 자율신경 요인을 포착</strong>할 수 있다는 이론적 기반을 형성.</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.9</span></div>
+            <a class="ref-link" href="https://doi.org/10.1371/journal.pone.0118504" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+</div>
+</main>
+
+<footer class="page-footer">
+    통합발표 슬라이드 기준 &middot; <a href="통합발표.html">슬라이드로 이동</a>
+</footer>
+
+<script>
+var activeCat = 'all', activeSlide = 'all';
+
+function applyFilter(group, value, el) {
+    if (group === 'cat') activeCat = value;
+    if (group === 'slide') activeSlide = value;
+
+    document.querySelectorAll('.filter-btn[data-group="' + group + '"]').forEach(function(b) {
+        b.classList.remove('active');
+    });
+    el.classList.add('active');
+
+    document.querySelectorAll('.ref-item').forEach(function(item) {
+        var catMatch = (activeCat === 'all' || item.dataset.cat === activeCat);
+        var slides = item.dataset.slides ? item.dataset.slides.split(',') : [];
+        var slideMatch = (activeSlide === 'all' || slides.indexOf(activeSlide) !== -1);
+        item.style.display = (catMatch && slideMatch) ? '' : 'none';
+    });
+}
+</script>
+
+</body>
+</html>
