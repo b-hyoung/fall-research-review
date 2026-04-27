@@ -363,6 +363,7 @@
       <a href="사용자플로우.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">사용자플로우</a>
       <a href="참고문헌.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">참고문헌</a>
       <a href="경쟁제품분석.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">경쟁제품분석</a>
+      <a href="최신논문정리.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">최신논문정리</a>
     </div>
   </nav>
   <button id="topToggle" onclick="toggleTop()" style="position:absolute;right:16px;background:rgba(15,17,23,0.7);border:1px solid var(--border);color:var(--text-3);font-size:11px;padding:3px 10px;border-radius:0 0 6px 6px;cursor:pointer;transition:top .3s ease;top:40px;">숨기기 ▲</button>
@@ -853,23 +854,23 @@
         <div class="evidence-row" style="grid-template-columns:1fr 1fr;gap:14px">
             <div class="evidence-card">
                 <div class="ev-title">보행 변동성이 높으면<br>낙상 위험이 높다</div>
-                <div class="ev-author">Hausdorff et al. (2001)</div>
-                <div class="ev-finding">stride-time CV가 낙상군에서 유의하게 높음. 1년 전향적 연구.</div>
+                <div class="ev-author">Choi et al. (2024)</div>
+                <div class="ev-finding">132명 요양시설 노인 대상.<br>걸음 시간/보폭 길이로 보행 분석 후<br>최근 6개월 내 낙상 경험이 있던 노인을 93.5% 식별.</div>
             </div>
             <div class="evidence-card">
-                <div class="ev-title">일상 보행 연속 측정으로<br>낙상 예측이 가능하다</div>
-                <div class="ev-author">van Schooten et al. (2014)</div>
-                <div class="ev-finding">일상 보행 양+질 &rarr; 6개월 낙상 예측 AUC 0.67</div>
+                <div class="ev-title">보행 측정으로<br>6개월 후 낙상을 예측</div>
+                <div class="ev-author">Lockhart et al. (2021)</div>
+                <div class="ev-finding">171명 노인, 보행 측정 후 6개월간 낙상 추적.<br>정확도 81.6%, 민감도 86.7%.<br>실제 낙상자 10명 중 약 9명을 사전에 예측.</div>
             </div>
-            <div class="evidence-card">
-                <div class="ev-title">허약 노인의 첫 보행이<br>기능 상태를 반영한다</div>
-                <div class="ev-author">Lindemann et al. (2005)</div>
-                <div class="ev-finding">첫 보행의 안정 도달 시간이 기능 저하 지표</div>
+            <div class="evidence-card" style="border-color:rgba(52,211,153,0.3);background:var(--green-soft)">
+                <div class="ev-title" style="color:var(--green)">좌우 흔들림이 클수록<br>낙상 위험이 증가한다</div>
+                <div class="ev-author">de Abreu et al. (2024)</div>
+                <div class="ev-finding">153명 노인 6개월 추적.<br>좌우 흔들림 1cm 증가 시 낙상 위험 1.5배.<br>예측 정확도 77.1%.</div>
             </div>
             <div class="evidence-card" style="border-color:rgba(96,165,250,0.3);background:var(--blue-soft)">
-                <div class="ev-title" style="color:var(--blue)">HRV 저하가 낙상을<br>직접 예측한다</div>
+                <div class="ev-title" style="color:var(--blue)">HRV 저하가<br>낙상을 직접 예측한다</div>
                 <div class="ev-author">Castaldo et al. (2017) &bull; Melillo et al. (2015)</div>
-                <div class="ev-finding">5분 HRV로 낙상 예측 accuracy 68%, OR 4.2. 노인 낙상의 <strong>42%가 자율신경 원인</strong>(Rubenstein). CSI로 심박 96.8% 정확도 측정 가능(Sun 2024).</div>
+                <div class="ev-finding">노인 낙상의 <strong>42%가 자율신경 문제</strong>(Rubenstein).<br>HRV가 낮은 사람은 낙상 확률 <strong>4.2배</strong>.<br>심박 변동성만으로 낙상 예측 정확도 68%.</div>
             </div>
         </div>
         <div class="highlight-box" style="background:var(--orange-soft);border-color:rgba(251,191,36,0.3);color:var(--orange)">
@@ -878,42 +879,6 @@
     </div>
 </div>
 
-<!-- ═══ SLIDE 10: 위험도 산출 모델 ═══ -->
-<div class="slide" data-slide="10">
-    <div class="slide-inner">
-        <div class="s-label" style="color:var(--accent)">Risk Model</div>
-        <h2 class="s-title">위험도 산출 모델</h2>
-        <div class="formula-block">
-            <span class="f-cm">// 각 지표별 이상도</span><br>
-            z = (오늘 &minus; 30일_평균) / 30일_표준편차<br>
-            anomaly = min( |z| / 3, 1.0 )<br><br>
-            <span class="f-cm">// 종합 위험도</span><br>
-            risk = <span class="f-g">0.20</span>&times;<span class="f-g">기상패턴</span>
-            + <span class="f-g">0.15</span>&times;<span class="f-g">보행속도</span>
-            + <span class="f-g">0.15</span>&times;<span class="f-g">STV</span>
-            + <span class="f-g">0.10</span>&times;<span class="f-g">흔들림</span>
-            + <span class="f-g">0.10</span>&times;<span class="f-g">보폭</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            + <span class="f-b">0.10</span>&times;<span class="f-b">보행리듬(CSI)</span>
-            + <span class="f-b">0.10</span>&times;<span class="f-b">HRV이상도(CSI)</span>
-            + <span class="f-b">0.10</span>&times;<span class="f-b">동행자보정(CSI)</span>
-        </div>
-        <div class="weight-bar-wrap">
-            <div class="weight-bar-label">
-                <span style="color:var(--green)">mmWave 70%</span>
-                <span style="color:var(--blue)">CSI 30%</span>
-                <span style="color:var(--orange)">&bull; ToF = 트리거</span>
-            </div>
-            <div class="weight-bar">
-                <div class="weight-seg-green" style="width:70%">기상 + 보행 분석</div>
-                <div class="weight-seg-blue" style="width:30%">보행 리듬 + 동행자 보정</div>
-            </div>
-        </div>
-        <div style="margin-top:20px;font-size:13px;color:var(--text-3);text-align:center">
-            왜 딥러닝이 아니라 z-score? &mdash; 개인 맞춤형, 해석 가능, 학습 데이터 불필요, 엣지 실행 가능
-        </div>
-    </div>
-</div>
 
 <!-- ═══ SLIDE 11: 시나리오 예시 ═══ -->
 <div class="slide" data-slide="11">
