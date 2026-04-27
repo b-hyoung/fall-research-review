@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경쟁 제품 분석 — 낙상 감지/예측 시장 현황</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <style>
+        :root {
+            --bg: #f6f7fa;
+            --surface: #ffffff;
+            --surface-hover: #f9fafb;
+            --border: #e4e7ed;
+            --border-light: #eef0f4;
+            --text-1: #16181d;
+            --text-2: #4e5562;
+            --text-3: #8a8f9d;
+            --accent: #3563e9;
+            --accent-soft: #edf1fd;
+            --orange: #d97706;
+            --orange-soft: #fef9ee;
+            --blue: #2572cc;
+            --blue-soft: #eef5fc;
+            --green: #15803d;
+            --green-soft: #eef7f1;
+            --rose: #be123c;
+            --rose-soft: #fdf1f4;
+            --purple: #7c3aed;
+            --purple-soft: #f3efff;
+            --r-sm: 8px;
+            --r-md: 12px;
+            --r-lg: 16px;
+            --sh-sm: 0 1px 2px rgba(22,24,29,0.04);
+            --sh-md: 0 4px 12px rgba(22,24,29,0.06);
+            --ease: cubic-bezier(0.25,0.1,0.25,1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Pretendard Variable','Pretendard',-apple-system,system-ui,sans-serif; background:var(--bg); color:var(--text-1); -webkit-font-smoothing:antialiased; line-height:1.6; }
+        .container { max-width:1200px; margin:0 auto; padding:32px 20px 80px; }
+        h1 { font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:8px; }
+        h2 { font-size:22px; font-weight:700; margin-top:48px; margin-bottom:16px; letter-spacing:-0.015em; }
+        h3 { font-size:17px; font-weight:700; margin-bottom:12px; }
+        .subtitle { font-size:15px; color:var(--text-2); margin-bottom:32px; }
+        .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:28px; margin-bottom:20px; box-shadow:var(--sh-sm); }
+        .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+        .card-title { font-size:20px; font-weight:800; }
+        .badge { display:inline-block; padding:4px 12px; border-radius:100px; font-size:11px; font-weight:700; }
+        .badge-green { background:var(--green-soft); color:var(--green); }
+        .badge-rose { background:var(--rose-soft); color:var(--rose); }
+        .badge-blue { background:var(--blue-soft); color:var(--blue); }
+        .badge-purple { background:var(--purple-soft); color:var(--purple); }
+        .meta { font-size:13px; color:var(--text-3); margin-bottom:16px; }
+        .spec-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+        .spec-item { background:var(--surface-hover); border-radius:var(--r-md); padding:14px; }
+        .spec-label { font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:6px; }
+        .spec-value { font-size:14px; color:var(--text-1); font-weight:600; }
+        .spec-value strong { color:var(--accent); }
+        .limits { border-top:1px solid var(--border-light); padding-top:16px; margin-top:16px; }
+        .limit-item { display:flex; align-items:flex-start; gap:8px; margin-bottom:8px; font-size:13px; color:var(--text-2); }
+        .limit-dot { flex-shrink:0; width:6px; height:6px; border-radius:50%; background:var(--rose); margin-top:7px; }
+        .link-btn { display:inline-block; padding:8px 16px; background:var(--accent-soft); color:var(--accent); border-radius:var(--r-sm); font-size:13px; font-weight:600; text-decoration:none; margin-top:12px; transition:all .2s; }
+        .link-btn:hover { background:var(--accent); color:#fff; }
+        .compare-table { width:100%; border-collapse:collapse; margin-top:16px; }
+        .compare-table th, .compare-table td { padding:12px 16px; text-align:left; border-bottom:1px solid var(--border-light); font-size:13px; }
+        .compare-table th { background:var(--surface-hover); font-weight:700; color:var(--text-3); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
+        .compare-table td { color:var(--text-2); }
+        .compare-table tr:last-child td { border-bottom:none; }
+        .compare-table .ours { background:var(--accent-soft); }
+        .compare-table .ours td { color:var(--accent); font-weight:700; }
+        .gap-box { background:var(--accent-soft); border:1px solid rgba(91,138,245,0.25); border-radius:var(--r-lg); padding:24px; margin-top:32px; }
+        .gap-title { font-size:16px; font-weight:800; color:var(--accent); margin-bottom:8px; }
+        .gap-desc { font-size:14px; color:var(--text-2); line-height:1.7; }
+        @media (max-width:768px) { .spec-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- 네비게이션 -->
+<nav style="position:sticky;top:0;z-index:999;background:rgba(246,247,250,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;">
+  <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:44px;">
+    <a href="통합발표.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;">통합발표</a>
+    <div style="display:flex;align-items:center;gap:6px;overflow-x:auto;">
+      <a href="논문발표.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">논문발표</a>
+      <a href="논문서베이.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">논문서베이</a>
+      <a href="예측모델.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">예측모델</a>
+      <a href="포지셔닝분석.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">포지셔닝분석</a>
+      <a href="사용자플로우.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">사용자플로우</a>
+      <a href="경쟁제품분석.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;color:#fff;background:var(--accent);text-decoration:none;">경쟁제품분석</a>
+      <a href="참고문헌.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">참고문헌</a>
+      <a href="최신논문정리.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">최신논문정리</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>경쟁 제품 분석</h1>
+<div class="subtitle">현재 병원/요양시설에서 사용 중인 낙상 감지/예측 상용 제품 조사</div>
+
+<!-- ═══ VSTAlert ═══ -->
+<div class="card" style="border-top:3px solid var(--green);">
+    <div class="card-header">
+        <div>
+            <div class="card-title">VSTAlert</div>
+            <div class="meta">VirtuSense Technologies &bull; 미국 &bull; 2013년 설립 &bull; Deloitte Fast 500 3년 연속</div>
+        </div>
+        <span class="badge badge-green">비접촉</span>
+    </div>
+    <div class="spec-grid">
+        <div class="spec-item">
+            <div class="spec-label">센서</div>
+            <div class="spec-value">적외선(IR) 센서 (카메라 아님, 영상 녹화 없음)</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">원리</div>
+            <div class="spec-value">수백만 시간 학습 데이터 + AI로 <strong>"일어나려는 의도"</strong> 미세 동작 포착</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">예측 시간</div>
+            <div class="spec-value"><strong>침대 이탈 30~65초 전</strong> 감지 &rarr; 1초 내 알림</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">정확도</div>
+            <div class="spec-value">감지 <strong>98%</strong>, 오알람 95% 감소 (자체 발표)</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">도입 사례</div>
+            <div class="spec-value">John Knox Village (80% 낙상 감소), Friendship Village (96% 부상 감소), Larksfield Place (70% 감소)</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">가격 / FDA</div>
+            <div class="spec-value">비공개 (월 구독형 추정) / FDA 미승인, HIPAA 준수</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">프라이버시</div>
+            <div class="spec-value">카메라 아님, 영상 녹화 없음, 100% HIPAA 준수</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">매출 성장</div>
+            <div class="spec-value">3년간 397% 성장 (2020~2023, Deloitte 기준)</div>
+        </div>
+    </div>
+    <div class="limits">
+        <h3 style="font-size:13px;color:var(--rose);margin-bottom:10px;">한계점</h3>
+        <div class="limit-item"><div class="limit-dot"></div><div>피어리뷰 논문 <strong>0편</strong> &mdash; PubMed에서 검색 결과 없음. 성능 수치의 독립적 검증 부재</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div><strong>침대/의자 이탈만</strong> 감지 &mdash; 보행 중 낙상은 별도 제품(VSTOne) 필요</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>미국 SNF(전문요양시설) 중심 &mdash; 해외 진출 사례 미확인</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>센서 기술 상세 비공개 (ToF? 구조광? 불명)</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>"30~65초 전 예측"은 <strong>초단기 이탈 예측</strong>이지 당일 위험도 예측이 아님</div></div>
+    </div>
+    <a href="https://www.virtusense.ai/products/vstalert" target="_blank" class="link-btn">공식 사이트 &rarr;</a>
+</div>
+
+<!-- ═══ CarePredict ═══ -->
+<div class="card" style="border-top:3px solid var(--orange);">
+    <div class="card-header">
+        <div>
+            <div class="card-title">CarePredict Tempo</div>
+            <div class="meta">CarePredict &bull; 미국 &bull; 2013년 설립 &bull; TIME 2025 선정</div>
+        </div>
+        <span class="badge badge-rose">착용형</span>
+    </div>
+    <div class="spec-grid">
+        <div class="spec-item">
+            <div class="spec-label">센서</div>
+            <div class="spec-value">손목 밴드: 모션센서 + 심박 + SpO2 + BLE + RFID + 마이크/스피커</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">원리</div>
+            <div class="spec-value">개인별 <strong>일상 행동 기준선 학습</strong> &rarr; 이상 패턴 감지 &rarr; 건강 악화 사전 예측</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">정확도</div>
+            <div class="spec-value">감지 <strong>98%</strong>, 낙상 <strong>69% 감소</strong> (6개 시설), 입원 39% 감소</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">도입 규모</div>
+            <div class="spec-value">전세계 <strong>수백 개</strong> 시설 (공식 표현), Grand Village, Bickford Senior Living 등</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">가격</div>
+            <div class="spec-value">개인용: <strong>$499</strong> + 월 <strong>$69.99</strong> / 시설용: 비공개</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">FDA / 치매 대응</div>
+            <div class="spec-value">FDA 미승인 / 메모리케어 공식 타겟 (배회 감지, 지오펜싱)</div>
+        </div>
+    </div>
+    <div class="limits">
+        <h3 style="font-size:13px;color:var(--rose);margin-bottom:10px;">한계점</h3>
+        <div class="limit-item"><div class="limit-dot"></div><div><strong>착용 필수</strong> &mdash; 치매 환자 착용 거부/제거가 근본적 문제</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>독립적 피어리뷰 학술 검증 없음 &mdash; PubMed 0편</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>Context Beacon 인프라 설치 필요 (Room-level 위치 추적용)</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>24시간 행동 추적 &rarr; 프라이버시 우려</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>중증 치매: 긴급 버튼 인지 불가, 기기 파손 가능</div></div>
+    </div>
+    <a href="https://www.carepredict.com/" target="_blank" class="link-btn">공식 사이트 &rarr;</a>
+</div>
+
+<!-- ═══ Vayyar Care ═══ -->
+<div class="card" style="border-top:3px solid var(--purple);">
+    <div class="card-header">
+        <div>
+            <div class="card-title">Vayyar Care</div>
+            <div class="meta">Vayyar &bull; 이스라엘 &bull; 영국 NHS DCB0129 임상 안전 인증</div>
+        </div>
+        <span class="badge badge-purple">비접촉 mmWave</span>
+    </div>
+    <div class="spec-grid">
+        <div class="spec-item">
+            <div class="spec-label">센서</div>
+            <div class="spec-value"><strong>3~81GHz</strong> 광대역 4D 이미징 레이더-온-칩 (자체 설계), 최대 72개 트랜시버</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">원리</div>
+            <div class="spec-value">4D 이미징 (거리+각도+속도+높이) &rarr; 낙상 사후감지 + <strong>장기 활동 추이 모니터링</strong></div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">기능</div>
+            <div class="spec-value">실시간 낙상 사후감지, 비정상 움직임 알림, 장기 활동량 추이, 다중 타겟 추적, NLOS 작동</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">정확도</div>
+            <div class="spec-value"><strong>감지 92.5%, 민감도 92.5%</strong> (Hruby &amp; Cerny 2023, 2대 사용 시). NHS DCB0129는 <strong>프로세스 인증</strong>이지 정확도 보증이 아님</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">도입 사례</div>
+            <div class="spec-value">영국 <strong>NHS</strong>, Sambrook House, Essex County Council, 전세계 시니어 리빙</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">가격</div>
+            <div class="spec-value">B2B SaaS &mdash; 센서 추정 <strong>$200~400</strong> + 월 구독</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">프라이버시</div>
+            <div class="spec-value">카메라/웨어러블 없음, 레이더 기반 &rarr; 프라이버시 보호</div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-label">기술 특장</div>
+            <div class="spec-value">자체 설계 RoC 칩 (DSP+MCU+RF 원칩), 벽 뒤에서도 감지 가능(NLOS)</div>
+        </div>
+    </div>
+    <div class="limits">
+        <h3 style="font-size:13px;color:var(--rose);margin-bottom:10px;">한계점</h3>
+        <div class="limit-item"><div class="limit-dot"></div><div><strong>당일 예측 불가</strong> &mdash; "최근 패턴이 불안정하다" 수준의 장기 트렌드만</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div><strong>보행 분석 &rarr; 위험도 산출 없음</strong> &mdash; 보행 속도/STV/흔들림 기반 예측 미지원</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div><strong>HRV 자율신경 체크 없음</strong> &mdash; 심박/자율신경 데이터 미수집</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>정확도 수치 미공개 &mdash; 인증은 있으나 정량적 성능 불명</div></div>
+        <div class="limit-item"><div class="limit-dot"></div><div>B2B 전용 &mdash; 개인 구매 불가, 시설 단위 계약만</div></div>
+    </div>
+    <a href="https://vayyar.com/care" target="_blank" class="link-btn">공식 사이트 &rarr;</a>
+</div>
+
+<!-- ═══ mmWave 기타 제품 ═══ -->
+<h2>기타 mmWave 레이더 상용 제품</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div class="card" style="margin-bottom:0;">
+        <h3>Milesight VS373</h3>
+        <div class="meta">Milesight &bull; 60GHz 4D mmWave &bull; LoRaWAN</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.7;">
+            24Tx+22Rx, 감지 최대 99% (자체), IP65 방수<br>
+            낙상 감지 + 침대 존재 + 호흡 감지<br>
+            추정 가격: $150~250<br>
+            <strong style="color:var(--rose);">사후감지 전용 (예측 없음)</strong>
+        </div>
+        <a href="https://www.milesight.com/iot/product/lorawan-sensor/vs373" target="_blank" class="link-btn">공식 &rarr;</a>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+        <h3>HiFCare</h3>
+        <div class="meta">HiFCare &bull; 60GHz mmWave &bull; Wi-Fi</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.7;">
+            감지 4m x 4m, 오경보율 3% 미만<br>
+            200개+ 케어 파트너, 다인 환경 지원<br>
+            가격: <strong>$134~167</strong> (공개 가격)<br>
+            <strong style="color:var(--rose);">사후감지 전용 (예측 없음)</strong>
+        </div>
+        <a href="https://www.hifcare.com" target="_blank" class="link-btn">공식 &rarr;</a>
+    </div>
+</div>
+
+<!-- ═══ 종합 비교 테이블 ═══ -->
+<h2>종합 비교</h2>
+
+<div class="card">
+    <table class="compare-table">
+        <thead>
+            <tr>
+                <th>제품</th>
+                <th>방식</th>
+                <th>예측/감지</th>
+                <th>접촉 여부</th>
+                <th>프라이버시</th>
+                <th>학술 검증</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight:700;">압력매트 (Stryker)</td>
+                <td>압력 센서</td>
+                <td>사후감지</td>
+                <td>비접촉</td>
+                <td style="color:var(--green);">O</td>
+                <td>&mdash;</td>
+            </tr>
+            <tr>
+                <td style="font-weight:700;">VSTAlert</td>
+                <td>적외선 + AI</td>
+                <td>초단기 (30~65초)</td>
+                <td>비접촉</td>
+                <td style="color:var(--green);">O</td>
+                <td style="color:var(--rose);">X (논문 0편)</td>
+            </tr>
+            <tr>
+                <td style="font-weight:700;">CarePredict</td>
+                <td>웨어러블 + AI</td>
+                <td>행동패턴 예측</td>
+                <td style="color:var(--rose);font-weight:700;">착용</td>
+                <td>&#9651;</td>
+                <td style="color:var(--rose);">X</td>
+            </tr>
+            <tr>
+                <td style="font-weight:700;">Vayyar Care</td>
+                <td>mmWave 레이더</td>
+                <td>감지 + 장기 추이</td>
+                <td>비접촉</td>
+                <td style="color:var(--green);">O</td>
+                <td>NHS 인증</td>
+            </tr>
+            <tr>
+                <td style="font-weight:700;">Milesight / HiFCare</td>
+                <td>mmWave 레이더</td>
+                <td>사후감지</td>
+                <td>비접촉</td>
+                <td style="color:var(--green);">O</td>
+                <td>&#9651;</td>
+            </tr>
+            <tr class="ours">
+                <td>우리 시스템</td>
+                <td>mmWave + ToF + CSI</td>
+                <td>당일 위험도 예측</td>
+                <td>비접촉</td>
+                <td style="color:var(--green);">O</td>
+                <td>진행 중</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ═══ 연구 갭 ═══ -->
+<div class="gap-box">
+    <div class="gap-title">아직 아무도 못 하는 것</div>
+    <div class="gap-desc">
+        "오늘 아침 보행이 불안정하니 <strong>당일 위험도가 높다</strong>" &mdash;
+        매일 아침 보행 분석(mmWave) + HRV 자율신경 체크(CSI) + 자세 트리거(ToF)로
+        <strong>당일 낙상 확률을 사전 예측</strong>하는 비접촉 시스템은 현재 상용화된 제품이 <strong>없습니다.</strong>
+        <br><br>
+        모든 상용 제품은 "넘어진 후 감지" 또는 "넘어지기 직전(30~65초) 감지"에 머물러 있으며,
+        보행 패턴 + 자율신경 상태를 결합한 <strong>당일 위험도 사전 예측</strong>은 연구 공백입니다.
+    </div>
+</div>
+
+</div>
+</body>
+</html>

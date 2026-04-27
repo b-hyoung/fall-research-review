@@ -362,6 +362,7 @@
       <a href="포지셔닝분석.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">포지셔닝분석</a>
       <a href="사용자플로우.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">사용자플로우</a>
       <a href="참고문헌.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">참고문헌</a>
+      <a href="경쟁제품분석.html" style="padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">경쟁제품분석</a>
     </div>
   </nav>
   <button id="topToggle" onclick="toggleTop()" style="position:absolute;right:16px;background:rgba(15,17,23,0.7);border:1px solid var(--border);color:var(--text-3);font-size:11px;padding:3px 10px;border-radius:0 0 6px 6px;cursor:pointer;transition:top .3s ease;top:40px;">숨기기 ▲</button>
@@ -507,15 +508,9 @@
     <div class="slide-inner">
         <div class="s-label" style="color:var(--text-3)">Existing Solutions</div>
         <h2 class="s-title">기존에는 어떻게 해결했는가</h2>
-        <div style="display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;">
-            <button onclick="switchLayout5('A')" class="nav-btn layout-btn s5-btn active" id="btn5A" style="font-size:12px;padding:6px 14px;">A. 타임라인</button>
-            <button onclick="switchLayout5('B')" class="nav-btn layout-btn s5-btn" id="btn5B" style="font-size:12px;padding:6px 14px;">B. 비교 테이블</button>
-            <button onclick="switchLayout5('C')" class="nav-btn layout-btn s5-btn" id="btn5C" style="font-size:12px;padding:6px 14px;">C. 좌우 분할</button>
-            <button onclick="switchLayout5('D')" class="nav-btn layout-btn s5-btn" id="btn5D" style="font-size:12px;padding:6px 14px;">D. 밀도형</button>
-        </div>
 
         <!-- ===== A: 타임라인 ===== -->
-        <div class="layout-variant" id="layoutA">
+        <div class="layout-variant" id="layoutA" style="display:none;">
             <div style="position:relative;padding:40px 0 20px;">
                 <div style="position:absolute;top:24px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 48%,var(--rose) 52%,var(--rose) 100%);border-radius:2px;"></div>
                 <div style="position:absolute;top:14px;left:0;font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.05em;">예측 시도</div>
@@ -610,9 +605,10 @@
         </div>
 
         <!-- ===== C: 좌우 분할 ===== -->
-        <div class="layout-variant" id="layoutC" style="display:none;">
+        <div class="layout-variant" id="layoutC">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:24px;opacity:0.65;">
+                <!-- 왼쪽: 사후 대응 -->
+                <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;">
                     <div style="font-size:10px;font-weight:800;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">사후 대응</div>
                     <div style="display:flex;flex-direction:column;gap:14px;">
                         <div>
@@ -620,15 +616,24 @@
                                 <span style="font-size:14px;font-weight:800;color:var(--text-1);">압력 매트</span>
                                 <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">오탐 32~99%</span>
                             </div>
-                            <div style="font-size:11px;color:var(--text-3);margin-top:4px;">침상 압력 센서로 이탈 감지. 뒤척임에도 알림 발생, 알림 피로로 간호사가 무시하게 됨. ~10만원/개</div>
+                            <div style="font-size:11px;color:var(--text-3);margin-top:4px;line-height:1.7;">
+                                침상 압력 센서로 이탈 감지. Stryker Posey 등<br>
+                                전세계 병원 표준 장비. ~10만원/개<br>
+                                <strong style="color:var(--rose);">뒤척임에도 알림 &rarr; 오탐률 32~99%</strong><br>
+                                <strong style="color:var(--rose);">알림 피로로 간호사가 무시하게 됨</strong>
+                            </div>
                         </div>
                         <div style="height:1px;background:var(--border);"></div>
                         <div>
                             <div style="display:flex;justify-content:space-between;align-items:center;">
                                 <span style="font-size:14px;font-weight:800;color:var(--text-1);">착용형 밴드</span>
-                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 거부</span>
+                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 필수</span>
                             </div>
-                            <div style="font-size:11px;color:var(--text-3);margin-top:4px;">손목/발목 가속도 센서로 낙상 충격 감지. 치매 환자가 기기를 벗거나 거부, 충전 관리 어려움. ~5만원/개</div>
+                            <div style="font-size:11px;color:var(--text-3);margin-top:4px;line-height:1.7;">
+                                손목/발목 가속도 센서로 낙상 충격 감지. ~5만원/개<br>
+                                <strong style="color:var(--rose);">치매 환자가 기기를 벗거나 거부</strong><br>
+                                <strong style="color:var(--rose);">충전 관리 어려움 + 넘어진 후에야 감지</strong>
+                            </div>
                         </div>
                         <div style="height:1px;background:var(--border);"></div>
                         <div>
@@ -636,51 +641,60 @@
                                 <span style="font-size:14px;font-weight:800;color:var(--text-1);">카메라 영상</span>
                                 <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">프라이버시</span>
                             </div>
-                            <div style="font-size:11px;color:var(--text-3);margin-top:4px;">DNN 기반 관절 좌표 추출로 자세 분류. 병실 24시간 촬영 윤리 문제, 고비용 + 전담 인력 필요</div>
+                            <div style="font-size:11px;color:var(--text-3);margin-top:4px;line-height:1.7;">
+                                DNN 기반 관절 추출로 자세 분류. Be:Clever(한국) 등<br>
+                                포항세명, 조선대병원 도입 사례 있음<br>
+                                <strong style="color:var(--rose);">병실 24시간 촬영 &rarr; 윤리/프라이버시 문제</strong><br>
+                                <strong style="color:var(--rose);">고비용 + 전담 인력 필요</strong>
+                            </div>
                         </div>
                     </div>
-                    <div style="margin-top:20px;padding:10px 14px;background:var(--bg);border-radius:8px;font-size:11px;color:var(--text-3);text-align:center;font-weight:600;">공통 한계: 넘어진 후에야 알 수 있음</div>
                 </div>
-                <div style="background:rgba(91,138,245,0.06);border:1px solid var(--accent);border-radius:12px;padding:24px;">
-                    <div style="font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">조기 감지 시도</div>
+                <!-- 오른쪽: 사전 감지 시도 -->
+                <div style="background:rgba(91,138,245,0.06);border:1px solid var(--accent);border-radius:12px;padding:24px;display:flex;flex-direction:column;">
+                    <div style="font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">사전 감지 시도</div>
                     <div style="display:flex;flex-direction:column;gap:14px;">
                         <div>
                             <div style="display:flex;justify-content:space-between;align-items:center;">
                                 <span style="font-size:14px;font-weight:800;color:var(--text-1);">근전도(sEMG)</span>
-                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">접촉식</span>
+                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 필수</span>
                             </div>
-                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;">피부 4부위에 sEMG 부착, 베이지안 필터+SVM으로 낙상 100ms 전 감지. 3명 실험실 검증. 박성식 2024</div>
+                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.7;">
+                                피부 4부위 sEMG 부착 (박성식 2024)<br>
+                                낙상 100ms(0.1초) 전 감지<br>
+                                <strong style="color:var(--rose);">사실상 넘어지는 순간 감지</strong>
+                            </div>
                         </div>
                         <div style="height:1px;background:var(--border);"></div>
                         <div>
                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">적외선 + IMU</span>
-                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 필요</span>
+                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">CarePredict</span>
+                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 필수</span>
                             </div>
-                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;">FIR 열화상+IMU로 LSTM-TCN 하이브리드 모델. 정확도 99.81%, F1 0.994. IMU 착용 필수 + 실험실만. 전원영 2025</div>
+                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.7;">
+                                손목 제스처로 ADL 인식(식사/보행/수면 등)<br>
+                                7일 학습 후 행동 변화 감지. 낙상 69%&darr;<br>
+                                <strong style="color:var(--rose);">착용 필수(치매 거부)</strong>
+                            </div>
                         </div>
                         <div style="height:1px;background:var(--border);"></div>
                         <div>
                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">mmWave 보행</span>
-                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">측정만</span>
+                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">VSTAlert</span>
+                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--green-soft);color:var(--green);font-weight:700;">비접촉</span>
                             </div>
-                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;">FMCW micro-Doppler로 스텝 시간 비접촉 측정 96%, ICC 0.93. 예측 모델 없음, 3명. Zeng 2022</div>
-                        </div>
-                        <div style="height:1px;background:var(--border);"></div>
-                        <div>
-                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">IoT mmWave</span>
-                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">기록만</span>
+                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.7;">
+                                적외선+AI, 이탈 30~65초 전 감지<br>
+                                감지 98% (자체 발표). VirtuSense(미국)<br>
+                                <strong style="color:var(--rose);">피어리뷰 논문 0편</strong><br>
+                                <strong style="color:var(--rose);">침대 이탈만 (보행 예측 불가)</strong>
                             </div>
-                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;">mmWave+RPi+Azure로 보행속도/케이던스/보폭 24시간 기록. 활동 인식 93%, 실제 가정 검증. Abedi 2022</div>
                         </div>
                     </div>
-                    <div style="margin-top:20px;padding:10px 14px;background:var(--accent-soft);border-radius:8px;font-size:11px;color:var(--accent);text-align:center;font-weight:600;">공통 한계: 접촉식이거나 측정/기록에 그침</div>
                 </div>
             </div>
             <div class="highlight-box" style="margin-top:16px;">
-                <strong>비접촉 + 프라이버시 보호 + 사전 예측</strong>을 동시에 만족하는 시스템은 없다
+                <strong>비접촉 + 프라이버시 + 당일 위험도 사전 예측</strong>을 동시에 만족하는 시스템은 아직 없다
             </div>
         </div>
 
@@ -1182,6 +1196,7 @@ function toggleBot(){
         document.getElementById('counter').textContent = (n+1) + ' / ' + total;
         document.getElementById('prevBtn').style.opacity = n === 0 ? '0.3' : '1';
         document.getElementById('nextBtn').style.opacity = n === total-1 ? '0.3' : '1';
+        history.replaceState(null, '', '#' + (n+1));
     }
 
     window.go = function(d){
@@ -1205,7 +1220,9 @@ function toggleBot(){
         if(Math.abs(diff) > 50){ diff < 0 ? go(1) : go(-1); }
     });
 
-    show(0);
+    var hash = parseInt(location.hash.replace('#',''), 10);
+    cur = (hash >= 1 && hash <= total) ? hash - 1 : 0;
+    show(cur);
 })();
 
 /* ── 레이아웃 전환 ── */

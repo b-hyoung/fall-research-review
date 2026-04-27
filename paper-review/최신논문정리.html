@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최신 논문 정리 — 핵심 가설 근거 업데이트</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <style>
+        :root {
+            --bg: #f6f7fa; --surface: #ffffff; --surface-hover: #f9fafb;
+            --border: #e4e7ed; --border-light: #eef0f4;
+            --text-1: #16181d; --text-2: #4e5562; --text-3: #8a8f9d;
+            --accent: #3563e9; --accent-soft: #edf1fd;
+            --orange: #d97706; --orange-soft: #fef9ee;
+            --blue: #2572cc; --blue-soft: #eef5fc;
+            --green: #15803d; --green-soft: #eef7f1;
+            --rose: #be123c; --rose-soft: #fdf1f4;
+            --purple: #7c3aed; --purple-soft: #f3efff;
+            --r-sm: 8px; --r-md: 12px; --r-lg: 16px;
+            --sh-sm: 0 1px 2px rgba(22,24,29,0.04);
+            --sh-md: 0 4px 12px rgba(22,24,29,0.06);
+            --ease: cubic-bezier(0.25,0.1,0.25,1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Pretendard Variable','Pretendard',-apple-system,system-ui,sans-serif; background:var(--bg); color:var(--text-1); -webkit-font-smoothing:antialiased; line-height:1.6; }
+        .container { max-width:1100px; margin:0 auto; padding:32px 20px 80px; }
+        h1 { font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:8px; }
+        h2 { font-size:20px; font-weight:700; margin-top:48px; margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--border-light); }
+        .subtitle { font-size:15px; color:var(--text-2); margin-bottom:32px; }
+        .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:20px 24px; margin-bottom:14px; box-shadow:var(--sh-sm); }
+        .card-row { display:grid; grid-template-columns:1fr auto; gap:16px; align-items:start; }
+        .paper-title { font-size:14px; font-weight:700; color:var(--text-1); margin-bottom:4px; }
+        .paper-meta { font-size:12px; color:var(--text-3); margin-bottom:8px; }
+        .paper-finding { font-size:13px; color:var(--text-2); line-height:1.7; }
+        .paper-finding strong { color:var(--text-1); }
+        .stat { display:inline-block; padding:4px 12px; border-radius:100px; font-size:12px; font-weight:700; white-space:nowrap; }
+        .stat-green { background:var(--green-soft); color:var(--green); }
+        .stat-blue { background:var(--blue-soft); color:var(--blue); }
+        .stat-orange { background:var(--orange-soft); color:var(--orange); }
+        .stat-purple { background:var(--purple-soft); color:var(--purple); }
+        .link-btn { display:inline-block; padding:6px 14px; background:var(--accent-soft); color:var(--accent); border-radius:var(--r-sm); font-size:12px; font-weight:600; text-decoration:none; margin-top:8px; transition:all .2s; }
+        .link-btn:hover { background:var(--accent); color:#fff; }
+        .old-ref { background:var(--surface-hover); border:1px dashed var(--border); border-radius:var(--r-md); padding:14px 18px; margin-bottom:16px; font-size:13px; color:var(--text-3); }
+        .old-ref strong { color:var(--text-2); }
+        .update-tag { display:inline-block; padding:3px 10px; border-radius:100px; font-size:10px; font-weight:700; background:var(--green-soft); color:var(--green); margin-left:8px; }
+        @media (max-width:768px) { .card-row { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- 네비게이션 -->
+<nav style="position:sticky;top:0;z-index:999;background:rgba(246,247,250,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;">
+  <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:44px;">
+    <a href="통합발표.html" style="padding:6px 14px;border-radius:6px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;">통합발표</a>
+    <div style="display:flex;align-items:center;gap:6px;overflow-x:auto;">
+      <a href="논문발표.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">논문발표</a>
+      <a href="논문서베이.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">논문서베이</a>
+      <a href="예측모델.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">예측모델</a>
+      <a href="포지셔닝분석.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">포지셔닝분석</a>
+      <a href="사용자플로우.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">사용자플로우</a>
+      <a href="경쟁제품분석.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">경쟁제품분석</a>
+      <a href="참고문헌.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;color:var(--text-3);text-decoration:none;">참고문헌</a>
+      <a href="최신논문정리.html" style="padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;color:#fff;background:var(--accent);text-decoration:none;">최신논문정리</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>핵심 가설 근거 — 최신 논문 업데이트</h1>
+<div class="subtitle">슬라이드 9의 4가지 근거 논문에 대한 2020년 이후 최신 검증/보강 논문</div>
+
+<!-- ═══ 1. 보행 변동성 ═══ -->
+<h2>1. 보행 변동성이 높으면 낙상 위험이 높다</h2>
+
+<div class="old-ref">
+    <strong>기존 근거:</strong> Hausdorff et al. (2001) — stride-time CV가 낙상군에서 유의하게 높음. 1년 전향적 연구.
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">보행 분석 기반 고령자 낙상 위험 예측 모델 <span class="update-tag">추천 교체</span></div>
+            <div class="paper-meta">Choi et al. &bull; 2024 &bull; BMC Public Health &bull; PMID: 39138430</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 80세 이상 요양시설 노인 132명에게 IMU 센서를 부착하고 10m 보행을 측정. 보폭 시간(stride time), 보폭 길이(stride length), 보행 속도 등을 로지스틱 회귀 모델에 넣어 낙상 위험을 예측.<br>
+                <strong>핵심 결과:</strong> AUC 0.878, 민감도 93.5%, 특이도 72.6%. stride time이 독립적 낙상 예측인자로 확인 (OR=0.992).<br>
+                <strong>대체 목적:</strong> 기존 Hausdorff(2001)는 "보행 변동성이 높으면 위험하다"를 처음 제시한 논문이지만 23년 전 연구. 이 논문은 같은 결론을 <strong>AUC 0.878이라는 정량 수치</strong>로 재확인했고, 2024년 최신 데이터이므로 슬라이드 근거로 더 강력함.
+            </div>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11323353/" target="_blank" class="link-btn">PMC 원문</a>
+        </div>
+        <span class="stat stat-green">AUC 0.878</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">보행 속도 증가 시 걸음 폭 변동성으로 낙상 위험 예측</div>
+            <div class="paper-meta">Park et al. &bull; 2025 &bull; Scientific Reports &bull; 303명</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 지역사회 거주 노인 303명을 대상으로 평상시 보행과 20% 빠르게 걷기를 비교. 보행 변동성 CV(걸음 시간, 걸음 폭 등)를 낙상 위험군/비위험군에서 비교 분석.<br>
+                <strong>핵심 결과:</strong> 낙상위험군에서 대부분의 보행 변동성 CV가 유의하게 높음. 특히 빠르게 걸을 때 step-width CV의 판별력이 극대화.<br>
+                <strong>대체 목적:</strong> 보강 논문. Hausdorff가 stride-time만 봤다면, 이 논문은 <strong>step-width(좌우 흔들림)도 핵심 지표</strong>임을 303명 대규모로 보여줌. 우리 시스템의 mmWave 좌우 흔들림 측정 근거로 활용 가능.
+            </div>
+            <a href="https://www.nature.com/articles/s41598-025-02128-2" target="_blank" class="link-btn">Nature 원문</a>
+        </div>
+        <span class="stat stat-green">303명</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">웨어러블 센서 기반 낙상 위험 평가 체계적 리뷰</div>
+            <div class="paper-meta">2022 &bull; Frontiers in Digital Health &bull; 체계적 리뷰</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 다수의 웨어러블 센서 낙상 예측 연구를 체계적으로 분석. 가속도계, 자이로, 압력 센서 등 다양한 센서의 낙상 판별력을 비교.<br>
+                <strong>핵심 결과:</strong> 모든 센서 중 <strong>보행 속도와 보행 변동성(gait variability)만이</strong> 낙상 위험 판별에 일관되게 유의미한 결과를 보임.<br>
+                <strong>대체 목적:</strong> 보강 논문. "보행 변동성이 핵심"이라는 결론이 개별 연구가 아닌 <strong>체계적 리뷰 수준에서 합의</strong>되었음을 보여줌. 우리 시스템이 보행 변동성에 집중하는 것이 학술적으로 올바른 방향임을 뒷받침.
+            </div>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9329588/" target="_blank" class="link-btn">PMC 원문</a>
+        </div>
+        <span class="stat stat-blue">리뷰</span>
+    </div>
+</div>
+
+<!-- ═══ 2. 일상 보행 연속 측정 ═══ -->
+<h2>2. 일상 보행 연속 측정으로 낙상 예측이 가능하다</h2>
+
+<div class="old-ref">
+    <strong>기존 근거:</strong> van Schooten et al. (2014) — 일상 보행 양+질로 6개월 낙상 예측 AUC 0.67
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">낙상 예측 모델의 외부 검증 및 확장 탐색 <span class="update-tag">추천 교체</span></div>
+            <div class="paper-meta">Rispens, van Schooten et al. &bull; 2024 &bull; JAMDA &bull; 263명 &bull; PMID: 38917964</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> van Schooten(2014)의 원래 모델을 <strong>같은 연구팀이 직접</strong> 263명 새로운 집단으로 외부 검증. 1주일 동안 체간 가속도계 착용 + 설문지 병행, 6개월 추적.<br>
+                <strong>핵심 결과:</strong> 원래 계수 적용 시 AUC 0.50~0.68이었으나, 재보정 후 설문+가속도 결합 모델 <strong>AUC 0.82</strong>로 크게 개선.<br>
+                <strong>대체 목적:</strong> 기존 van Schooten(2014)의 AUC 0.67은 자체 데이터 검증. 이 논문은 <strong>외부 데이터에서도 검증 성공 + AUC 0.82로 상향</strong>. 같은 저자가 10년 후 직접 업데이트했으므로 가장 강력한 교체 후보.
+            </div>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38917964/" target="_blank" class="link-btn">PubMed 원문</a>
+        </div>
+        <span class="stat stat-green">AUC 0.82</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">걸음 기반 파라미터와 전향적 낙상의 연관성</div>
+            <div class="paper-meta">Al Abiad, van Schooten et al. &bull; 2023 &bull; JMIR Aging &bull; 301명</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 301명 노인을 12개월 추적. 보행 중 걸음(step) 기반 파라미터만으로 낙상을 예측할 수 있는지 검증. 센서 부착 위치에 무관하게 작동하는 모델 개발.<br>
+                <strong>핵심 결과:</strong> 교차검증 AUC 0.67 (SD 0.05). 원본과 동등 수준이나 <strong>센서 위치 자유도</strong>를 확보.<br>
+                <strong>대체 목적:</strong> 보강 논문. "센서가 어디에 있든 보행 파라미터로 예측 가능하다"는 것은 우리처럼 <strong>비접촉(천장 레이더)에서도 작동할 수 있다</strong>는 간접 근거.
+            </div>
+            <a href="https://aging.jmir.org/2023/1/e49587" target="_blank" class="link-btn">JMIR 원문</a>
+        </div>
+        <span class="stat stat-blue">AUC 0.67</span>
+    </div>
+</div>
+
+<!-- ═══ 3. 첫 보행 ═══ -->
+<h2>3. 허약 노인의 첫 보행이 기능 상태를 반영한다</h2>
+
+<div class="old-ref">
+    <strong>기존 근거:</strong> Lindemann et al. (2005) — 첫 보행의 안정 도달 시간이 기능 저하 지표
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">입원 노인의 아침 보행 개시 변동성이 낮보다 높다 <span class="update-tag">추천 교체</span></div>
+            <div class="paper-meta">Ishii et al. &bull; 2020 &bull; Physical Therapy Research &bull; 37명 &bull; PMC7814196</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 입원 노인 37명(평균 79.7세)의 보행을 아침과 낮 시간대에 각각 측정. 보행 개시(첫 몇 걸음) 단계와 정상 보행(steady-state) 단계를 구분하여 변동계수(CV)를 비교.<br>
+                <strong>핵심 결과:</strong> 아침 보행 개시 CV가 낮 시간대보다 <strong>유의하게 높음 (p&lt;0.01).</strong> 정상 보행에서는 시간대 차이 없음. 즉, <strong>아침 "첫 걸음"만이</strong> 시간대에 민감하게 반응.<br>
+                <strong>대체 목적:</strong> Lindemann(2005)은 "첫 보행이 기능 저하를 반영한다"는 개념만 제시. 이 논문은 <strong>"아침 첫 보행이 낮보다 불안정하다"를 실증</strong>. 우리 시스템이 "아침 첫 기상 시 보행"을 핵심 측정 시점으로 잡은 것의 직접적 근거.
+            </div>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7814196/" target="_blank" class="link-btn">PMC 원문</a>
+        </div>
+        <span class="stat stat-orange">p&lt;0.01</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">허약 단계별 보행 개시 패턴 차이 분석</div>
+            <div class="paper-meta">Herssens et al. &bull; 2024 &bull; Eur Rev Aging &bull; 61명</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 65세 이상 노인 61명을 Fried 허약 기준(비허약/전허약/허약)으로 분류. 보행 개시 시 소요 시간, 첫 발걸음 길이, 발 최대 높이 등 생체역학 분석.<br>
+                <strong>핵심 결과:</strong> 허약 노인은 비허약 대비 <strong>보행 개시 시간이 유의하게 길고, 첫 발걸음이 짧음.</strong> 낙상 공포와 발 최대 높이 간 부적 상관 (r=-0.31).<br>
+                <strong>대체 목적:</strong> 보강 논문. Lindemann이 "첫 보행 불안정"을 관찰적으로 제시했다면, 이 논문은 <strong>허약 수준별로 보행 개시가 얼마나 달라지는지</strong>를 정량화. 우리 시스템의 "기상 패턴 분석"이 허약도를 반영할 수 있다는 근거.
+            </div>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10787464/" target="_blank" class="link-btn">PMC 원문</a>
+        </div>
+        <span class="stat stat-purple">2024</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">앉았다 일어서기 낙상의 실제 비디오 분석 — 장기요양시설</div>
+            <div class="paper-meta">Komisar et al. &bull; 2023 &bull; Arch PM&amp;R &bull; 183명, 306건 낙상 비디오 &bull; PMID: 36402204</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 장기요양시설 거주자 183명의 실제 낙상 306건을 비디오로 촬영/분석. 앉았다 일어서기(STS) 전환 중 어느 단계에서 넘어지는지 분류.<br>
+                <strong>핵심 결과:</strong> STS 낙상의 <strong>64%가 "일어서는 단계"</strong>에서 발생 (36%는 안정화 단계). 일어서기 낙상은 뒤로, 안정화 낙상은 옆으로 넘어짐.<br>
+                <strong>대체 목적:</strong> 보강 논문. "기립-보행 전환 구간이 가장 위험하다"를 <strong>306건 실제 낙상 영상</strong>으로 입증. 우리 시스템의 ToF 자세 감지(눕다→앉다→서다)가 이 위험 구간을 정확히 포착하는 것의 근거.
+            </div>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36402204/" target="_blank" class="link-btn">PubMed 원문</a>
+        </div>
+        <span class="stat stat-orange">64%</span>
+    </div>
+</div>
+
+<!-- ═══ 4. HRV ═══ -->
+<h2>4. HRV 저하가 낙상을 직접 예측한다</h2>
+
+<div class="old-ref">
+    <strong>기존 근거:</strong> Castaldo et al. (2017) — 5분 HRV로 낙상 예측 accuracy 68% &bull; Melillo et al. (2015) — OR 4.2
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">HRV 기반 스트레스 감지 및 낙상 위험 모니터링 — 머신러닝 접근 <span class="update-tag">보강</span></div>
+            <div class="paper-meta">Messaoud &amp; Thamsuwan &bull; 2025 &bull; MDPI Computers</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 일상 활동 중 HRV 데이터를 수집하고, K-means 클러스터링으로 3가지 자율신경 상태(정상/중간/위험)를 식별한 뒤 Gradient Boosting으로 낙상 위험 분류.<br>
+                <strong>핵심 결과:</strong> accuracy <strong>95.45%</strong>, precision 93.10%, recall 85.71%. Castaldo(2017)의 68%를 크게 상회.<br>
+                <strong>대체 목적:</strong> Castaldo(2017)와 Melillo(2015)는 "HRV로 낙상 예측 가능"의 원조 논문이므로 유지하되, 이 논문으로 <strong>"최신 ML로 정확도가 95%까지 올라간다"</strong>를 보강. 비접촉 HRV(CSI)와 결합하면 더 높은 성능이 기대된다는 논리에 활용.
+            </div>
+            <a href="https://www.mdpi.com/2073-431X/14/2/45" target="_blank" class="link-btn">MDPI 원문</a>
+        </div>
+        <span class="stat stat-green">95.45%</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-row">
+        <div>
+            <div class="paper-title">웨어러블 센서 기반 낙상 위험 예측 모델 스코핑 리뷰</div>
+            <div class="paper-meta">2024 &bull; Archives of Gerontology and Geriatrics &bull; 31개 논문 분석</div>
+            <div class="paper-finding">
+                <strong>연구 내용:</strong> 2020~2024년 발표된 31개 웨어러블 센서 낙상 예측 논문을 체계적으로 분석. 보행 파라미터 단독 vs 생리신호(HRV 등) 결합 모델의 성능 비교.<br>
+                <strong>핵심 결과:</strong> 최고 성능 모델 accuracy 90.5~94.4%. <strong>HRV를 포함한 생리신호를 보행 데이터와 결합하면 예측력이 향상</strong>됨을 확인.<br>
+                <strong>대체 목적:</strong> 보강 논문. "보행 + HRV를 합치면 더 좋다"는 것이 31개 논문 리뷰에서 합의됨. 우리 시스템이 mmWave(보행) + CSI(HRV)를 결합하는 것의 <strong>학술적 정당성</strong>.
+            </div>
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167494324003650" target="_blank" class="link-btn">ScienceDirect 원문</a>
+        </div>
+        <span class="stat stat-blue">리뷰</span>
+    </div>
+</div>
+
+<!-- ═══ 연구 갭 ═══ -->
+<div style="background:var(--accent-soft);border:1px solid rgba(91,138,245,0.25);border-radius:var(--r-lg);padding:24px;margin-top:48px;">
+    <div style="font-size:16px;font-weight:800;color:var(--accent);margin-bottom:8px;">연구 갭: 비접촉 HRV로 낙상 예측한 논문은 아직 0편</div>
+    <div style="font-size:14px;color:var(--text-2);line-height:1.7;">
+        HRV로 낙상 예측 가능 (accuracy 68~95%) + WiFi CSI로 심박 96.8% 측정 가능 (Sun 2024) + mmWave로 보행 정량분석 가능 (Zeng 2022)
+        <br>이 셋을 합친 <strong>비접촉 다중 센서 낙상 사전 예측</strong>은 아직 아무도 하지 않았습니다.
+    </div>
+</div>
+
+</div>
+</body>
+</html>
