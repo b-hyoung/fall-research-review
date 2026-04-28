@@ -365,12 +365,13 @@
 </header>
 
 <div class="summary-strip">
-    <span class="summary-chip" style="background:var(--accent-soft);color:var(--accent);">18편 인용</span>
+    <span class="summary-chip" style="background:var(--accent-soft);color:var(--accent);">25편 인용</span>
     <span class="summary-chip" style="background:var(--rose-soft);color:var(--rose);">역학 4</span>
     <span class="summary-chip" style="background:var(--green-soft);color:var(--green);">보행 4</span>
     <span class="summary-chip" style="background:var(--blue-soft);color:var(--blue);">센서 3</span>
     <span class="summary-chip" style="background:var(--purple-soft);color:var(--purple);">HRV 3</span>
     <span class="summary-chip" style="background:var(--surface-alt);color:var(--text-2);border:1px solid var(--border);">기관 2</span>
+    <span class="summary-chip" style="background:var(--accent-soft);color:var(--accent);">알고리즘 7</span>
 </div>
 
 <div class="filter-strip">
@@ -381,6 +382,7 @@
     <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','sensor',this)" type="button">센서 기술</button>
     <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','hrv',this)" type="button">HRV</button>
     <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','inst',this)" type="button">기관 통계</button>
+    <button class="filter-btn" data-group="cat" onclick="applyFilter('cat','algo',this)" type="button">알고리즘</button>
 </div>
 <div class="filter-strip" style="margin-top:8px;">
     <span class="filter-label">슬라이드</span>
@@ -390,6 +392,7 @@
     <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','4',this)" type="button">S.4</button>
     <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','7',this)" type="button">S.7</button>
     <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','9',this)" type="button">S.9</button>
+    <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','13.5',this)" type="button">S.13.5</button>
     <button class="filter-btn" data-group="slide" onclick="applyFilter('slide','14',this)" type="button">S.14</button>
 </div>
 
@@ -746,6 +749,142 @@
         <div class="ref-aside">
             <div class="slide-badges"><span class="slide-badge">S.14</span></div>
             <a class="ref-link" href="https://arxiv.org/abs/2208.05905" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 19: Two-level CFAR -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">19</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Chuanwen Xu(2021)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">Two-level CFAR Algorithm for Target Detection in MmWave Radar</div>
+            <div class="ref-summary">
+                <strong>Two-level CFAR (대상 검출 및 노이즈 제거):</strong> 복잡한 실내 환경에서 기존 CFAR 대비 감지 감도(Sensitivity)를 <strong>46.1%에서 97.1%</strong>까지 향상시킴으로써 노이즈(Clutter) 속에서도 사람을 명확히 구분해냄.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <a class="ref-link" href="https://ieeexplore.ieee.org/document/9581073/" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 20: Gait Parameter Estimation -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">20</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Mubarak A. Alanazi(2022)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">Towards a Low-Cost Solution for Gait Analysis Using Millimeter Wave Sensor</div>
+            <div class="ref-summary">
+                <strong>Gait Parameter Estimation (보행 패턴 산출):</strong> 보행 속도 측정 시 실제 의료 장비와 비교하여 평균 절대 오차(MAE) <strong>0.025 m/s</strong> (2.5 cm/s) 및 상관계수 R² &gt; 0.94를 달성하여 정밀한 보행 분석 가능성을 입증함.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <a class="ref-link" href="https://www.mdpi.com/1424-8220/22/15/5470" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 21: Adaptive Thresholding -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">21</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Fengbo Zhu(2019)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">Bed-Exit Detection Using a Time-of-Flight Sensor</div>
+            <div class="ref-summary">
+                <strong>Adaptive Thresholding (이탈 감지 및 적응형 임계치):</strong> 실시간 환경 변화를 반영하는 적응형 임계치를 통해 민감도 <strong>97.4%</strong>와 특이도 <strong>96.1%</strong>를 기록함. 실제 환경에서 오보율(False Alarm Rate)을 약 3.9% 수준으로 낮게 유지함.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <a class="ref-link" href="https://www.mdpi.com/1424-8220/19/18/3855" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 22: Kalman Filter -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">22</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">양진모 (2024)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">Multi-Person Fall Detection Using Data Assimilation Method With Kalman Filter</div>
+            <div class="ref-summary">
+                <strong>Kalman Filter (노이즈 감소):</strong> 칼만 필터를 적용함으로써 거리 측정 노이즈의 분산을 <strong>60% 이상 감소</strong>시켰으며, 타겟이 센서 시야각의 가장자리에 있을 때도 안정적인 추적이 가능해짐.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <a class="ref-link" href="https://ieeexplore.ieee.org/abstract/document/11030583" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 23: PCA + LSTM -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">23</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">김상철, 김용환(2022)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">Efficient classification of human activity using PCA and deep learning LSTM with WiFi CSI</div>
+            <div class="ref-summary">
+                <strong>PCA + LSTM (행동 분류 및 데이터 압축):</strong> 고차원 CSI 데이터에서 PCA로 특징을 압축하고 LSTM으로 학습한 결과, 사람의 주요 활동에 대해 <strong>95.6% ~ 96.4%</strong>의 분류 정확도를 달성함.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <a class="ref-link" href="https://www.researchgate.net/publication/358952395_Efficient_classification_of_human_activity_using_PCA_and_deep_learning_LSTM_with_WiFi_CSI" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 24: STFT -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">24</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Liping Kui (2019), John P. Rula (2015)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">SMARS: Sleep Monitoring via Ambient Radio Signals / Wi-Sleep</div>
+            <div class="ref-summary">
+                <strong>STFT (호흡 및 수면 모니터링):</strong> STFT 주파수 분석을 통해 미세한 흉부 움직임을 추출하여, 호흡수 추정에서 평균 절대 오차(MAE) <strong>0.47 bpm</strong>(분당 호흡수)의 높은 정밀도를 보여줌.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+                <a class="ref-link" href="https://ieeexplore.ieee.org/document/8641215/" target="_blank" rel="noopener">SMARS 원문</a>
+                <a class="ref-link" href="https://ieeexplore.ieee.org/document/7218610/" target="_blank" rel="noopener">Wi-Sleep 원문</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- 25: Hampel Filter -->
+    <article class="ref-item" data-cat="algo" data-slides="13.5">
+        <div class="ref-num">25</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Mario Roos-Hoefgeest Toribio (2024/2025)</span>
+                <span class="ref-cat" style="background:var(--accent-soft);color:var(--accent);">알고리즘</span>
+            </div>
+            <div class="ref-title-en">A Novel Approach to Speed Up Hampel Filter for Outlier Detection</div>
+            <div class="ref-summary">
+                <strong>Hampel Filter (실시간 노이즈 제거 최적화):</strong> 표준 방식 대비 약 <strong>5.8배 ~ 10.2배</strong>의 연산 속도 향상을 이루었으며, 처리 지연 시간(Latency)을 1.2ms 미만으로 줄여 실시간 생체 신호 처리에 최적화됨.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.13.5</span></div>
+            <a class="ref-link" href="https://www.mdpi.com/1424-8220/25/11/3319" target="_blank" rel="noopener">원문 보기</a>
         </div>
     </article>
 
