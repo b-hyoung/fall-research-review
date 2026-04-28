@@ -361,11 +361,11 @@
 
 <header class="page-header">
     <h1>참고문헌</h1>
-    <p>통합발표 슬라이드에서 인용된 논문 및 기관 출처 16편. 각 항목의 인용 위치, 요약, 원문 링크를 정리했습니다.</p>
+    <p>통합발표 슬라이드에서 인용된 논문 및 기관 출처 18편. 각 항목의 인용 위치, 요약, 원문 링크를 정리했습니다.</p>
 </header>
 
 <div class="summary-strip">
-    <span class="summary-chip" style="background:var(--accent-soft);color:var(--accent);">16편 인용</span>
+    <span class="summary-chip" style="background:var(--accent-soft);color:var(--accent);">18편 인용</span>
     <span class="summary-chip" style="background:var(--rose-soft);color:var(--rose);">역학 4</span>
     <span class="summary-chip" style="background:var(--green-soft);color:var(--green);">보행 4</span>
     <span class="summary-chip" style="background:var(--blue-soft);color:var(--blue);">센서 3</span>
@@ -516,7 +516,7 @@
     </article>
 
     <!-- 8: Zeng -->
-    <article class="ref-item" data-cat="sensor" data-slides="7">
+    <article class="ref-item" data-cat="sensor" data-slides="7,14">
         <div class="ref-num">8</div>
         <div class="ref-body">
             <div class="ref-meta">
@@ -698,6 +698,54 @@
         <div class="ref-aside">
             <div class="slide-badges"><span class="slide-badge">S.9</span></div>
             <a class="ref-link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4612540/" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 17: Yu -->
+    <article class="ref-item" data-cat="sensor" data-slides="14">
+        <div class="ref-num">17</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Yu et al. (2025)</span>
+                <span class="ref-cat" style="background:var(--blue-soft);color:var(--blue);">센서</span>
+            </div>
+            <div class="ref-title-en">LSTM-Based Fall Detection by FMCW mmWave Radar Sensor for Seniors Living Alone. Applied Sciences 15, 8381.</div>
+            <div class="ref-summary">TI IWR6843 mmWave 레이더로 독거노인 낙상 탐지. HOG+LSTM+Self-Attention 모델로 <strong>정확도 95.3%</strong>, 민감도 98.2%. 7명 피험자, 5가지 활동(걷기/앉기/눕기/무활동/낙상) 분류. lying vs falling 혼동 문제를 직접 분석. 한국 연구진(한경대).</div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.14</span></div>
+            <a class="ref-link" href="https://doi.org/10.3390/app15158381" target="_blank" rel="noopener">원문 보기</a>
+        </div>
+    </article>
+
+    <!-- 18: Abedi -->
+    <article class="ref-item" data-cat="sensor" data-slides="14">
+        <div class="ref-num">18</div>
+        <div class="ref-body">
+            <div class="ref-meta">
+                <span class="ref-author">Abedi et al. (2022)</span>
+                <span class="ref-cat" style="background:var(--blue-soft);color:var(--blue);">센서</span>
+            </div>
+            <div class="ref-title-en">AI-Powered Non-Contact In-Home Gait Monitoring and Activity Recognition System Based on mm-Wave FMCW Radar and Cloud Computing. arXiv:2208.05905.</div>
+            <div class="ref-summary">
+                <strong>시스템:</strong> TI AWR1443 mmWave + Raspberry Pi + Azure 클라우드<br>
+                <strong>성능:</strong> GRU 딥러닝 활동 인식 <strong>정확도 93%</strong>(학습 피험자), 88%(새 피험자). 실제 가정 환경 검증.<br>
+                <strong>추출 데이터:</strong> 보행 속도, 케이던스(분당 걸음 수), 보폭(stride length)<br>
+                <strong>핵심 기술 원리:</strong><br>
+                1. 레이더 FMCW 전파 송출 → 사람에게 반사 → <strong>도플러 효과</strong>로 움직임 속도 측정<br>
+                2. Range FFT → 거리별 신호 분리 → 정지물체(벽/가구) 제거<br>
+                3. 시간별 FFT 반복 → <strong>JTF(Joint Time-Frequency) 스펙트로그램</strong> 생성 (2D 이미지)<br>
+                4. 활동마다 JTF 패턴이 다름: 보행 = 주기적 물결, 정지 = 거의 0<br>
+                5. GRU 딥러닝이 JTF 패턴으로 "지금 걷고 있는 구간" 자동 판별<br>
+                6. 걷는 구간에서 도플러 주파수의 크기와 주기로 보행 속도/케이던스/보폭 계산<br>
+                <strong>도플러란:</strong> 구급차가 다가오면 소리가 높아지듯, 사람이 움직이면 반사 전파의 주파수가 변함. 이 변화량 = 움직임 속도.<br>
+                <strong>JTF란:</strong> Joint Time-Frequency. "시간이 흐르면서 움직임 속도가 어떻게 변했는지"를 2D 그림으로 나타낸 것. 걷기/앉기 등 활동마다 그림 모양이 달라 AI가 구별 가능.<br>
+                <strong>한계:</strong> 세밀한 관절별 분석 불가(팔/다리 개별 구분 어려움), 각도 의존성, 실내 가구 간섭. 임상 진단 수준이 아닌 일상 모니터링 수준.
+            </div>
+        </div>
+        <div class="ref-aside">
+            <div class="slide-badges"><span class="slide-badge">S.14</span></div>
+            <a class="ref-link" href="https://arxiv.org/abs/2208.05905" target="_blank" rel="noopener">원문 보기</a>
         </div>
     </article>
 
