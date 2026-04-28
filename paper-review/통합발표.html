@@ -1099,7 +1099,24 @@
                     <div style="margin-bottom:8px; margin-left:8px;">
                         ④ <strong>보행 패턴 산출:</strong> 발의 속력 데이터를 통해 보행 안정성, 보폭, 걸음 주기 등 보행 패턴 산출
                     </div>
-                    <div>
+                    <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1);">
+                        <div style="margin-bottom:8px;">
+                            <strong>주요 알고리즘:</strong>
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>2D-FFT</strong> — 수신 신호에서 물체의 거리를 도출하는 기본 알고리즘
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>CFAR</strong> (Constant False Alarm Rate) — 주변 노이즈 수준에 따라 동적으로 '진짜 사람'의 신호만 검출하는 알고리즘
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>DBSCAN</strong> (Clustering) — 탐지된 여러 개의 점들을 하나의 사람 형태의 덩어리로 묶어주는 군집 알고리즘
+                        </div>
+                        <div style="margin-left:8px;">
+                            • <strong>Gait Parameter Estimation</strong> — 추출된 포락선에서 피크(Peak) 간격을 계산하여 보폭, 걸음 주기 등을 추정하는 알고리즘
+                        </div>
+                    </div>
+                    <div style="margin-top:12px;">
                         <strong>설치 위치:</strong> 침대 위 천장 or 병실 중앙 천장
                     </div>
                 </div>
@@ -1127,7 +1144,24 @@
                     <div style="margin-bottom:8px; margin-left:8px;">
                         ③ <strong>이탈 감지:</strong> 거리가 평상시보다 짧아짐 → 노인분이 침대를 벗어나려는 시도 또는 벗어난 것으로 예측
                     </div>
-                    <div>
+                    <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1);">
+                        <div style="margin-bottom:8px;">
+                            <strong>주요 알고리즘:</strong>
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>Kalman Filter</strong> (칼만 필터) — 거리 측정 오차를 보정하여 안정적인 추정값 산출
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>Moving Average</strong> (이동 평균) — 순간적인 노이즈를 제거하여 신호 평활화
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>Adaptive Thresholding</strong> (적응적 임계치) — 시간대별 환경 변화에 따라 동적으로 임계값 조정
+                        </div>
+                        <div style="margin-left:8px;">
+                            • <strong>Finite State Machine</strong> (FSM) — 침대 상태(누움/이탈 시도/이탈됨)를 단계적으로 정의하여 추적
+                        </div>
+                    </div>
+                    <div style="margin-top:12px;">
                         <strong>설치 위치:</strong> 침대 양옆 끝
                     </div>
                 </div>
@@ -1161,7 +1195,24 @@
                     <div style="margin-bottom:8px; margin-left:8px;">
                         ⑤ <strong>주파수 분석:</strong> FFT로 주파수별 신호 분리 → 노이즈/호흡/움직임/인원수 등 구분
                     </div>
-                    <div>
+                    <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1);">
+                        <div style="margin-bottom:8px;">
+                            <strong>주요 알고리즘:</strong>
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>Hampel Filter</strong> — CSI 데이터에 포함된 이상(Abnormal) 값 제거
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>PCA</strong> (주성분 분석) — 다차원 CSI 데이터를 특징적인 저차원으로 압축
+                        </div>
+                        <div style="margin-bottom:3px; margin-left:8px;">
+                            • <strong>STFT</strong> (단시간 푸리에 변환) — 시간에 따른 주파수 변화를 분석하여 신호 특성 파악
+                        </div>
+                        <div style="margin-left:8px;">
+                            • <strong>DTW / CNN+LSTM</strong> — 시간에 정의된 신호 패턴의 유사도 비교를 통해 호흡/움직임/인원수 구분
+                        </div>
+                    </div>
+                    <div style="margin-top:12px;">
                         <strong>설치 위치:</strong> <span style="color:var(--text-3); font-style:italic;">병실 내 최적 위치 선정 필요 (Fresnel zone 고려)</span>
                     </div>
                 </div>
