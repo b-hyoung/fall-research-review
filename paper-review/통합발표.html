@@ -1073,148 +1073,199 @@
         <h2 class="s-title">센서 기술 원리 상세</h2>
 
         <!-- 센서 카드 컨테이너 -->
-        <div class="sensor-cards-container" style="display:flex; gap:20px; margin-top:32px;">
+        <div class="sensor-cards-container" style="display:flex; gap:24px; margin-top:32px;">
             <!-- mmWave 섹션 -->
-            <div class="tech-detail-card" style="flex:1; padding:20px; background:var(--green-soft); border-left:4px solid var(--green); border-radius:8px;">
-                <div class="tech-header" style="display:flex; align-items:center; margin-bottom:12px;">
-                    <div class="tech-icon" style="width:28px; height:28px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; margin-right:10px; font-size:14px;">M</div>
+            <div class="sensor-box" style="flex:1; border-top:3px solid var(--green); padding:24px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border);">
+                    <div style="width:36px; height:36px; background:var(--green-soft); color:var(--green); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:900; margin-right:12px; font-size:18px;">M</div>
                     <div>
-                        <div style="font-size:14px; font-weight:800; color:var(--green);">mmWave (IWR6843AOP)</div>
-                        <div style="font-size:10px; color:var(--text-2); margin-top:1px;">60GHz 밀리미터파 레이더</div>
+                        <div style="font-size:16px; font-weight:800; color:var(--green);">mmWave (IWR6843)</div>
+                        <div style="font-size:11px; color:var(--text-2); margin-top:2px;">60GHz 밀리미터파 레이더</div>
                     </div>
                 </div>
-                <div class="tech-content" style="font-size:12px; line-height:1.6; color:var(--text-1);">
-                    <div style="margin-bottom:8px;">
-                        <strong>기술 원리:</strong>
+                
+                <div style="font-size:12px; line-height:1.6; color:var(--text-2); flex:1; display:flex; flex-direction:column; gap:16px;">
+                    <!-- 기술 원리 -->
+                    <div style="background:var(--surface-2); padding:16px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:800; color:var(--green); margin-bottom:12px; letter-spacing:0.05em;">기술 원리</div>
+                        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--green); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">1</span>
+                                <div><strong style="color:var(--text-1);">초기 신호 저장:</strong> 빈 방 기준 신호 저장</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--green); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">2</span>
+                                <div><strong style="color:var(--text-1);">움직임 추적:</strong> 최초 신호 지속 차감</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--green); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">3</span>
+                                <div><strong style="color:var(--text-1);">도플러 분석:</strong> 미세 도플러 최고 속력 분석</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--green); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">4</span>
+                                <div><strong style="color:var(--text-1);">보행 패턴 산출:</strong> 보행 안정성, 보폭 추정</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ① <strong>초기 신호 저장:</strong> 사람이 없는 방에서의 기준 신호 저장
+
+                    <!-- 주요 알고리즘 -->
+                    <div style="background:var(--surface-2); padding:16px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:800; color:var(--green); margin-bottom:12px; letter-spacing:0.05em;">주요 알고리즘</div>
+                        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--green); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">2D-FFT:</strong> 물체 거리 도출 (기본)</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--green); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">CFAR:</strong> 사람 신호 동적 검출</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--green); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">DBSCAN:</strong> 탐지점 사람 형태 군집화</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--green); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">Gait Parameter:</strong> 피크 간격 기반 추정</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ② <strong>움직임 추적:</strong> 이후 신호에서 최초 신호를 계속 빼서 움직이는 물체(사람)만 추적
-                    </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ③ <strong>도플러 신호 분석:</strong> 추적한 위치에서 발생하는 미세 도플러 신호 중 가장 빠른 속력(발의 속력) 분석
-                    </div>
-                    <div style="margin-bottom:8px; margin-left:8px;">
-                        ④ <strong>보행 패턴 산출:</strong> 발의 속력 데이터를 통해 보행 안정성, 보폭, 걸음 주기 등 보행 패턴 산출
-                    </div>
-                    <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1);">
-                        <div style="margin-bottom:8px;">
-                            <strong>주요 알고리즘:</strong>
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>2D-FFT</strong> — 수신 신호에서 물체의 거리를 도출하는 기본 알고리즘
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>CFAR</strong> (Constant False Alarm Rate) — 주변 노이즈 수준에 따라 동적으로 '진짜 사람'의 신호만 검출하는 알고리즘
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>DBSCAN</strong> (Clustering) — 탐지된 여러 개의 점들을 하나의 사람 형태의 덩어리로 묶어주는 군집 알고리즘
-                        </div>
-                        <div style="margin-left:8px;">
-                            • <strong>Gait Parameter Estimation</strong> — 추출된 포락선에서 피크(Peak) 간격을 계산하여 보폭, 걸음 주기 등을 추정하는 알고리즘
-                        </div>
-                    </div>
-                    <div style="margin-top:12px;">
-                        <strong>설치 위치:</strong> 침대 위 천장 or 병실 중앙 천장
-                    </div>
+                </div>
+
+                <!-- 설치 위치 -->
+                <div style="display:flex; align-items:center; background:rgba(255,255,255,0.03); padding:12px 16px; border-radius:8px; margin-top:16px;">
+                    <span style="font-size:14px; margin-right:8px;">📍</span>
+                    <div style="font-size:12px; color:var(--text-2);"><strong style="color:var(--text-1);">설치:</strong> 침대 위 천장 or 병실 중앙 천장</div>
                 </div>
             </div>
 
             <!-- ESP32 + ToF 섹션 -->
-            <div class="tech-detail-card" style="flex:1; padding:20px; background:var(--orange-soft); border-left:4px solid var(--orange); border-radius:8px;">
-                <div class="tech-header" style="display:flex; align-items:center; margin-bottom:12px;">
-                    <div class="tech-icon" style="width:28px; height:28px; background:var(--orange); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; margin-right:10px; font-size:14px;">T</div>
+            <div class="sensor-box" style="flex:1; border-top:3px solid var(--orange); padding:24px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border);">
+                    <div style="width:36px; height:36px; background:var(--orange-soft); color:var(--orange); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:900; margin-right:12px; font-size:18px;">T</div>
                     <div>
-                        <div style="font-size:14px; font-weight:800; color:var(--orange);">ESP32 + ToF</div>
-                        <div style="font-size:10px; color:var(--text-2); margin-top:1px;">적외선 거리 측정 센서</div>
+                        <div style="font-size:16px; font-weight:800; color:var(--orange);">ESP32 + ToF</div>
+                        <div style="font-size:11px; color:var(--text-2); margin-top:2px;">적외선 거리 측정 센서</div>
                     </div>
                 </div>
-                <div class="tech-content" style="font-size:12px; line-height:1.6; color:var(--text-1);">
-                    <div style="margin-bottom:8px;">
-                        <strong>기술 원리:</strong>
+                
+                <div style="font-size:12px; line-height:1.6; color:var(--text-2); flex:1; display:flex; flex-direction:column; gap:16px;">
+                    <!-- 기술 원리 -->
+                    <div style="background:var(--surface-2); padding:16px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:800; color:var(--orange); margin-bottom:12px; letter-spacing:0.05em;">기술 원리</div>
+                        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--orange); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">1</span>
+                                <div><strong style="color:var(--text-1);">적외선 발사:</strong> 적외선 송출 및 반사 시간 계산</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--orange); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">2</span>
+                                <div><strong style="color:var(--text-1);">거리 계산:</strong> 반사 시간 기반 평상시 거리 모니터링</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--orange); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">3</span>
+                                <div><strong style="color:var(--text-1);">이탈 감지:</strong> 측정 거리가 짧아지면 이탈(시도)로 판단</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ① <strong>적외선 발사:</strong> 적외선을 주기적으로 쏘고 반사되어 돌아오는 시간 계산
+
+                    <!-- 주요 알고리즘 -->
+                    <div style="background:var(--surface-2); padding:16px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:800; color:var(--orange); margin-bottom:12px; letter-spacing:0.05em;">주요 알고리즘</div>
+                        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--orange); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">Kalman Filter:</strong> 측정 오차 보정, 안정적 추정</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--orange); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">Moving Average:</strong> 순간 노이즈 제거 (평활화)</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--orange); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">Adaptive Threshold:</strong> 환경 변화별 동적 임계값 적용</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--orange); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">FSM:</strong> 상태(누움/시도/이탈)의 단계적 추적</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ② <strong>거리 계산:</strong> 반사 시간으로 평상시 거리 계산 및 모니터링
-                    </div>
-                    <div style="margin-bottom:8px; margin-left:8px;">
-                        ③ <strong>이탈 감지:</strong> 거리가 평상시보다 짧아짐 → 노인분이 침대를 벗어나려는 시도 또는 벗어난 것으로 예측
-                    </div>
-                    <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1);">
-                        <div style="margin-bottom:8px;">
-                            <strong>주요 알고리즘:</strong>
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>Kalman Filter</strong> (칼만 필터) — 거리 측정 오차를 보정하여 안정적인 추정값 산출
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>Moving Average</strong> (이동 평균) — 순간적인 노이즈를 제거하여 신호 평활화
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>Adaptive Thresholding</strong> (적응적 임계치) — 시간대별 환경 변화에 따라 동적으로 임계값 조정
-                        </div>
-                        <div style="margin-left:8px;">
-                            • <strong>Finite State Machine</strong> (FSM) — 침대 상태(누움/이탈 시도/이탈됨)를 단계적으로 정의하여 추적
-                        </div>
-                    </div>
-                    <div style="margin-top:12px;">
-                        <strong>설치 위치:</strong> 침대 양옆 끝
-                    </div>
+                </div>
+
+                <!-- 설치 위치 -->
+                <div style="display:flex; align-items:center; background:rgba(255,255,255,0.03); padding:12px 16px; border-radius:8px; margin-top:16px;">
+                    <span style="font-size:14px; margin-right:8px;">📍</span>
+                    <div style="font-size:12px; color:var(--text-2);"><strong style="color:var(--text-1);">설치:</strong> 침대 양옆 끝</div>
                 </div>
             </div>
 
             <!-- WiFi AP + ESP32 섹션 -->
-            <div class="tech-detail-card" style="flex:1; padding:20px; background:var(--blue-soft); border-left:4px solid var(--blue); border-radius:8px;">
-                <div class="tech-header" style="display:flex; align-items:center; margin-bottom:12px;">
-                    <div class="tech-icon" style="width:28px; height:28px; background:var(--blue); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; margin-right:10px; font-size:14px;">W</div>
+            <div class="sensor-box" style="flex:1; border-top:3px solid var(--blue); padding:24px; display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border);">
+                    <div style="width:36px; height:36px; background:var(--blue-soft); color:var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:900; margin-right:12px; font-size:18px;">W</div>
                     <div>
-                        <div style="font-size:14px; font-weight:800; color:var(--blue);">WiFi AP + ESP32</div>
-                        <div style="font-size:10px; color:var(--text-2); margin-top:1px;">CSI 기반 생체 신호 추출</div>
+                        <div style="font-size:16px; font-weight:800; color:var(--blue);">WiFi AP + ESP32</div>
+                        <div style="font-size:11px; color:var(--text-2); margin-top:2px;">CSI 기반 생체 신호 추출</div>
                     </div>
                 </div>
-                <div class="tech-content" style="font-size:12px; line-height:1.6; color:var(--text-1);">
-                    <div style="margin-bottom:8px;">
-                        <strong>기술 원리:</strong>
+                
+                <div style="font-size:12px; line-height:1.6; color:var(--text-2); flex:1; display:flex; flex-direction:column; gap:16px;">
+                    <!-- 기술 원리 -->
+                    <div style="background:var(--surface-2); padding:16px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:800; color:var(--blue); margin-bottom:12px; letter-spacing:0.05em;">기술 원리</div>
+                        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--blue); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">1</span>
+                                <div><strong style="color:var(--text-1);">신호 수신:</strong> WiFi 신호가 물체들에 반사/통과되며 발생하는 변화 수신</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--blue); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">2</span>
+                                <div><strong style="color:var(--text-1);">CSI 추출:</strong> 수신 신호의 진폭과 위상 변화로 CSI(채널 상태 정보) 수신</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--blue); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">3</span>
+                                <div><strong style="color:var(--text-1);">전처리:</strong> 이상치(Outlier) 및 노이즈 제거(Hampel Filter 등 적용)</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--blue); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">4</span>
+                                <div><strong style="color:var(--text-1);">차원 축소:</strong> PCA를 적용해 다수의 서브캐리어 중 핵심 주성분 추출</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="display:inline-block; width:16px; height:16px; background:var(--blue); color:var(--bg); border-radius:50%; text-align:center; line-height:16px; font-size:10px; font-weight:900; margin-right:8px; flex-shrink:0; margin-top:2px;">5</span>
+                                <div><strong style="color:var(--text-1);">신호 분석:</strong> FFT를 통해 호흡/심박 등 주기적인 생체 신호 분석, AI 모델로 행동/인원수 등 구분</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ① <strong>신호 반사/통과:</strong> WiFi 신호가 방 안 물체들에 반사/통과되며 ESP32 센서로 수신
+
+                    <!-- 주요 알고리즘 -->
+                    <div style="background:var(--surface-2); padding:16px; border-radius:8px;">
+                        <div style="font-size:11px; font-weight:800; color:var(--blue); margin-bottom:12px; letter-spacing:0.05em;">주요 알고리즘</div>
+                        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--blue); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">Hampel Filter:</strong> CSI 데이터 내 이상(Abnormal) 값 제거</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--blue); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">PCA:</strong> 다차원 데이터를 특징적인 저차원으로 압축</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--blue); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">STFT:</strong> 시간에 따른 주파수 변화 분석 (신호 특성)</div>
+                            </li>
+                            <li style="display:flex; align-items:flex-start;">
+                                <span style="color:var(--blue); margin-right:6px; font-size:10px; margin-top:2px;">▶</span>
+                                <div><strong style="color:var(--text-1);">DTW / CNN+LSTM:</strong> 패턴 유사도 비교 및 호흡/움직임 구분</div>
+                            </li>
+                        </ul>
                     </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ② <strong>CSI 추출:</strong> 신호 진폭과 위상 변화로 CSI(채널 상태 정보) 패킷 수신
-                    </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ③ <strong>데이터 분리:</strong> 수많은 주파수 가닥으로 나뉜 CSI 데이터 중 변화가 크고 뚜렷한 1~3개 가닥 선별
-                    </div>
-                    <div style="margin-bottom:4px; margin-left:8px;">
-                        ④ <strong>신호 압축:</strong> 선별된 데이터를 PCA(주성분 분석)로 압축 처리
-                    </div>
-                    <div style="margin-bottom:8px; margin-left:8px;">
-                        ⑤ <strong>주파수 분석:</strong> FFT로 주파수별 신호 분리 → 노이즈/호흡/움직임/인원수 등 구분
-                    </div>
-                    <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,0,0,0.1);">
-                        <div style="margin-bottom:8px;">
-                            <strong>주요 알고리즘:</strong>
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>Hampel Filter</strong> — CSI 데이터에 포함된 이상(Abnormal) 값 제거
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>PCA</strong> (주성분 분석) — 다차원 CSI 데이터를 특징적인 저차원으로 압축
-                        </div>
-                        <div style="margin-bottom:3px; margin-left:8px;">
-                            • <strong>STFT</strong> (단시간 푸리에 변환) — 시간에 따른 주파수 변화를 분석하여 신호 특성 파악
-                        </div>
-                        <div style="margin-left:8px;">
-                            • <strong>DTW / CNN+LSTM</strong> — 시간에 정의된 신호 패턴의 유사도 비교를 통해 호흡/움직임/인원수 구분
-                        </div>
-                    </div>
-                    <div style="margin-top:12px;">
-                        <strong>설치 위치:</strong> <span style="color:var(--text-3); font-style:italic;">병실 내 최적 위치 선정 필요 (Fresnel zone 고려)</span>
-                    </div>
+                </div>
+
+                <!-- 설치 위치 -->
+                <div style="display:flex; align-items:center; background:rgba(255,255,255,0.03); padding:12px 16px; border-radius:8px; margin-top:16px;">
+                    <span style="font-size:14px; margin-right:8px;">📍</span>
+                    <div style="font-size:12px; color:var(--text-2);"><strong style="color:var(--text-1);">설치:</strong> <span style="color:var(--text-3); font-style:italic;">병실 내 최적 위치 선정 필요 (Fresnel zone)</span></div>
                 </div>
             </div>
         </div>
