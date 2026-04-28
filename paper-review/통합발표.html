@@ -769,7 +769,7 @@
 </div>
 
 <!-- ═══ SLIDE 6: 우리의 접근 ═══ -->
-<div class="slide" data-slide="7">
+<div class="slide" data-slide="6">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Our Approach</div>
         <h2 class="s-title">3중 센서 시스템</h2>
@@ -816,7 +816,7 @@
 </div>
 
 <!-- ═══ SLIDE 8: 예측 + 감지 이중 구조 ═══ -->
-<div class="slide" data-slide="8">
+<div class="slide" data-slide="7">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Paradigm Shift</div>
         <h2 class="s-title">사후 감지 &rarr; 사전 예측 + 실시간 감지</h2>
@@ -846,7 +846,7 @@
 </div>
 
 <!-- ═══ SLIDE 9: 핵심 가설 ═══ -->
-<div class="slide" data-slide="9">
+<div class="slide" data-slide="8">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Core Hypothesis</div>
         <h2 class="s-title">아침 첫 기상 + 첫 보행 + 자율신경 상태 = 오늘의 위험도</h2>
@@ -879,9 +879,48 @@
     </div>
 </div>
 
+<<<<<<< Updated upstream
+=======
+<!-- ═══ SLIDE 10: 위험도 산출 모델 ═══ -->
+<div class="slide" data-slide="9">
+    <div class="slide-inner">
+        <div class="s-label" style="color:var(--accent)">Risk Model</div>
+        <h2 class="s-title">위험도 산출 모델</h2>
+        <div class="formula-block">
+            <span class="f-cm">// 각 지표별 이상도</span><br>
+            z = (오늘 &minus; 30일_평균) / 30일_표준편차<br>
+            anomaly = min( |z| / 3, 1.0 )<br><br>
+            <span class="f-cm">// 종합 위험도</span><br>
+            risk = <span class="f-g">0.20</span>&times;<span class="f-g">기상패턴</span>
+            + <span class="f-g">0.15</span>&times;<span class="f-g">보행속도</span>
+            + <span class="f-g">0.15</span>&times;<span class="f-g">STV</span>
+            + <span class="f-g">0.10</span>&times;<span class="f-g">흔들림</span>
+            + <span class="f-g">0.10</span>&times;<span class="f-g">보폭</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            + <span class="f-b">0.10</span>&times;<span class="f-b">보행리듬(CSI)</span>
+            + <span class="f-b">0.10</span>&times;<span class="f-b">HRV이상도(CSI)</span>
+            + <span class="f-b">0.10</span>&times;<span class="f-b">동행자보정(CSI)</span>
+        </div>
+        <div class="weight-bar-wrap">
+            <div class="weight-bar-label">
+                <span style="color:var(--green)">mmWave 70%</span>
+                <span style="color:var(--blue)">CSI 30%</span>
+                <span style="color:var(--orange)">&bull; ToF = 트리거</span>
+            </div>
+            <div class="weight-bar">
+                <div class="weight-seg-green" style="width:70%">기상 + 보행 분석</div>
+                <div class="weight-seg-blue" style="width:30%">보행 리듬 + 동행자 보정</div>
+            </div>
+        </div>
+        <div style="margin-top:20px;font-size:13px;color:var(--text-3);text-align:center">
+            왜 딥러닝이 아니라 z-score? &mdash; 개인 맞춤형, 해석 가능, 학습 데이터 불필요, 엣지 실행 가능
+        </div>
+    </div>
+</div>
+>>>>>>> Stashed changes
 
 <!-- ═══ SLIDE 11: 시나리오 예시 ═══ -->
-<div class="slide" data-slide="11">
+<div class="slide" data-slide="10">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Scenario</div>
         <h2 class="s-title" style="font-size:32px">301호 김OO (78세) &mdash; 아침 기상 타임라인</h2>
@@ -938,7 +977,7 @@
 </div>
 
 <!-- ═══ SLIDE 12: 알림 체계 ═══ -->
-<div class="slide" data-slide="12">
+<div class="slide" data-slide="11">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Alert System</div>
         <h2 class="s-title">4단계 알림 체계</h2>
@@ -1027,8 +1066,112 @@
     </div>
 </div>
 
-<!-- ═══ SLIDE 14: 연구 신규성 + 기대 효과 ═══ -->
+<!-- ═══ SLIDE 13.5: 센서 기술 원리 상세 ═══ -->
 <div class="slide" data-slide="14">
+    <div class="slide-inner">
+        <div class="s-label" style="color:var(--accent)">Sensor Technology Details</div>
+        <h2 class="s-title">센서 기술 원리 상세</h2>
+
+        <!-- 센서 카드 컨테이너 -->
+        <div class="sensor-cards-container" style="display:flex; gap:20px; margin-top:32px;">
+            <!-- mmWave 섹션 -->
+            <div class="tech-detail-card" style="flex:1; padding:20px; background:var(--green-soft); border-left:4px solid var(--green); border-radius:8px;">
+                <div class="tech-header" style="display:flex; align-items:center; margin-bottom:12px;">
+                    <div class="tech-icon" style="width:28px; height:28px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; margin-right:10px; font-size:14px;">M</div>
+                    <div>
+                        <div style="font-size:14px; font-weight:800; color:var(--green);">mmWave (IWR6843AOP)</div>
+                        <div style="font-size:10px; color:var(--text-2); margin-top:1px;">60GHz 밀리미터파 레이더</div>
+                    </div>
+                </div>
+                <div class="tech-content" style="font-size:12px; line-height:1.6; color:var(--text-1);">
+                    <div style="margin-bottom:8px;">
+                        <strong>기술 원리:</strong>
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ① <strong>초기 신호 저장:</strong> 사람이 없는 방에서의 기준 신호 저장
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ② <strong>움직임 추적:</strong> 이후 신호에서 최초 신호를 계속 빼서 움직이는 물체(사람)만 추적
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ③ <strong>도플러 신호 분석:</strong> 추적한 위치에서 발생하는 미세 도플러 신호 중 가장 빠른 속력(발의 속력) 분석
+                    </div>
+                    <div style="margin-bottom:8px; margin-left:8px;">
+                        ④ <strong>보행 패턴 산출:</strong> 발의 속력 데이터를 통해 보행 안정성, 보폭, 걸음 주기 등 보행 패턴 산출
+                    </div>
+                    <div>
+                        <strong>설치 위치:</strong> 침대 위 천장 or 병실 중앙 천장
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESP32 + ToF 섹션 -->
+            <div class="tech-detail-card" style="flex:1; padding:20px; background:var(--orange-soft); border-left:4px solid var(--orange); border-radius:8px;">
+                <div class="tech-header" style="display:flex; align-items:center; margin-bottom:12px;">
+                    <div class="tech-icon" style="width:28px; height:28px; background:var(--orange); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; margin-right:10px; font-size:14px;">T</div>
+                    <div>
+                        <div style="font-size:14px; font-weight:800; color:var(--orange);">ESP32 + ToF</div>
+                        <div style="font-size:10px; color:var(--text-2); margin-top:1px;">적외선 거리 측정 센서</div>
+                    </div>
+                </div>
+                <div class="tech-content" style="font-size:12px; line-height:1.6; color:var(--text-1);">
+                    <div style="margin-bottom:8px;">
+                        <strong>기술 원리:</strong>
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ① <strong>적외선 발사:</strong> 적외선을 주기적으로 쏘고 반사되어 돌아오는 시간 계산
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ② <strong>거리 계산:</strong> 반사 시간으로 평상시 거리 계산 및 모니터링
+                    </div>
+                    <div style="margin-bottom:8px; margin-left:8px;">
+                        ③ <strong>이탈 감지:</strong> 거리가 평상시보다 짧아짐 → 노인분이 침대를 벗어나려는 시도 또는 벗어난 것으로 예측
+                    </div>
+                    <div>
+                        <strong>설치 위치:</strong> 침대 양옆 끝
+                    </div>
+                </div>
+            </div>
+
+            <!-- WiFi AP + ESP32 섹션 -->
+            <div class="tech-detail-card" style="flex:1; padding:20px; background:var(--blue-soft); border-left:4px solid var(--blue); border-radius:8px;">
+                <div class="tech-header" style="display:flex; align-items:center; margin-bottom:12px;">
+                    <div class="tech-icon" style="width:28px; height:28px; background:var(--blue); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; margin-right:10px; font-size:14px;">W</div>
+                    <div>
+                        <div style="font-size:14px; font-weight:800; color:var(--blue);">WiFi AP + ESP32</div>
+                        <div style="font-size:10px; color:var(--text-2); margin-top:1px;">CSI 기반 생체 신호 추출</div>
+                    </div>
+                </div>
+                <div class="tech-content" style="font-size:12px; line-height:1.6; color:var(--text-1);">
+                    <div style="margin-bottom:8px;">
+                        <strong>기술 원리:</strong>
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ① <strong>신호 반사/통과:</strong> WiFi 신호가 방 안 물체들에 반사/통과되며 ESP32 센서로 수신
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ② <strong>CSI 추출:</strong> 신호 진폭과 위상 변화로 CSI(채널 상태 정보) 패킷 수신
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ③ <strong>데이터 분리:</strong> 수많은 주파수 가닥으로 나뉜 CSI 데이터 중 변화가 크고 뚜렷한 1~3개 가닥 선별
+                    </div>
+                    <div style="margin-bottom:4px; margin-left:8px;">
+                        ④ <strong>신호 압축:</strong> 선별된 데이터를 PCA(주성분 분석)로 압축 처리
+                    </div>
+                    <div style="margin-bottom:8px; margin-left:8px;">
+                        ⑤ <strong>주파수 분석:</strong> FFT로 주파수별 신호 분리 → 노이즈/호흡/움직임/인원수 등 구분
+                    </div>
+                    <div>
+                        <strong>설치 위치:</strong> <span style="color:var(--text-3); font-style:italic;">병실 내 최적 위치 선정 필요 (Fresnel zone 고려)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ SLIDE 15: 연구 신규성 + 기대 효과 ═══ -->
+<div class="slide" data-slide="15">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Contribution &amp; Impact</div>
         <h2 class="s-title">연구 신규성 &amp; 기대 효과</h2>
@@ -1071,8 +1214,8 @@
     </div>
 </div>
 
-<!-- ═══ SLIDE 15: 한계점 및 향후 과제 ═══ -->
-<div class="slide" data-slide="15">
+<!-- ═══ SLIDE 16: 한계점 및 향후 과제 ═══ -->
+<div class="slide" data-slide="16">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--text-3)">Limitations &amp; Future Work</div>
         <h2 class="s-title">한계점 및 향후 과제</h2>
@@ -1118,7 +1261,7 @@
   <button id="botToggle" onclick="toggleBot()" style="position:absolute;right:16px;background:rgba(15,17,23,0.7);border:1px solid var(--border);color:var(--text-3);font-size:11px;padding:3px 10px;border-radius:6px 6px 0 0;cursor:pointer;transition:bottom .3s ease;bottom:52px;">숨기기 ▼</button>
   <nav id="botNav" class="nav-bar" style="transition:max-height .3s ease,opacity .3s ease;max-height:52px;overflow:hidden;opacity:1;">
     <button class="nav-btn" id="prevBtn" onclick="go(-1)">&larr; 이전</button>
-    <div class="slide-counter" id="counter">1 / 14</div>
+    <div class="slide-counter" id="counter">1 / 16</div>
     <button class="nav-btn" id="nextBtn" onclick="go(1)">다음 &rarr;</button>
   </nav>
 </div>
