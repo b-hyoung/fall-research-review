@@ -669,26 +669,26 @@
                         <div style="height:1px;background:var(--border);"></div>
                         <div>
                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">CarePredict</span>
-                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 필수</span>
-                            </div>
-                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.7;">
-                                손목 제스처로 ADL 인식(식사/보행/수면 등)<br>
-                                7일 학습 후 행동 변화 감지. 낙상 69%&darr;<br>
-                                <strong style="color:var(--rose);">착용 필수(치매 거부)</strong>
-                            </div>
-                        </div>
-                        <div style="height:1px;background:var(--border);"></div>
-                        <div>
-                            <div style="display:flex;justify-content:space-between;align-items:center;">
                                 <span style="font-size:14px;font-weight:800;color:var(--text-1);">VSTAlert</span>
                                 <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--green-soft);color:var(--green);font-weight:700;">비접촉</span>
                             </div>
                             <div style="font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.7;">
                                 적외선+AI, 이탈 30~65초 전 감지<br>
                                 감지 98% (자체 발표). VirtuSense(미국)<br>
-                                <strong style="color:var(--rose);">피어리뷰 논문 0편</strong><br>
                                 <strong style="color:var(--rose);">침대 이탈만 (보행 예측 불가)</strong>
+                            </div>
+                        </div>
+                        <div style="height:1px;background:var(--border);"></div>
+                        <div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                <span style="font-size:14px;font-weight:800;color:var(--text-1);">CarePredict</span>
+                                <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:var(--rose-soft);color:var(--rose);font-weight:700;">착용 필수</span>
+                            </div>
+                            <div style="font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.7;">
+                                손목 제스처로 ADL 인식(식사/보행/수면 등)<br>
+                                7일 학습 후 행동 변화 감지. 낙상 69%&darr;<br>
+                                <strong style="color:var(--rose);">착용 필수(치매 거부)</strong><br>
+                                <strong style="color:var(--rose);">행동 횟수 변화만 감지 (식사 3회&rarr;1회, 보행 200회&rarr;80회)</strong>
                             </div>
                         </div>
                     </div>
@@ -769,83 +769,35 @@
 </div>
 
 <!-- ═══ SLIDE 6: 우리의 접근 ═══ -->
-<div class="slide" data-slide="7">
+<div class="slide" data-slide="6">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Our Approach</div>
-        <h2 class="s-title">3중 센서 시스템</h2>
-        <p class="s-sub">각 센서가 겹치지 않는 고유 역할을 담당합니다 &mdash; 예측 + 트리거 + 교차 검증</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-            <div class="sensor-box" style="border-top:3px solid var(--green)">
-                <span class="sensor-tag tag-mmwave">mmWave 레이더</span>
-                <div class="sensor-title">"얼마나 위험한가" &rarr; 예측</div>
-                <div class="sensor-list">
-                    &bull; 보행 속도 (96%, Zeng 2022)<br>
-                    &bull; 보폭, STV (걸음 변동성)<br>
-                    &bull; 좌우 흔들림<br>
-                    &bull; 기상 패턴 (시도 횟수)<br>
-                    &bull; <strong style="color:var(--green)">도플러 기반 정밀 모션 분석</strong>
-                </div>
+        <h2 class="s-title">넘어진 후가 아니라, 넘어지기 전에 묻는다</h2>
+        <p class="s-sub">기존 시스템은 "넘어졌는가"를 감지한다 &mdash; 우리는 매일 아침 3가지를 묻는다</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:24px;">
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;">
+                <div style="font-size:36px;margin-bottom:12px;">&#129406;</div>
+                <div style="font-size:16px;font-weight:800;color:var(--text-1);margin-bottom:8px;">오늘 보행이<br>평소와 다른가?</div>
+                <div style="font-size:12px;color:var(--text-3);line-height:1.6;">걸음 속도, 보폭, 좌우 흔들림<br>기상 시도 횟수와 소요 시간<br>평소 30일 평균 대비 변화</div>
             </div>
-            <div class="sensor-box" style="border-top:3px solid var(--orange)">
-                <span class="sensor-tag" style="background:var(--orange-soft);color:var(--orange)">ToF 센서</span>
-                <div class="sensor-title">"지금 뭘 하고 있나" &rarr; 트리거</div>
-                <div class="sensor-list">
-                    &bull; 서다/앉다/눕다 자세 구분<br>
-                    &bull; 침대 이탈 즉시 감지<br>
-                    &bull; ±1mm 정밀 거리 측정<br>
-                    &bull; ESP32에 연결 (저비용)<br>
-                    &bull; <strong style="color:var(--orange)">확정적 판단 &rarr; 오탐 최소</strong>
-                </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;">
+                <div style="font-size:36px;margin-bottom:12px;">&#10084;&#65039;</div>
+                <div style="font-size:16px;font-weight:800;color:var(--text-1);margin-bottom:8px;">자율신경 상태가<br>괜찮은가?</div>
+                <div style="font-size:12px;color:var(--text-3);line-height:1.6;">심박 변동성(HRV) 체크<br>낙상의 42%가 자율신경 원인<br>어지러움, 기립성 저혈압 위험</div>
             </div>
-            <div class="sensor-box" style="border-top:3px solid var(--blue)">
-                <span class="sensor-tag tag-csi">WiFi CSI</span>
-                <div class="sensor-title">"혼자인가, 자율신경은 괜찮나" &rarr; 검증</div>
-                <div class="sensor-list">
-                    &bull; 보행 리듬 (11.9ms, Wang 2016)<br>
-                    &bull; 동행자 존재 감지<br>
-                    &bull; <strong style="color:var(--blue)">심박 변이도(HRV) 추가 체크</strong><br>
-                    &bull; 심박 정확도 96.8% (Sun 2024)<br>
-                    &bull; <strong style="color:var(--blue)">자율신경 상태 &rarr; 낙상 42% 원인</strong>
-                </div>
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;">
+                <div style="font-size:36px;margin-bottom:12px;">&#128101;</div>
+                <div style="font-size:16px;font-weight:800;color:var(--text-1);margin-bottom:8px;">지금 혼자인가,<br>뭘 하고 있나?</div>
+                <div style="font-size:12px;color:var(--text-3);line-height:1.6;">동행자 존재 여부<br>눕다/앉다/서다 자세 구분<br>혼자 + 위험 = 즉시 알림</div>
             </div>
         </div>
         <div class="highlight-box" style="margin-top:24px;background:var(--accent-soft);border-color:rgba(91,138,245,0.3);color:var(--accent)">
-            ToF가 "일어났다"를 감지 &rarr; mmWave가 "보행이 위험한가"를 예측 &rarr; CSI가 "자율신경도 이상한가" + "혼자인가" 다중 검증
+            이 3가지를 <strong>착용 없이, 비접촉으로, 매일 아침 자동으로</strong> 체크 &mdash; 횟수 변화가 아닌 <strong>보행의 질과 자율신경 상태</strong>를 직접 분석
         </div>
     </div>
 </div>
 
-<!-- ═══ SLIDE 8: 예측 + 감지 이중 구조 ═══ -->
-<div class="slide" data-slide="8">
-    <div class="slide-inner">
-        <div class="s-label" style="color:var(--accent)">Paradigm Shift</div>
-        <h2 class="s-title">사후 감지 &rarr; 사전 예측 + 실시간 감지</h2>
-        <div class="compare-row">
-            <div class="compare-box" style="border-top:3px solid var(--text-3)">
-                <div style="font-size:14px;font-weight:800;color:var(--text-3);margin-bottom:16px">기존 시스템</div>
-                <div style="font-size:32px;text-align:center;margin-bottom:16px">&#128164;</div>
-                <div style="font-size:14px;color:var(--text-2);line-height:1.8;text-align:center">
-                    넘어짐<br>&darr;<br>센서 감지<br>&darr;<br>알림 발송<br><br>
-                    <span style="color:var(--rose);font-weight:700">이미 다친 후</span>
-                </div>
-            </div>
-            <div class="compare-vs">VS</div>
-            <div class="compare-box" style="border-top:3px solid var(--accent)">
-                <div style="font-size:14px;font-weight:800;color:var(--accent);margin-bottom:16px">우리 시스템</div>
-                <div style="font-size:32px;text-align:center;margin-bottom:16px">&#9728;&#65039;</div>
-                <div style="font-size:14px;color:var(--text-2);line-height:1.8;text-align:center">
-                    <span style="color:var(--orange)">ToF</span> &mdash; 침대 이탈 + 자세 감지<br>&darr;<br>
-                    <span style="color:var(--green)">mmWave</span> &mdash; 아침 기상+보행 분석<br>&darr;<br>
-                    <span style="color:var(--blue)">CSI</span> &mdash; HRV 자율신경 체크 + 동행자 확인<br>&darr;<br>
-                    보행 + 자율신경 다중 위험도 (06:25)<br>&darr;<br>
-                    <span style="color:var(--accent);font-weight:700">위험한 날 + 혼자 = 즉시 알림</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ═══ SLIDE 9: 핵심 가설 ═══ -->
+<!-- ═══ SLIDE 7: 핵심 가설 ═══ -->
 <div class="slide" data-slide="9">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Core Hypothesis</div>
@@ -879,6 +831,121 @@
     </div>
 </div>
 
+
+<!-- ═══ SLIDE 10: HRV와 낙상의 관계 ═══ -->
+<div class="slide" data-slide="10">
+    <div class="slide-inner">
+        <div class="s-label" style="color:var(--blue)">Why HRV Matters</div>
+        <h2 class="s-title">왜 심박 변동성(HRV)을 봐야 하는가</h2>
+        <p class="s-sub">노인 낙상의 42%는 보행이 아닌 자율신경 문제에서 온다 (Castaldo et al. 2017)</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <!-- 왼쪽: 낙상 원인 분류 -->
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:24px;">
+                <div style="font-size:10px;font-weight:800;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">노인 낙상 원인 분류 (Castaldo et al. 2017, 12개 연구 3,628건 합산)</div>
+                <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);">
+                        <span style="color:var(--text-2);">사고/환경 요인 (미끄러짐 등)</span>
+                        <span style="font-weight:700;color:var(--text-3);">31%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);background:var(--blue-soft);margin:0 -12px;padding:6px 12px;border-radius:6px;">
+                        <span style="font-weight:700;color:var(--blue);">보행/균형 장애 또는 근력 약화</span>
+                        <span style="font-weight:800;color:var(--blue);">17%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);background:var(--blue-soft);margin:0 -12px;padding:6px 12px;border-radius:6px;">
+                        <span style="font-weight:700;color:var(--blue);">어지러움/현기증</span>
+                        <span style="font-weight:800;color:var(--blue);">13%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);background:var(--blue-soft);margin:0 -12px;padding:6px 12px;border-radius:6px;">
+                        <span style="font-weight:700;color:var(--blue);">갑작스러운 주저앉음</span>
+                        <span style="font-weight:800;color:var(--blue);">9%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);">
+                        <span style="color:var(--text-2);">혼돈/인지 장애</span>
+                        <span style="font-weight:700;color:var(--text-3);">5%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);background:var(--blue-soft);margin:0 -12px;padding:6px 12px;border-radius:6px;">
+                        <span style="font-weight:700;color:var(--blue);">기립성 저혈압</span>
+                        <span style="font-weight:800;color:var(--blue);">3%</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;padding:6px 0;">
+                        <span style="color:var(--text-2);">시각 장애 / 실신 / 기타</span>
+                        <span style="font-weight:700;color:var(--text-3);">2.3%</span>
+                    </div>
+                </div>
+                <div style="margin-top:14px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:12px;color:var(--blue);font-weight:700;text-align:center;">
+                    파란색 항목 합산 = 자율신경 관련 <strong>42%</strong>
+                </div>
+            </div>
+            <!-- 오른쪽: HRV 근거 -->
+            <div style="background:rgba(91,138,245,0.06);border:1px solid var(--accent);border-radius:12px;padding:24px;">
+                <div style="font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">HRV로 이 42%를 잡을 수 있다</div>
+                <div style="display:flex;flex-direction:column;gap:16px;">
+                    <div>
+                        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">HRV가 낮으면 낙상 확률 4.2배</div>
+                        <div style="font-size:11px;color:var(--text-2);line-height:1.6;">심장질환 환자 168명, 가슴에 24시간 ECG Holter 부착.<br>HRV 저하군의 낙상 확률이 정상군 대비 4.2배 (p&lt;0.001).<br><span style="color:var(--text-3);">Melillo et al. (2015)</span></div>
+                    </div>
+                    <div style="height:1px;background:var(--border);"></div>
+                    <div>
+                        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">5분 HRV만으로 낙상 예측 정확도 68%</div>
+                        <div style="font-size:11px;color:var(--text-2);line-height:1.6;">고혈압 환자 170명, 가슴에 ECG 전극 부착.<br>5분&times;11구간 HRV 분석 &rarr; 3개월 내 낙상 예측.<br><span style="color:var(--text-3);">Castaldo et al. (2017)</span></div>
+                    </div>
+                    <div style="height:1px;background:var(--border);"></div>
+                    <div>
+                        <div style="font-size:14px;font-weight:800;color:var(--accent);margin-bottom:4px;">우리는 이걸 비접촉으로 한다</div>
+                        <div style="font-size:11px;color:var(--text-2);line-height:1.6;">WiFi CSI로 심박 측정 정확도 96.8% (Sun 2024).<br>가슴에 전극을 붙이지 않고도 HRV를 추출하여<br>자율신경 상태를 매일 자동 체크.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ SLIDE 9: 3중 센서 시스템 ═══ -->
+<div class="slide" data-slide="9">
+    <div class="slide-inner">
+        <div class="s-label" style="color:var(--accent)">Our Approach</div>
+        <h2 class="s-title">3중 센서 시스템</h2>
+        <p class="s-sub">각 센서가 겹치지 않는 고유 역할을 담당합니다 &mdash; 예측 + 트리거 + 교차 검증</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+            <div class="sensor-box" style="border-top:3px solid var(--green)">
+                <span class="sensor-tag tag-mmwave">mmWave 레이더</span>
+                <div class="sensor-title">"얼마나 위험한가" &rarr; 예측</div>
+                <div class="sensor-list">
+                    &bull; 보행 속도 (96%, Zeng 2022)<br>
+                    &bull; 보폭, STV (걸음 변동성)<br>
+                    &bull; 좌우 흔들림<br>
+                    &bull; 기상 패턴 (시도 횟수)<br>
+                    &bull; <strong style="color:var(--green)">도플러 기반 정밀 모션 분석</strong>
+                </div>
+            </div>
+            <div class="sensor-box" style="border-top:3px solid var(--orange)">
+                <span class="sensor-tag" style="background:var(--orange-soft);color:var(--orange)">ToF 센서</span>
+                <div class="sensor-title">"지금 뭘 하고 있나" &rarr; 트리거</div>
+                <div class="sensor-list">
+                    &bull; 서다/앉다/눕다 자세 구분<br>
+                    &bull; 침대 이탈 즉시 감지<br>
+                    &bull; &plusmn;1mm 정밀 거리 측정<br>
+                    &bull; ESP32에 연결 (저비용)<br>
+                    &bull; <strong style="color:var(--orange)">확정적 판단 &rarr; 오탐 최소</strong>
+                </div>
+            </div>
+            <div class="sensor-box" style="border-top:3px solid var(--blue)">
+                <span class="sensor-tag tag-csi">WiFi CSI</span>
+                <div class="sensor-title">"혼자인가, 자율신경은 괜찮나" &rarr; 검증</div>
+                <div class="sensor-list">
+                    &bull; 보행 리듬 (11.9ms, Wang 2016)<br>
+                    &bull; 동행자 존재 감지<br>
+                    &bull; <strong style="color:var(--blue)">심박 변이도(HRV) 추가 체크</strong><br>
+                    &bull; 심박 정확도 96.8% (Sun 2024)<br>
+                    &bull; <strong style="color:var(--blue)">자율신경 상태 &rarr; 낙상 42% 원인</strong>
+                </div>
+            </div>
+        </div>
+        <div class="highlight-box" style="margin-top:24px;background:var(--accent-soft);border-color:rgba(91,138,245,0.3);color:var(--accent)">
+            ToF가 "일어났다"를 감지 &rarr; mmWave가 "보행이 위험한가"를 예측 &rarr; CSI가 "자율신경도 이상한가" + "혼자인가" 다중 검증
+        </div>
+    </div>
+</div>
 
 <!-- ═══ SLIDE 11: 시나리오 예시 ═══ -->
 <div class="slide" data-slide="11">
@@ -932,7 +999,7 @@
             </div>
         </div>
         <div style="margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 24px;font-size:13px;color:var(--text-2)">
-            <strong style="color:var(--text-1)">알림:</strong> [301호 김OO] 오늘 낙상 위험도 <strong style="color:var(--rose)">높음 (0.87)</strong> &rarr; 강화 모니터링 및 밀착 관찰 권장
+            <strong style="color:var(--text-1)">알림:</strong> [301호 김OO] 오늘 낙상 위험도 <strong style="color:var(--rose)">위험 (0.87)</strong> &rarr; 동행자 없이 이동 불가, 화장실 동행 필수
         </div>
     </div>
 </div>
@@ -948,29 +1015,29 @@
                 <div class="alert-emoji">&#9898;</div>
                 <div class="alert-level">정상</div>
                 <div class="alert-range">0.0 ~ 0.3</div>
-                <div class="alert-action" style="color:var(--text-2)">기록만 저장<br>별도 조치 없음</div>
+                <div class="alert-action" style="color:var(--text-2)">자유 이동 허용<br>일상 활동 유지<br>기록만 저장</div>
             </div>
             <div class="alert-card" style="background:var(--orange-soft);border:1px solid rgba(251,191,36,0.2)">
                 <div class="alert-emoji">&#9888;&#65039;</div>
                 <div class="alert-level" style="color:var(--orange)">주의</div>
                 <div class="alert-range">0.3 ~ 0.5</div>
-                <div class="alert-action" style="color:var(--text-2)">간호 기록 표시<br>순찰 시 관심</div>
+                <div class="alert-action" style="color:var(--text-2)">보조기구 사용 권장<br>미사용 이동 시 알림</div>
             </div>
             <div class="alert-card" style="background:var(--purple-soft);border:1px solid rgba(167,139,250,0.2)">
                 <div class="alert-emoji">&#128680;</div>
                 <div class="alert-level" style="color:var(--purple)">경고</div>
                 <div class="alert-range">0.5 ~ 0.7</div>
-                <div class="alert-action" style="color:var(--text-2)">담당 간호사 알림<br>순찰 빈도 증가</div>
+                <div class="alert-action" style="color:var(--text-2)">보조기구 필수<br>단독 이동 시 즉시 알림</div>
             </div>
             <div class="alert-card" style="background:var(--rose-soft);border:1px solid rgba(251,113,133,0.2)">
                 <div class="alert-emoji">&#127384;</div>
                 <div class="alert-level" style="color:var(--rose)">위험</div>
                 <div class="alert-range">0.7 ~ 1.0</div>
-                <div class="alert-action" style="color:var(--text-2)">즉시 알림 발송<br>밀착 관찰 + 의사 보고</div>
+                <div class="alert-action" style="color:var(--text-2)">동행자 없이 이동 불가<br>화장실 동행 필수<br>즉시 알림</div>
             </div>
         </div>
         <div class="highlight-box" style="margin-top:24px;background:var(--accent-soft);border-color:rgba(91,138,245,0.3);color:var(--accent)">
-            예측 위험도 0.87인 날 &rarr; 이탈 감지 즉시 Level 3(위험) 발동 &mdash; 평소라면 Level 1
+            위험도에 따라 대처 수준이 달라진다 &mdash; 정상일 땐 자유 이동, 위험한 날엔 동행 없이 움직이면 즉시 알림
         </div>
     </div>
 </div>
@@ -1071,41 +1138,19 @@
     </div>
 </div>
 
-<!-- ═══ SLIDE 15: 한계점 및 향후 과제 ═══ -->
+<!-- ═══ SLIDE 15: Q&A ═══ -->
 <div class="slide" data-slide="15">
-    <div class="slide-inner">
-        <div class="s-label" style="color:var(--text-3)">Limitations &amp; Future Work</div>
-        <h2 class="s-title">한계점 및 향후 과제</h2>
-        <div class="future-grid">
-            <div class="future-card" style="border-top:3px solid var(--rose)">
-                <div class="future-num">01</div>
-                <div class="future-title">실제 임상 데이터 미검증</div>
-                <div class="future-desc">시나리오 데이터는 가상 예시. 요양병원 파일럿 테스트로 실측 검증 필요</div>
-            </div>
-            <div class="future-card" style="border-top:3px solid var(--orange)">
-                <div class="future-num">02</div>
-                <div class="future-title">가중치 실험적 도출 필요</div>
-                <div class="future-desc">현재 가중치(70:30)는 논문 근거 기반 제안값. 실데이터 학습으로 최적화 필요</div>
-            </div>
-            <div class="future-card" style="border-top:3px solid var(--purple)">
-                <div class="future-num">03</div>
-                <div class="future-title">침실 외 공간 미적용</div>
-                <div class="future-desc">화장실, 복도 등은 현재 범위 외. CSI Fresnel zone 위치 의존성도 고려 필요</div>
-            </div>
-            <div class="future-card" style="border-top:3px solid var(--blue)">
-                <div class="future-num">04</div>
-                <div class="future-title">다인실 간섭 검증</div>
-                <div class="future-desc">현재 1인실 최적화 설계. 다인실 환경에서 개인 식별 정확도 검증 필요</div>
-            </div>
-            <div class="future-card" style="border-top:3px solid var(--green)">
-                <div class="future-num">05</div>
-                <div class="future-title">장기 안정성</div>
-                <div class="future-desc">30일+ 연속 운영 시 센서 드리프트, 환경 변화에 대한 적응 메커니즘 필요</div>
-            </div>
-            <div class="future-card" style="border-top:3px solid var(--accent)">
-                <div class="future-num">06</div>
-                <div class="future-title">IRB 승인 및 윤리</div>
-                <div class="future-desc">RF 기반이지만 24시간 모니터링에 대한 윤리위원회 심의 필요</div>
+    <div class="slide-inner" style="display:flex;align-items:center;justify-content:center;gap:60px;min-height:calc(100vh - 120px)">
+        <img src="image.png" style="width:320px;height:320px;border-radius:24px;object-fit:cover;box-shadow:0 16px 48px rgba(0,0,0,0.15);flex-shrink:0;">
+        <div style="text-align:left;">
+            <h2 style="font-size:52px;font-weight:900;letter-spacing:-0.03em;margin-bottom:16px;background:linear-gradient(135deg,var(--text-1) 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">감사합니다</h2>
+            <div style="width:50px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:28px;opacity:0.5;"></div>
+            <p style="font-size:40px;color:var(--text-1);font-weight:800;letter-spacing:0.06em;margin-bottom:14px;">Q &amp; A</p>
+            <p style="font-size:18px;color:var(--text-3);font-weight:400;margin-bottom:48px;">질문이 있으시면 편하게 말씀해 주세요</p>
+            <div style="font-size:13px;color:var(--text-3);opacity:0.7;">
+                <span style="font-weight:700;color:var(--accent);letter-spacing:0.04em;">Team MajuBom</span>
+                <span style="margin:0 10px;color:var(--border);">&middot;</span>
+                <span>박형석, 조우진, 김도경, 유현기, 김민혁</span>
             </div>
         </div>
     </div>
