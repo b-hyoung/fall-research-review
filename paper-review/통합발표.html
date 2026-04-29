@@ -1042,59 +1042,7 @@
     </div>
 </div>
 
-<!-- ═══ SLIDE 13: 시스템 구상도 ═══ -->
-<div class="slide" data-slide="13">
-    <div class="slide-inner">
-        <div class="s-label" style="color:var(--accent)">System Architecture</div>
-        <h2 class="s-title" style="font-size:32px">시스템 구상도</h2>
-        <div class="arch-layers">
-            <div class="arch-layer">
-                <div class="arch-badge" style="background:var(--green-soft);color:var(--green)">병실</div>
-                <div class="arch-box arch-box-green">IWR6843AOP<br><span style="font-size:10px;opacity:0.7">mmWave 60GHz 천장</span></div>
-                <span class="arch-sep">+</span>
-                <div class="arch-box" style="background:var(--orange-soft);color:var(--orange)">ESP32 + ToF<br><span style="font-size:10px;opacity:0.7">자세/이탈 감지 (침대)</span></div>
-                <span class="arch-sep">+</span>
-                <div class="arch-box arch-box-blue">WiFi AP + ESP32<br><span style="font-size:10px;opacity:0.7">CSI 추출 (보행+동행자)</span></div>
-                <span class="arch-sep">&rarr;</span>
-                <div class="arch-box arch-box-gray">환자 (비착용)<br><span style="font-size:10px;opacity:0.7">센서 부착 없음</span></div>
-            </div>
-            <div class="arch-arrow">&darr; 데이터 전송</div>
-            <div class="arch-layer">
-                <div class="arch-badge" style="background:var(--accent-soft);color:var(--accent)">엣지</div>
-                <div class="arch-box arch-box-green">mmWave 전처리<br><span style="font-size:10px;opacity:0.7">FFT &rarr; Point Cloud</span></div>
-                <span class="arch-sep">+</span>
-                <div class="arch-box arch-box-blue">CSI 전처리<br><span style="font-size:10px;opacity:0.7">PCA &rarr; FFT</span></div>
-                <span class="arch-sep">&rarr;</span>
-                <div class="arch-box arch-box-gray">상태 FSM<br><span style="font-size:10px;opacity:0.7">눕기/앉기/기상/보행/정지</span></div>
-                <span class="arch-sep">&rarr;</span>
-                <div class="arch-box arch-box-purple">RPi 5 + Hailo-8L<br><span style="font-size:10px;opacity:0.7">13 TOPS NPU</span></div>
-            </div>
-            <div class="arch-arrow">&darr; Feature 추출</div>
-            <div class="arch-layer">
-                <div class="arch-badge" style="background:var(--purple-soft);color:var(--purple)">분석</div>
-                <div class="arch-box arch-box-purple">개인 베이스라인<br><span style="font-size:10px;opacity:0.7">30일 이동 평균/표준편차</span></div>
-                <span class="arch-sep">&rarr;</span>
-                <div class="arch-box arch-box-gray">z-score 산출<br><span style="font-size:10px;opacity:0.7">지표별 이상도</span></div>
-                <span class="arch-sep">&rarr;</span>
-                <div class="arch-box arch-box-green">mmWave &ge; 0.8</div>
-                <span style="font-size:14px;font-weight:900;color:var(--purple)">AND</span>
-                <div class="arch-box arch-box-blue">CSI &ge; 0.8</div>
-                <span class="arch-sep">&rarr;</span>
-                <div class="arch-box arch-box-rose">위험도 확정<br><span style="font-size:10px;opacity:0.7">0.0~1.0</span></div>
-            </div>
-            <div class="arch-arrow">&darr; 알림 전송</div>
-            <div class="arch-layer">
-                <div class="arch-badge" style="background:var(--orange-soft);color:var(--orange)">출력</div>
-                <div class="arch-box arch-box-amber">간호 스테이션<br><span style="font-size:10px;opacity:0.7">실시간 대시보드</span></div>
-                <div class="arch-box arch-box-amber">담당 간호사<br><span style="font-size:10px;opacity:0.7">모바일 푸시 알림</span></div>
-                <div class="arch-box arch-box-amber">의사/관리자<br><span style="font-size:10px;opacity:0.7">일일/주간 리포트</span></div>
-                <div class="arch-box arch-box-gray">EMR 연동<br><span style="font-size:10px;opacity:0.7">투약 기록 참조</span></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ═══ SLIDE 14: 센서 기술 파이프라인 ═══ -->
+<!-- ═══ SLIDE 13: 센서 기술 파이프라인 ═══ -->
 <div class="slide" data-slide="14">
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Sensor Technology Pipeline</div>
@@ -1135,6 +1083,12 @@
                                 <span style="color:var(--text-3);">&rarr;</span>
                                 <div style="background:var(--green-soft);color:var(--green);padding:4px 8px;border-radius:4px;font-weight:700;">좌표 변화량</div>
                             </div>
+                            <!-- 위치 추적 시각화 -->
+                            <div style="background:var(--surface-2);border-radius:6px;padding:10px 12px;margin-bottom:10px;font-family:monospace;font-size:11px;line-height:1.6;color:var(--text-2);">
+                                <div style="font-size:9px;color:var(--text-3);margin-bottom:4px;">위에서 본 이동 경로:</div>
+                                <span style="color:var(--green);">정상:</span> &bull; &rarr; &bull; &rarr; &bull; &rarr; &bull; (직선)<br>
+                                <span style="color:var(--rose);">위험:</span> &bull; &#8599; &bull; &#8600; &bull; &#8599; &bull; (지그재그)
+                            </div>
                             <div style="display:flex;gap:6px;">
                                 <div style="flex:1;background:var(--green-soft);border-radius:6px;padding:8px;text-align:center;">
                                     <div style="font-size:14px;font-weight:900;color:var(--green);">보행 속도</div>
@@ -1155,6 +1109,12 @@
                                 <div style="background:var(--green-soft);color:var(--green);padding:4px 8px;border-radius:4px;font-weight:700;">JTF 스펙트로그램</div>
                                 <span style="color:var(--text-3);">&rarr;</span>
                                 <div style="background:var(--green-soft);color:var(--green);padding:4px 8px;border-radius:4px;font-weight:700;">다리 피크 추적</div>
+                            </div>
+                            <!-- 걸음 패턴 시각화 -->
+                            <div style="background:var(--surface-2);border-radius:6px;padding:10px 12px;margin-bottom:10px;font-family:monospace;font-size:11px;line-height:1.6;color:var(--text-2);">
+                                <div style="font-size:9px;color:var(--text-3);margin-bottom:4px;">보행 패턴 (시간 &rarr;):</div>
+                                <span style="color:var(--green);">정상:</span> &#8767;&#8767;&#8767;&#8767;&#8767;&#8767;&#8767;&#8767; (규칙적, 간격 일정)<br>
+                                <span style="color:var(--rose);">위험:</span> &#8767;&#8767;&#9889;&#8767;~&#8767;&nbsp;&nbsp;&#8767; (불규칙, 간격 들쭉날쭉)
                             </div>
                             <div style="display:flex;gap:6px;">
                                 <div style="flex:1;background:var(--green-soft);border-radius:6px;padding:8px;text-align:center;">
