@@ -837,7 +837,7 @@
     <div class="slide-inner">
         <div class="s-label" style="color:var(--blue)">Why HRV Matters</div>
         <h2 class="s-title">왜 심박 변동성(HRV)을 봐야 하는가</h2>
-        <p class="s-sub">노인 낙상의 42%는 보행이 아닌 자율신경 문제에서 온다 (Castaldo et al. 2017)</p>
+        <p class="s-sub">노인 낙상의 42%는 보행 장애, 어지러움, 기립성 저혈압 등 신체 기능 저하에서 온다 (Castaldo et al. 2017)</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
             <!-- 왼쪽: 낙상 원인 분류 -->
             <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:24px;">
@@ -907,6 +907,17 @@
         <h2 class="s-title">3중 센서 시스템</h2>
         <p class="s-sub">각 센서가 겹치지 않는 고유 역할을 담당합니다 &mdash; 예측 + 트리거 + 교차 검증</p>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+            <div class="sensor-box" style="border-top:3px solid var(--orange)">
+                <span class="sensor-tag" style="background:var(--orange-soft);color:var(--orange)">ToF 센서</span>
+                <div class="sensor-title">"일어났나" &rarr; 트리거</div>
+                <div class="sensor-list">
+                    &bull; 앉다/눕다 자세 구분<br>
+                    &bull; 침대 이탈 즉시 감지<br>
+                    &bull; &plusmn;1mm 정밀 거리 측정<br>
+                    &bull; ESP32에 연결 (저비용)<br>
+                    &bull; <strong style="color:var(--orange)">확정적 판단 &rarr; 오탐 최소</strong>
+                </div>
+            </div>
             <div class="sensor-box" style="border-top:3px solid var(--green)">
                 <span class="sensor-tag tag-mmwave">mmWave 레이더</span>
                 <div class="sensor-title">"얼마나 위험한가" &rarr; 예측</div>
@@ -914,26 +925,13 @@
                     &bull; 보행 속도 (96%, Zeng 2022)<br>
                     &bull; 보폭, STV (걸음 변동성)<br>
                     &bull; 좌우 흔들림<br>
-                    &bull; 기상 패턴 (시도 횟수)<br>
                     &bull; <strong style="color:var(--green)">도플러 기반 정밀 모션 분석</strong>
-                </div>
-            </div>
-            <div class="sensor-box" style="border-top:3px solid var(--orange)">
-                <span class="sensor-tag" style="background:var(--orange-soft);color:var(--orange)">ToF 센서</span>
-                <div class="sensor-title">"지금 뭘 하고 있나" &rarr; 트리거</div>
-                <div class="sensor-list">
-                    &bull; 서다/앉다/눕다 자세 구분<br>
-                    &bull; 침대 이탈 즉시 감지<br>
-                    &bull; &plusmn;1mm 정밀 거리 측정<br>
-                    &bull; ESP32에 연결 (저비용)<br>
-                    &bull; <strong style="color:var(--orange)">확정적 판단 &rarr; 오탐 최소</strong>
                 </div>
             </div>
             <div class="sensor-box" style="border-top:3px solid var(--blue)">
                 <span class="sensor-tag tag-csi">WiFi CSI</span>
                 <div class="sensor-title">"혼자인가, 자율신경은 괜찮나" &rarr; 검증</div>
                 <div class="sensor-list">
-                    &bull; 보행 리듬 (11.9ms, Wang 2016)<br>
                     &bull; 동행자 존재 감지<br>
                     &bull; <strong style="color:var(--blue)">심박 변이도(HRV) 추가 체크</strong><br>
                     &bull; 심박 정확도 96.8% (Sun 2024)<br>
@@ -952,6 +950,33 @@
     <div class="slide-inner">
         <div class="s-label" style="color:var(--accent)">Scenario</div>
         <h2 class="s-title" style="font-size:32px">301호 김OO (78세) &mdash; 아침 기상 타임라인</h2>
+        <!-- 평면도 -->
+        <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px;">
+            <div style="display:flex;gap:20px;align-items:start;">
+                <div style="flex:1;font-family:monospace;font-size:11px;line-height:1.5;color:var(--text-2);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;white-space:pre;">요양병원 1인실 (3.5m x 4.5m)
+┌──────────── 4.5m ──────────┐
+│                             │
+│  ┌────────┐                 │
+│  │ 침  대  │    <span style="color:var(--orange);font-weight:700;">ToF</span>         │
+│  │        │  (침대 양옆)     │
+│  └────────┘                 │ 3.5m
+│                             │
+│        <span style="color:var(--green);font-weight:700;">▼ mmWave</span> (천장 중앙)  │
+│                             │
+│  ┌──┐              ┌───┐   │
+│  │의자│             │화장│   │
+│  └──┘              │ 실│   │
+│     <span style="color:var(--blue);font-weight:700;">WiFi AP</span>        └───┘   │
+└─────────────────────────────┘</div>
+                <div style="flex:0 0 200px;font-size:11px;color:var(--text-2);line-height:1.8;">
+                    <div style="font-size:10px;font-weight:800;color:var(--text-3);letter-spacing:0.05em;margin-bottom:8px;">센서 배치</div>
+                    <div><span style="color:var(--orange);font-weight:700;">ToF</span> 침대 양옆 &mdash; 이탈 감지</div>
+                    <div><span style="color:var(--green);font-weight:700;">mmWave</span> 천장 중앙 &mdash; 보행 분석</div>
+                    <div><span style="color:var(--blue);font-weight:700;">WiFi AP</span> 벽면 &mdash; CSI/HRV</div>
+                    <div style="margin-top:8px;padding:6px 10px;background:var(--green-soft);border-radius:6px;font-size:10px;color:var(--green);font-weight:700;">대각선 최대 ~2.8m<br>방 전체가 감지 범위(0~3m) 안</div>
+                </div>
+            </div>
+        </div>
         <div class="tl-row">
             <div class="tl-step" style="border-top:3px solid var(--orange)">
                 <div class="tl-time" style="color:var(--orange)">06:15</div>
