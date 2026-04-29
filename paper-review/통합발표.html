@@ -1085,14 +1085,8 @@
         <div class="s-label" style="color:var(--accent)">Sensor Technology Pipeline</div>
         <h2 class="s-title">센서별 데이터 처리 파이프라인</h2>
         <p class="s-sub">각 센서가 어떤 알고리즘으로 어떤 데이터를 추출하여 위험도를 산출하는가</p>
-        <div style="display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;">
-            <button onclick="switchLayout14('A')" class="nav-btn layout-btn s14-btn active" id="btn14A" style="font-size:12px;padding:6px 14px;">A. 플로우 차트</button>
-            <button onclick="switchLayout14('B')" class="nav-btn layout-btn s14-btn" id="btn14B" style="font-size:12px;padding:6px 14px;">B. 3컬럼 상세</button>
-            <button onclick="switchLayout14('C')" class="nav-btn layout-btn s14-btn" id="btn14C" style="font-size:12px;padding:6px 14px;">C. 파이프라인 테이블</button>
-        </div>
-
-        <!-- ===== A: 플로우 차트 ===== -->
-        <div class="layout-variant-14" id="layout14A">
+        <!-- 플로우 차트 -->
+        <div>
             <div style="display:flex;flex-direction:column;gap:16px;">
                 <!-- mmWave 플로우 -->
                 <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:20px;">
@@ -1228,130 +1222,6 @@
             </div>
         </div>
 
-        <!-- ===== B: 3컬럼 상세 ===== -->
-        <div class="layout-variant-14" id="layout14B" style="display:none;">
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
-                <!-- mmWave -->
-                <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-                    <div style="background:var(--green);padding:14px 16px;display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:16px;font-weight:900;color:var(--bg);">M</span>
-                        <div><div style="font-size:13px;font-weight:800;color:var(--bg);">mmWave (IWR6843)</div><div style="font-size:10px;color:rgba(255,255,255,0.7);">60GHz FMCW | 예측 70%</div></div>
-                    </div>
-                    <div style="padding:16px;font-size:11px;line-height:1.7;color:var(--text-2);">
-                        <div style="font-weight:800;color:var(--green);font-size:10px;letter-spacing:0.05em;margin-bottom:8px;">파이프라인</div>
-                        <div style="display:flex;flex-direction:column;gap:4px;">
-                            <div>1. <strong style="color:var(--text-1);">2D-FFT</strong> Range-Doppler Map 생성</div>
-                            <div>2. <strong style="color:var(--text-1);">CFAR</strong> 노이즈 대비 타겟 검출</div>
-                            <div>3. <strong style="color:var(--text-1);">DBSCAN</strong> 포인트 클라우드 군집화</div>
-                            <div>4. <strong style="color:var(--text-1);">STFT</strong> micro-Doppler 스펙트로그램</div>
-                            <div>5. <strong style="color:var(--text-1);">HOG+LSTM+Attn</strong> 보행 패턴 분류</div>
-                        </div>
-                        <div style="font-weight:800;color:var(--green);font-size:10px;letter-spacing:0.05em;margin:12px 0 8px;">추출 데이터</div>
-                        <div>보행 속도, 보폭, STV, 케이던스, 좌우 흔들림, 기상 패턴</div>
-                        <div style="font-weight:800;color:var(--green);font-size:10px;letter-spacing:0.05em;margin:12px 0 8px;">위험도 산출</div>
-                        <div>z = (오늘 - 30일평균) / 표준편차<br>개인 베이스라인 대비 이상도</div>
-                        <div style="margin-top:10px;padding:8px;background:var(--green-soft);border-radius:6px;font-size:10px;color:var(--green);font-weight:600;">Yu 2025 (95.3%) | Zeng 2022 (96%)</div>
-                    </div>
-                </div>
-                <!-- ToF -->
-                <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-                    <div style="background:var(--orange);padding:14px 16px;display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:16px;font-weight:900;color:var(--bg);">T</span>
-                        <div><div style="font-size:13px;font-weight:800;color:var(--bg);">ESP32 + ToF</div><div style="font-size:10px;color:rgba(255,255,255,0.7);">적외선 ±1mm | 트리거</div></div>
-                    </div>
-                    <div style="padding:16px;font-size:11px;line-height:1.7;color:var(--text-2);">
-                        <div style="font-weight:800;color:var(--orange);font-size:10px;letter-spacing:0.05em;margin-bottom:8px;">파이프라인</div>
-                        <div style="display:flex;flex-direction:column;gap:4px;">
-                            <div>1. <strong style="color:var(--text-1);">ToF 측정</strong> 적외선 왕복 시간</div>
-                            <div>2. <strong style="color:var(--text-1);">Kalman Filter</strong> 오차 보정</div>
-                            <div>3. <strong style="color:var(--text-1);">Moving Average</strong> 노이즈 제거</div>
-                            <div>4. <strong style="color:var(--text-1);">Adaptive Threshold</strong> 동적 임계값</div>
-                            <div>5. <strong style="color:var(--text-1);">FSM</strong> 상태 전이 (누움/시도/이탈)</div>
-                        </div>
-                        <div style="font-weight:800;color:var(--orange);font-size:10px;letter-spacing:0.05em;margin:12px 0 8px;">추출 데이터</div>
-                        <div>침대 이탈 여부, 기상 시도 횟수, 이탈 소요 시간</div>
-                        <div style="font-weight:800;color:var(--orange);font-size:10px;letter-spacing:0.05em;margin:12px 0 8px;">역할</div>
-                        <div>이탈 감지 시 mmWave 보행 분석 시작 신호. 확정적 판단으로 오탐 최소</div>
-                        <div style="margin-top:10px;padding:8px;background:var(--orange-soft);border-radius:6px;font-size:10px;color:var(--orange);font-weight:600;">설치: 침대 양옆 끝</div>
-                    </div>
-                </div>
-                <!-- CSI -->
-                <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-                    <div style="background:var(--blue);padding:14px 16px;display:flex;align-items:center;gap:8px;">
-                        <span style="font-size:16px;font-weight:900;color:var(--bg);">W</span>
-                        <div><div style="font-size:13px;font-weight:800;color:var(--bg);">WiFi CSI (ESP32)</div><div style="font-size:10px;color:rgba(255,255,255,0.7);">2.4GHz CSI | 검증 30%</div></div>
-                    </div>
-                    <div style="padding:16px;font-size:11px;line-height:1.7;color:var(--text-2);">
-                        <div style="font-weight:800;color:var(--blue);font-size:10px;letter-spacing:0.05em;margin-bottom:8px;">파이프라인</div>
-                        <div style="display:flex;flex-direction:column;gap:4px;">
-                            <div>1. <strong style="color:var(--text-1);">CSI 수집</strong> 서브캐리어 진폭/위상</div>
-                            <div>2. <strong style="color:var(--text-1);">Hampel Filter</strong> 이상치 제거</div>
-                            <div>3. <strong style="color:var(--text-1);">PCA</strong> 핵심 주성분 추출</div>
-                            <div>4. <strong style="color:var(--text-1);">FFT</strong> 호흡(0.1~0.5Hz)/심박(0.8~2Hz)</div>
-                            <div>5. <strong style="color:var(--text-1);">STFT+CNN/LSTM</strong> 활동/인원 분류</div>
-                        </div>
-                        <div style="font-weight:800;color:var(--blue);font-size:10px;letter-spacing:0.05em;margin:12px 0 8px;">추출 데이터</div>
-                        <div>심박수, HRV(SDNN/RMSSD), 보행 리듬, 동행자 유무</div>
-                        <div style="font-weight:800;color:var(--blue);font-size:10px;letter-spacing:0.05em;margin:12px 0 8px;">교차 검증</div>
-                        <div>mmWave + CSI 동시 이상 시에만 알림 (AND 로직)</div>
-                        <div style="margin-top:10px;padding:8px;background:var(--blue-soft);border-radius:6px;font-size:10px;color:var(--blue);font-weight:600;">Wang 2016 (11.9ms) | Sun 2024 (96.8%)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== C: 파이프라인 테이블 ===== -->
-        <div class="layout-variant-14" id="layout14C" style="display:none;">
-            <div style="overflow-x:auto;border:1px solid var(--border);border-radius:12px;">
-                <table style="width:100%;border-collapse:collapse;font-size:11px;text-align:left;">
-                    <thead>
-                        <tr style="background:var(--surface-2);">
-                            <th style="padding:10px 14px;font-size:10px;color:var(--text-3);font-weight:800;letter-spacing:0.05em;width:90px;">센서</th>
-                            <th style="padding:10px 12px;font-size:10px;color:var(--text-3);font-weight:800;">신호 수집</th>
-                            <th style="padding:10px 12px;font-size:10px;color:var(--text-3);font-weight:800;">전처리</th>
-                            <th style="padding:10px 12px;font-size:10px;color:var(--text-3);font-weight:800;">분석/분류</th>
-                            <th style="padding:10px 12px;font-size:10px;color:var(--text-3);font-weight:800;">추출 결과</th>
-                            <th style="padding:10px 12px;font-size:10px;color:var(--text-3);font-weight:800;width:80px;">참고 논문</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-top:2px solid var(--green);">
-                            <td style="padding:12px 14px;font-weight:800;color:var(--green);vertical-align:top;" rowspan="2">mmWave<br><span style="font-size:10px;font-weight:600;color:var(--text-3);">IWR6843</span></td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;" rowspan="2">FMCW 60GHz<br>3Tx/4Rx 안테나<br>Range 해상도 4.4cm</td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">2D-FFT &rarr; Range-Doppler Map<br>CFAR &rarr; 타겟 검출<br>DBSCAN &rarr; 포인트 군집</td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">STFT micro-Doppler<br>Envelope Extraction<br>HOG + LSTM + Attention</td>
-                            <td style="padding:12px;vertical-align:top;"><strong style="color:var(--text-1);">보행 속도</strong>, 보폭, STV<br>케이던스, 좌우 흔들림<br>기상 패턴, 시도 횟수</td>
-                            <td style="padding:12px;font-size:10px;color:var(--text-3);vertical-align:top;">Yu 2025<br>Zeng 2022</td>
-                        </tr>
-                        <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
-                            <td colspan="4" style="padding:10px 12px;font-size:11px;color:var(--green);font-weight:700;">위험도 기여: 70% (기상 20% + 속도 15% + STV 15% + 흔들림 10% + 보폭 10%)</td>
-                        </tr>
-                        <tr style="border-top:2px solid var(--orange);">
-                            <td style="padding:12px 14px;font-weight:800;color:var(--orange);vertical-align:top;">ToF<br><span style="font-size:10px;font-weight:600;color:var(--text-3);">ESP32</span></td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">적외선 ToF<br>±1mm 정밀도</td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">Kalman Filter<br>Moving Average<br>Adaptive Threshold</td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">FSM 상태 전이<br>(누움 &rarr; 시도 &rarr; 이탈)</td>
-                            <td style="padding:12px;vertical-align:top;"><strong style="color:var(--text-1);">이탈 여부</strong><br>기상 시도 횟수<br>mmWave 트리거</td>
-                            <td style="padding:12px;font-size:10px;color:var(--text-3);vertical-align:top;">하드웨어 스펙</td>
-                        </tr>
-                        <tr style="border-top:2px solid var(--blue);">
-                            <td style="padding:12px 14px;font-weight:800;color:var(--blue);vertical-align:top;" rowspan="2">WiFi CSI<br><span style="font-size:10px;font-weight:600;color:var(--text-3);">ESP32</span></td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;" rowspan="2">WiFi 2.4GHz<br>OFDM 서브캐리어<br>진폭 + 위상</td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">Hampel Filter &rarr; 이상치 제거<br>PCA &rarr; 차원 축소</td>
-                            <td style="padding:12px;color:var(--text-2);vertical-align:top;">FFT &rarr; 호흡/심박 분리<br>R-R 간격 &rarr; HRV<br>STFT + CNN/LSTM</td>
-                            <td style="padding:12px;vertical-align:top;"><strong style="color:var(--text-1);">심박수</strong> (96.8%)<br><strong style="color:var(--text-1);">HRV</strong> (SDNN/RMSSD)<br>보행 리듬, 동행자</td>
-                            <td style="padding:12px;font-size:10px;color:var(--text-3);vertical-align:top;">Wang 2016<br>Sun 2024<br>Castaldo 2017</td>
-                        </tr>
-                        <tr style="border-top:1px solid var(--border);background:var(--surface-2);">
-                            <td colspan="4" style="padding:10px 12px;font-size:11px;color:var(--blue);font-weight:700;">위험도 기여: 30% (보행리듬 10% + HRV 10% + 동행자보정 10%) + AND 교차검증</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="highlight-box" style="margin-top:14px;background:var(--accent-soft);border-color:rgba(91,138,245,0.3);color:var(--accent);">
-                모든 알고리즘은 논문에서 검증된 방법론을 차용 &mdash; z-score 기반 개인 맞춤형 위험도 산출 (해석 가능, 학습 데이터 불필요)
-            </div>
-        </div>
     </div>
 </div>
 
@@ -1503,12 +1373,7 @@ function switchLayout5(id) {
     document.querySelectorAll('.s5-btn').forEach(function(b) { b.classList.remove('active'); });
     document.getElementById('btn5' + id).classList.add('active');
 }
-function switchLayout14(id) {
-    document.querySelectorAll('.layout-variant-14').forEach(function(v) { v.style.display = 'none'; });
-    document.getElementById('layout14' + id).style.display = '';
-    document.querySelectorAll('.s14-btn').forEach(function(b) { b.classList.remove('active'); });
-    document.getElementById('btn14' + id).classList.add('active');
-}
+
 </script>
 
 </body>
