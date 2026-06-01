@@ -306,6 +306,73 @@
             margin-top:6px;
         }
 
+        /* resources page */
+        .res-block {
+            border-top:1px solid var(--line);
+            padding-top:12px; margin-top:14px;
+        }
+        .res-block:first-of-type { border-top:none; padding-top:0; margin-top:0; }
+        .res-head {
+            display:flex; align-items:baseline; gap:8px;
+            margin-bottom:8px;
+        }
+        .res-cat {
+            font-size:10.5px; font-weight:800;
+            padding:2px 8px; border-radius:3px;
+            letter-spacing:0.06em;
+        }
+        .res-cat.mmwave { background:var(--green-soft); color:var(--green); }
+        .res-cat.tof    { background:var(--orange-soft); color:var(--orange); }
+        .res-cat.esp32  { background:var(--accent-soft); color:var(--accent); }
+        .res-cat.pi     { background:#f3e8ff; color:#6d28d9; }
+        .res-cat.risk   { background:var(--rose-soft); color:var(--rose); }
+        .res-nm { font-size:13.5px; font-weight:800; }
+        .res-grid {
+            display:grid; grid-template-columns:1fr 1.2fr; gap:10px;
+        }
+        .pitfall {
+            border:1px solid var(--rose);
+            background:var(--rose-soft);
+            border-radius:5px;
+            padding:10px 12px;
+        }
+        .pitfall .h {
+            font-size:10.5px; font-weight:800; color:var(--rose);
+            letter-spacing:0.08em; margin-bottom:6px; text-transform:uppercase;
+        }
+        .pitfall ul { list-style:none; font-size:11px; color:var(--ink-2); line-height:1.65; }
+        .pitfall ul li { padding-left:11px; position:relative; }
+        .pitfall ul li::before {
+            content:'!'; position:absolute; left:1px; top:0;
+            font-weight:900; color:var(--rose); font-size:11px;
+        }
+        .pitfall ul li b { color:var(--ink-1); font-weight:700; }
+
+        .ref {
+            border:1px solid var(--line);
+            border-radius:5px;
+            padding:10px 12px;
+        }
+        .ref .h {
+            font-size:10.5px; font-weight:800; color:var(--ink-3);
+            letter-spacing:0.08em; margin-bottom:6px; text-transform:uppercase;
+        }
+        table.reflist {
+            width:100%; border-collapse:collapse; font-size:11px;
+        }
+        table.reflist td {
+            padding:4px 0; vertical-align:top;
+            border-bottom:1px dashed var(--line-2);
+        }
+        table.reflist tr:last-child td { border-bottom:none; }
+        table.reflist td.name { font-weight:700; color:var(--ink-1); white-space:nowrap; padding-right:8px; }
+        table.reflist td.url  {
+            font-family:'SF Mono','JetBrains Mono',Consolas,monospace;
+            font-size:10px; color:var(--accent);
+            word-break:break-all;
+        }
+        table.reflist td.desc { color:var(--ink-2); font-size:10.5px; }
+
         /* ── PRINT (PDF 저장) ─────────────────────────────────────── */
         @page { size:A4; margin:0; }
         @media print {
@@ -364,7 +431,7 @@
 
     <div class="pf">
         <span><b>치매환자 낙상 위험 사전 예측을 위한 비접촉 다중 센서 시스템</b></span>
-        <span>p. 1 / 6</span>
+        <span>p. 1 / 7</span>
     </div>
 </section>
 
@@ -463,7 +530,7 @@
 
     <div class="pf">
         <span><b>개요 · 구조 · 분담</b> · 2026. 06. 01 ~ 06. 28</span>
-        <span>p. 2 / 6</span>
+        <span>p. 2 / 7</span>
     </div>
 </section>
 
@@ -558,7 +625,7 @@ distance = median(avg[0..15])</pre>
 
     <div class="pf">
         <span><b>WEEK 1</b> · 통신 골격 · 6/1 — 6/7</span>
-        <span>p. 3 / 6</span>
+        <span>p. 3 / 7</span>
     </div>
 </section>
 
@@ -663,7 +730,7 @@ hdg   = atan2(mean(vy),
 
     <div class="pf">
         <span><b>WEEK 2</b> · 핵심 알고리즘 · 6/8 — 6/14</span>
-        <span>p. 4 / 6</span>
+        <span>p. 4 / 7</span>
     </div>
 </section>
 
@@ -777,7 +844,7 @@ if edge_dD &gt; 30 mm/s
 
     <div class="pf">
         <span><b>WEEK 3</b> · 통합 + 위험도 · 6/15 — 6/21</span>
-        <span>p. 5 / 6</span>
+        <span>p. 5 / 7</span>
     </div>
 </section>
 
@@ -897,7 +964,149 @@ WantedBy=multi-user.target</pre>
 
     <div class="pf">
         <span><b>WEEK 4</b> · 튜닝 + 발표 · 6/22 — 6/28</span>
-        <span>p. 6 / 6</span>
+        <span>p. 6 / 7</span>
+    </div>
+</section>
+
+<!-- ─────────────── 참고사항 + 오픈소스 ─────────────── -->
+<section class="page">
+    <div class="ph">
+        <div class="ph-title">Resources · 어려운 점 + 참고 오픈소스</div>
+        <div class="ph-meta">착수 전 체크</div>
+    </div>
+
+    <span class="kicker">Resources</span>
+    <h2 class="sec-title">시작 전에 알아둘 함정 · 참고할 오픈소스</h2>
+    <p class="lead">각 부품별로 한 달짜리 일정을 늘릴 수 있는 함정 (왼쪽) 과 시간을 줄여줄 참고 코드 (오른쪽).</p>
+
+    <!-- mmWave -->
+    <div class="res-block">
+        <div class="res-head">
+            <span class="res-cat mmwave">mmWave</span>
+            <span class="res-nm">IWR6843AOPEVM — 가장 빡센 파트</span>
+        </div>
+        <div class="res-grid">
+            <div class="pitfall">
+                <div class="h">⚠ 함정</div>
+                <ul>
+                    <li><b>TI 환경 셋업</b>이 반나절~1일 (CCS + mmWave SDK + Uniflash, TI 계정 등록)</li>
+                    <li><b>SOP 점퍼</b>(Flash vs Functional) 모르면 펌웨어 안 굽힘</li>
+                    <li>UART <b>2개 (CFG 115200 + DATA 921600)</b> — CFG에 cfg 파일 보내야 sensor 시작</li>
+                    <li>cfg 직접 쓰지 말고 <b>TI 공식 데모 cfg 그대로 사용</b></li>
+                </ul>
+            </div>
+            <div class="ref">
+                <div class="h">참고 오픈소스</div>
+                <table class="reflist">
+                    <tr><td class="name">pymmw</td><td class="url">github.com/m6c7l/pymmw</td></tr>
+                    <tr><td colspan="2" class="desc">Python으로 mmWave 데이터 빨리 시각화. <b>1순위 — 빨리 점이 찍히는지 확인용</b></td></tr>
+                    <tr><td class="name">OpenRadar</td><td class="url">github.com/presenseradar/openradar</td></tr>
+                    <tr><td colspan="2" class="desc">TI mmWave 파싱/분석 Python 라이브러리. 학습 자료 풍부</td></tr>
+                    <tr><td class="name">TI Industrial Toolbox</td><td class="url">dev.ti.com/tirex (mmWave 검색)</td></tr>
+                    <tr><td colspan="2" class="desc">공식. "People Counting", "3D People Tracking" 데모 cfg + 펌웨어</td></tr>
+                    <tr><td class="name">ti_mmwave_rospkg</td><td class="url">github.com/radar-lab/ti_mmwave_rospkg</td></tr>
+                    <tr><td colspan="2" class="desc">ROS 안 써도 TLV 파서 코드 참고 가치</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ToF -->
+    <div class="res-block">
+        <div class="res-head">
+            <span class="res-cat tof">ToF</span>
+            <span class="res-nm">VL53L8CX × 2 — 쉽지만 회로 함정</span>
+        </div>
+        <div class="res-grid">
+            <div class="pitfall">
+                <div class="h">⚠ 함정</div>
+                <ul>
+                    <li><b>2개 동시 사용 시 I²C 주소 충돌</b> (둘 다 기본 0x29) — <b>LPn 핀으로 한 개 reset 후 주소 변경</b> 필요</li>
+                    <li>ST 공식 드라이버는 STM32용 → ESP32 포팅된 라이브러리 사용</li>
+                    <li><b>8×8 @ 15Hz vs 4×4 @ 60Hz</b> — 동시 불가, 트레이드오프</li>
+                    <li>검정 이불, 햇빛 직사광 → 거리값 튐. 침실 환경 테스트 필수</li>
+                </ul>
+            </div>
+            <div class="ref">
+                <div class="h">참고 오픈소스</div>
+                <table class="reflist">
+                    <tr><td class="name">stm32duino/VL53L8CX</td><td class="url">github.com/stm32duino/VL53L8CX</td></tr>
+                    <tr><td colspan="2" class="desc">Arduino + ESP32 동작. <b>VL53L8CX용 1순위</b></td></tr>
+                    <tr><td class="name">SparkFun VL53L5CX</td><td class="url">github.com/sparkfun/SparkFun_VL53L5CX_Arduino_Library</td></tr>
+                    <tr><td colspan="2" class="desc">5CX용이지만 8CX와 API 거의 동일. <b>Example7_TwoSensors.ino</b> — 2개 동시 사용 예제</td></tr>
+                    <tr><td class="name">ST UltraLite Driver</td><td class="url">github.com/stm32duino/VL53L8CX/tree/main/src</td></tr>
+                    <tr><td colspan="2" class="desc">플랫폼 독립 C 드라이버. 직접 포팅할 때</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ESP32 통신 -->
+    <div class="res-block">
+        <div class="res-head">
+            <span class="res-cat esp32">ESP32 · 통신</span>
+            <span class="res-nm">WiFi + MQTT — 표준적</span>
+        </div>
+        <div class="res-grid">
+            <div class="pitfall">
+                <div class="h">⚠ 함정</div>
+                <ul>
+                    <li>WiFi 끊김 자동 재접속 — <code>WiFi.setAutoReconnect(true)</code> + 디스커넥트 콜백 처리</li>
+                    <li>MQTT QoS — <b>0이면 손실 가능, 1은 ACK 대기로 느려짐</b> (보통 0 충분)</li>
+                    <li>시간 동기화: NTP 라이브러리 무거움 → <b>SNTP가 ESP32 내장</b>이라 가벼움</li>
+                    <li>Pi 5 IP 자동 찾기: <b>mDNS</b>(<code>pi.local</code>) 또는 고정 IP</li>
+                </ul>
+            </div>
+            <div class="ref">
+                <div class="h">참고 오픈소스</div>
+                <table class="reflist">
+                    <tr><td class="name">PubSubClient</td><td class="url">github.com/knolleary/pubsubclient</td></tr>
+                    <tr><td colspan="2" class="desc">ESP32 MQTT 표준 라이브러리. <b>고민 없이 1순위</b></td></tr>
+                    <tr><td class="name">Mosquitto</td><td class="url">mosquitto.org / apt install mosquitto</td></tr>
+                    <tr><td colspan="2" class="desc">Pi 5에 깔 MQTT 브로커</td></tr>
+                    <tr><td class="name">paho-mqtt (Python)</td><td class="url">pypi.org/project/paho-mqtt</td></tr>
+                    <tr><td colspan="2" class="desc">Pi 5에서 MQTT 구독</td></tr>
+                    <tr><td class="name">arduino-esp32 SimpleTime</td><td class="url">github.com/espressif/arduino-esp32</td></tr>
+                    <tr><td colspan="2" class="desc">SNTP 동기화 예제 (examples / Time / SimpleTime)</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pi 5 대시보드 -->
+    <div class="res-block">
+        <div class="res-head">
+            <span class="res-cat pi">Pi 5 · 대시보드</span>
+            <span class="res-nm">시각화 — 선택지 많음, 빨리 띄우는 게 핵심</span>
+        </div>
+        <div class="res-grid">
+            <div class="pitfall">
+                <div class="h">⚠ 함정</div>
+                <ul>
+                    <li>대시보드에 시간 쓰지 마라 — 학생들이 알고리즘보다 UI에 빠지면 위험</li>
+                    <li>실시간 업데이트는 <b>WebSocket 또는 SSE</b>가 표준 (HTTP polling은 비효율)</li>
+                    <li>발표용 깔끔한 UI는 4주차 — 1~3주차는 <b>되는 것만 화면에 띄우자</b></li>
+                </ul>
+            </div>
+            <div class="ref">
+                <div class="h">참고 오픈소스</div>
+                <table class="reflist">
+                    <tr><td class="name">Streamlit</td><td class="url">streamlit.io</td></tr>
+                    <tr><td colspan="2" class="desc">Python 30줄로 차트 + 텍스트. <b>1순위 — 30분이면 띄움</b></td></tr>
+                    <tr><td class="name">Plotly Dash</td><td class="url">dash.plotly.com</td></tr>
+                    <tr><td colspan="2" class="desc">실시간 업데이트 강함. 3주차 본격 대시보드 후보</td></tr>
+                    <tr><td class="name">Node-RED</td><td class="url">nodered.org</td></tr>
+                    <tr><td colspan="2" class="desc">드래그&드롭 흐름 구성. 빠른 프로토타입</td></tr>
+                    <tr><td class="name">FastAPI + WebSocket</td><td class="url">fastapi.tiangolo.com</td></tr>
+                    <tr><td colspan="2" class="desc">직접 만들 때. 발표용 깔끔한 UI 원하면</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="pf">
+        <span><b>RESOURCES</b> · 어려운 점 + 참고 오픈소스</span>
+        <span>p. 7 / 7</span>
     </div>
 </section>
 
